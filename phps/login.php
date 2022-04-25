@@ -11,13 +11,14 @@
     <title>Formulario</title>
 </head>
 <body>
+    <!-- NAbEvAR -->
+<h3>LOGIN</h3>
 <form method="post" name=form action="recibir.php">
     <div class="container">
         <!-- CAMP 1 -->
         <div class="row justify-content-center">
             <div class="col-9 col-md-5">
                 <div class="row">
-                    <h1>LOGIN</h1>
                     <div class="col-md-4">
                         <label class="intlef" for="username">Username:</label>
                     </div>

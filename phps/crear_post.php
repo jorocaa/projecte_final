@@ -19,19 +19,7 @@
                     </button>
                     <div class="navbar-collapse collapse " id="navbartop">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                            <li class="nav-item"><a class="nav-link active" href="home.php">home</a></li>
-                            
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Mostrar Software</a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdown03">
-                                    <li><a class="dropdown-item " href="show.php?sistema=Linux">Linux Base</a></li>
-                                    <li><a class="dropdown-item" href="show.php?sistema=Windows">Windows Base</a></li>
-                                    <li><a class="dropdown-item" href="showpdi.php?sistema=Linux">Linux PDI</a></li>
-                                    <li><a class="dropdown-item" href="showpdi.php?sistema=Windows">Windows PDI</a></li>
-                                    <li><a class="dropdown-item" href="showtocreateimag.php?sistema=Linux">Linux</a></li>
-                                    <li><a class="dropdown-item" href="showtocreateimag.php?sistema=Windows">Windows</a></li>
-                                </ul>
-                            </li> -->
+                            <li class="nav-item"><a class="nav-link active" href="home.php">Home</a></li>
                             <li class="nav-item"><a class="nav-link " href="showimg.php">Categories </a></li>
                             <!-- @if($_SESSION['tipus']=="A")
                                 @if($_SESSION['tipus'] == "A" || $_SESSION['tipus'] == "M") -->
@@ -43,6 +31,7 @@
                     </div>
                 </div> 
             </nav>
+            <h3>CREAR POST</h3>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-9 col-md-5">
@@ -70,7 +59,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-9 col-md-5">
-                        <label class="intlef" for="contingut">Contingut:</label>
+                        <label class="intlef" for="contingut">Contingut:*</label>
                     </div>  
                 </div>
                 <div class="row justify-content-center">
@@ -82,23 +71,6 @@
                         </div> 
                     </div>  
                 </div>
-                
-                <!-- <div class="row justify-content-center">
-                    <div class="col-9 col-md-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label class="intlef" for="tipusuari"> Usuari:</label>
-                            </div>
-                            <div class="col-md-8 col-lg-6">
-                                <select class="form-select border border-secondary" type="select" id="tipusuari" name="tipusuari">
-                                    <option>TIC</option>
-                                    <option>LAB</option>
-                                    <option>PDI</option>
-                                </select><br>
-                            </div>
-                        </div>
-                    </div>  
-                </div> -->
                 <div class="row justify-content-center">
                     <div class="col-9 col-md-5">
                         <div class="row">
@@ -130,7 +102,7 @@
                     <div class="col-9 col-md-5">
                         <div class="row">
                             <div class="col-md-4">
-                                <label class="intlef" for="img">Imagte:</label>
+                                <label class="intlef" for="img">Imatge:</label>
                             </div>
                             <div class="col-md-8 col-lg-6">
                                 <input class="input-group " type="text" id="img" name="img"><br>

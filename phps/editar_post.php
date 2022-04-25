@@ -44,6 +44,7 @@
                     </div>
                 </div> 
             </nav>
+            <h3>EDITAR POST</h3>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-9 col-md-5">
