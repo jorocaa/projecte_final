@@ -33,6 +33,32 @@
             <div class="col-9 col-md-5">
                 <div class="row">
                     <div class="col-md-4">
+                        <label class="intlef" for="email">Email:</label>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <input class="input-group " type="text" id="email" name="email"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- CAMP 3 -->
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="intlef" for="telefon">Telèfon:</label>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <input class="input-group " type="text" id="telefon" name="telefon"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- CAMP 4 -->
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-5">
+                <div class="row">
+                    <div class="col-md-4">
                         <label class="intlef" for="contrasenya">Contrasenya:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
@@ -41,19 +67,23 @@
                 </div>
             </div>
         </div>
-
-        <!-- BOTÓ ENTRAR -->
-        <div class="row justify-content-center mt-1">
-            <div class="col-2">
-                <input class="col3 justify-content-center" type="submit" name="submitlogin" value="Enviar">
+        <!-- CAMP 5 -->
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="intlef" for="confirmarcontrasenya">Confirmar Contrasenya:</label>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <input class="input-group " type="text" id="confirmarcontrasenya" name="confirmarcontrasenya"><br>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- BOTÓ REGISTRAR-SE -->
-        <p>No t'has registrat encara? Registra't ara clicant al següent botó!</p>
+        <!-- BOTÓ -->
         <div class="row justify-content-center mt-1">
             <div class="col-2">
-                <input class="col3 justify-content-center" type="submit" name="submitregister" value="Registro">
+                <input class="col3 justify-content-center" type="submit" name="submitpost" value="Enviar Datos">
             </div>
         </div>
     </div>
