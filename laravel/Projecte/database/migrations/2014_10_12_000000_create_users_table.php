@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('longitude');
             $table->string('email')->unique();
             $table->integer('salary');
-            $table->stirng('dni');
-            $table->stirng('iban');
+            $table->string('dni');
+            $table->string('iban');
             $table->string('nuss');
             $table->integer('postsquantity');
             $table->timestamps();
