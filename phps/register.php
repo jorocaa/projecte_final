@@ -14,6 +14,7 @@
     <!-- NAbEvAR -->
 <h3>REGISTER</h3>
 <form method="post" name=form action="recibir.php">
+    @include('navbarBase.php')
     <div class="container">
         <!-- CAMP 1 -->
         <div class="row justify-content-center">
