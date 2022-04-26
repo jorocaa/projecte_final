@@ -50,12 +50,20 @@
         </div>
 
         <!-- BOTÓ REGISTRAR-SE -->
-        <p>No t'has registrat encara? Registra't ara clicant al següent botó!</p>
         <div class="row justify-content-center mt-1">
-            <div class="col-2">
+            <div class="col-6">
+                <p>No t'has registrat encara? Registra't ara clicant al següent botó!</p>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-1">
+            
+            <div class="col-2 ">
                 <input class="col3 justify-content-center" type="submit" name="submitregister" value="Registro">
             </div>
         </div>
+        
+        
+            
     </div>
 </form>
 </body>
