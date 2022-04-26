@@ -14,7 +14,7 @@
     <!-- NAbEvAR -->
 <h3>REGISTER</h3>
 <form method="post" name=form action="recibir.php">
-    @include('navbarBase.php')
+    @include('navbarBase')
     <div class="container">
         <!-- CAMP 1 -->
         <div class="row justify-content-center">
@@ -88,7 +88,7 @@
             </div>
         </div>
     </div>
-    @include('rightmenu.php')
+    @include('rightmenu')
 </form>
 </body>
 </html>
