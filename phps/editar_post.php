@@ -6,7 +6,7 @@
     $result = $conexion->query($showout);
     $row=mysqli_fetch_assoc($result);
 
-    $reser = $row["idreservation"]
+    $reser = $row["idreservation"];
     $showoutres = "SELECT * FROM reservation WHERE `id`='$reser'";
     $resultres = $conexion->query($showoutres);
     $rowres=mysqli_fetch_assoc($resultres);
