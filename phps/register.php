@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- NAbEvAR -->
-<h3>LOGIN</h3>
+<h3>REGISTER</h3>
 <form method="post" name=form action="recibir.php">
     <div class="container">
         <!-- CAMP 1 -->
