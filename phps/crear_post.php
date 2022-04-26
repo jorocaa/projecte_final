@@ -13,7 +13,7 @@
     </head>
     <body>
         <form method="post" name=form action="recibir.php">
-            @include('navbarBase.php')
+            @include('navbarBase')
             <h3>CREAR POST</h3>
             <div class="container col-9 float-start ">
                 <div class="row justify-content-center">
@@ -111,7 +111,7 @@
                     </div> 
                 </div> 
             </div>
-            @include('rightmenu.php')
+            @include('rightmenu')
         </form>
     </body>
 </html>

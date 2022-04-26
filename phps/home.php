@@ -28,7 +28,7 @@
     </head>
     <body>
         <form method="post" name=form action="recibir.php">
-            @include('navbarBase.php')
+            @include('navbarBase')
             @while ($row=mysqli_fetch_assoc($result))
                 <div class="container col-9 float-start ">
                     <div class="row justify-content-center mt-1">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             @endwhile
-            @include('rightmenu.php')
+            @include('rightmenu')
         </form>
     </body>
 </html>

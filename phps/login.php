@@ -13,7 +13,7 @@
 <body>
     <!-- NAbEvAR -->
 <h3>LOGIN</h3>
-@include('navbarBase.php')
+@include('navbarBase')
 <form method="post" name=form action="recibir.php">
     <div class="container">
         <!-- CAMP 1 -->
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-    @include('rightmenu.php')
+    @include('rightmenu')
 </form>
 </body>
 </html>

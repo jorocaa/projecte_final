@@ -25,7 +25,7 @@
         <title>Formulario</title>
     </head>
         <form method="post" name=form action="recibir.php">
-            @include('navbarBase.php')
+            @include('navbarBase')
             <h3>EDITAR POST</h3>
             <div class="container">
                 <div class="row justify-content-center">
@@ -129,7 +129,7 @@
                     </div> 
                 </div> 
             </div>
-            @include('rightmenu.php')
+            @include('rightmenu')
         </form>
     </body>
 </html>
