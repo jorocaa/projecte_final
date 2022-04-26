@@ -24,7 +24,6 @@
     <body>
         <form method="post" name=form action="recibir.php">
             @include('navbarBase.php')
-            
             <div class="container col-9 float-start ">
                 <div class="row justify-content-center mt-1">
                     <div class="col-2">
@@ -82,6 +81,7 @@
                     </div>
                 </div>
             </div>
+            @include('rightmenu.php')
         </form>
     </body>
 </html>

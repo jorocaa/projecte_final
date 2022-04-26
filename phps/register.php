@@ -88,6 +88,7 @@
             </div>
         </div>
     </div>
+    @include('rightmenu.php')
 </form>
 </body>
 </html>

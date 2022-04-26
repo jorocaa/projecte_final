@@ -61,10 +61,8 @@
                 <input class="col3 justify-content-center" type="submit" name="submitregister" value="Registro">
             </div>
         </div>
-        
-        
-            
     </div>
+    @include('rightmenu.php')
 </form>
 </body>
 </html>

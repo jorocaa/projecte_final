@@ -15,7 +15,6 @@
         <form method="post" name=form action="recibir.php">
             @include('navbarBase.php')
             <h3>CREAR POST</h3>
-            
             <div class="container col-9 float-start ">
                 <div class="row justify-content-center">
                     <div class="col-9 col-md-5">
