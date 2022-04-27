@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// HOME PAGE
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+// PARA PROBRAR, AÑADIR EN CRUD RUTA
+Route::get('/makepost', function(){
+    return view('crear_post');
 });

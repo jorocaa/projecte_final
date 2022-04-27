@@ -1,7 +1,6 @@
 @php
-    $showout = "select * from blogs order by id desc limit 10;";
-    $result = $conexion->query($showout);
-    
+    //$showout = "select * from blogs order by id desc limit 10;";
+    //$result = $conexion->query($showout);
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +33,8 @@
                     <div class="row justify-content-center mt-1">
                         <div class="col-2">
                             <button>WIKI</button>
-                        </div> 
-                    </div> 
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-9">
                             <div class="row">
@@ -55,7 +54,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                <div id="map"></div>    
+                                <div id="map"></div>
                                     <script>
                                         var listener = new window.keypress.Listener();
                                         var map = L.map('map').setView([<?php echo $row["latitude"] ?>, <?php echo $row["longitude"] ?>], 18);
@@ -71,7 +70,7 @@
                                         }
                                         var marker = new L.marker([<?php echo $row["latitude"] ?>, <?php echo $row["longitude"] ?>]).addTo(map);
                                         marker._icon.classList.add("huechange");
-                                        
+
                                         marker.bindPopup("<b>Institut</b></br>Joaquim Mir").openPopup();
                                         var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                                             maxZoom: 18,
