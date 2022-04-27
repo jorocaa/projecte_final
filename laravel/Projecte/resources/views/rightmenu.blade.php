@@ -9,7 +9,7 @@
         </form>
         </br>
         <a href="#">Post Aleatori</a> </br>
-        @if(isset($_SESSION['tipus']))
+        @if(isset(Auth::user()->usertype))
             <a href="crear_post">Crear Post</a> </br>
             <a href="#">Llistar Posts Propi</a> </br>
         @endif

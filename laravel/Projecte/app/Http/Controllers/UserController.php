@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::select('name','email')->get();
+        return \response($user);
     }
 
     /**
@@ -24,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view("users.create");
     }
 
     /**
@@ -35,7 +38,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|max:255|unique:users',
+            'contrasenya' => 'required',
+            'confirmarcontrasenya' => 'required|same:contrasenya',
+        ]);
+
+        User::create([
+            'usertype' => "U",
+            'name' => $request->name,
+            'surnames' => $request->surnames,
+            'username' => $request->username,
+            'password' => Hash::make($request->contrasenya),
+            'location' => $request->latitude,
+            'email' => $request->email,
+            'salary' => null,
+            'dni' => $request->dni,
+            'iban' => null,
+            'nuss' => null,
+            'postsquantity' => 0,
+        ]);
+
+        return view("users.index"); // buscar como redirigir a login
+
     }
 
     /**
@@ -81,5 +107,19 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function login(Request $request)
+    {
+        if (Auth::attempt([
+            'username' => $request->username,
+            'password' => $request->password
+        ])) {
+            return view('home');
+        }else{
+            return view('login');
+        }
+
+
     }
 }

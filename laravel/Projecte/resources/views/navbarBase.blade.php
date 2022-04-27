@@ -7,18 +7,18 @@
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item"><a class="nav-link" href="../laravel/Projecte/resources/views/home.blade.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="showimg.php">Categories </a></li>
-                <!--@if($_SESSION['tipus']=="A")
-                    @if($_SESSION['tipus'] == "A" || $_SESSION['tipus'] == "M") -->
+            @if(isset(Auth::user()->usertype))
+                @if(Auth::user()->usertype=="A" or Auth::user()->usertype=="M")
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Posts </a></li>
-                    <!-- @endif -->
+                @endif
+                @if(Auth::user()->usertype=="A")
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Usuaris </a></li>
-                <!-- @endif -->
+                @endif
             </ul>
-            <!-- @if(isset($_SESSION['tipus'])) -->
                 <a class="nav-link link-light" href="logout.php">Sortir</a>
-            <!-- @else -->
+            @else
                 <a class="nav-link link-light" href="login.php">Login</a>
-            <!-- @endif -->
+            @endif
         </div>
     </div>
 </nav>

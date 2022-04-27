@@ -19,6 +19,6 @@ Route::get('/', function () {
 });
 
 // PARA PROBRAR, AÑADIR EN CRUD RUTA
-Route::get('/makepost', function(){
-    return view('crear_post');
-});
+//Route::get('/makepost', function(){
+//    return view('crear_post');
+//});
