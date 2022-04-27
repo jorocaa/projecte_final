@@ -21,7 +21,31 @@
             <div class="col-9 col-md-5">
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="intlef" for="username">Username:</label>
+                        <label class="intlef" for="name">Nom:</label>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <input class="input-group" type="text" id="name" name="name"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="intlef" for="surnames">Cognom:</label>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <input class="input-group" type="text" id="surnames" name="surnames"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="intlef" for="username">Username:*</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
                         <input class="input-group" type="text" id="username" name="username"><br>
@@ -34,7 +58,7 @@
             <div class="col-9 col-md-5">
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="intlef" for="email">Email:</label>
+                        <label class="intlef" for="email">Email:*</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
                         <input class="input-group " type="text" id="email" name="email"><br>
@@ -55,12 +79,24 @@
                 </div>
             </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="intlef" for="location">Ciutat:</label>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <input class="input-group " type="text" id="location" name="location"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- CAMP 4 -->
         <div class="row justify-content-center">
             <div class="col-9 col-md-5">
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="intlef" for="contrasenya">Contrasenya:</label>
+                        <label class="intlef" for="contrasenya">Contrasenya:*</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
                         <input class="input-group " type="text" id="contrasenya" name="contrasenya"><br>
@@ -73,7 +109,7 @@
             <div class="col-9 col-md-5">
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="intlef" for="confirmarcontrasenya">Confirmar Contrasenya:</label>
+                        <label class="intlef" for="confirmarcontrasenya">Confirmar Contrasenya:*</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
                         <input class="input-group " type="text" id="confirmarcontrasenya" name="confirmarcontrasenya"><br>
