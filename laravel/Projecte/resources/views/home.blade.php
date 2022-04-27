@@ -1,7 +1,3 @@
-@php
-    //$showout = "select * from blogs order by id desc limit 10;";
-    //$result = $conexion->query($showout);
-@endphp
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,7 +24,7 @@
     <body>
         <form method="post" name=form action="recibir.php">
             @include('navbarBase')
-            @while ($row=mysqli_fetch_assoc($result))
+            @foreach($result as $row)
                 <div class="container col-9 float-start ">
                     <div class="row justify-content-center mt-1">
                         <div class="col-2">
@@ -39,12 +35,12 @@
                         <div class="col-9">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h3><?php echo $row["title"] ?></h3>
+                                    <h3>{{$row->title}}</h3>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p><?php echo $row["content"] ?></p>
+                                    <p>{{$row->content}}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -57,7 +53,7 @@
                                 <div id="map"></div>
                                     <script>
                                         var listener = new window.keypress.Listener();
-                                        var map = L.map('map').setView([<?php echo $row["latitude"] ?>, <?php echo $row["longitude"] ?>], 18);
+                                        var map = L.map('map').setView([{{$row->latitude}}, {{$row->longitude}}], 18);
                                         if (navigator.geolocation) {
                                             navigator.geolocation.getCurrentPosition(showposition);
                                         }
@@ -68,7 +64,7 @@
                                         marker2.bindPopup("<b>Vosté está aquí</b>").openPopup();
                                         marker2._icon.classList.add("huechange2");
                                         }
-                                        var marker = new L.marker([<?php echo $row["latitude"] ?>, <?php echo $row["longitude"] ?>]).addTo(map);
+                                        var marker = new L.marker([{{$row->latitude}}, {{$row->longitude}}]).addTo(map);
                                         marker._icon.classList.add("huechange");
 
                                         marker.bindPopup("<b>Institut</b></br>Joaquim Mir").openPopup();
@@ -86,7 +82,7 @@
                         </div>
                     </div>
                 </div>
-            @endwhile
+            @endforeach
             @include('rightmenu')
         </form>
     </body>

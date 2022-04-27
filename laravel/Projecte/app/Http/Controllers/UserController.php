@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\HomeController;
 
 class UserController extends Controller
 {
@@ -115,11 +117,11 @@ class UserController extends Controller
             'username' => $request->username,
             'password' => $request->password
         ])) {
+            //$return = HomeController::index(); // HELPEP
+            //return view('home', $return);
             return view('home');
         }else{
             return view('login');
         }
-
-
     }
 }
