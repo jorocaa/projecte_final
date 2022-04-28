@@ -41,7 +41,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'username' => 'required',
             'email' => 'required|max:255|unique:users',
             'contrasenya' => 'required',
             'confirmarcontrasenya' => 'required|same:contrasenya',
@@ -53,16 +53,16 @@ class UserController extends Controller
             'surnames' => $request->surnames,
             'username' => $request->username,
             'password' => Hash::make($request->contrasenya),
-            'location' => $request->latitude,
+            'location' => $request->location,
             'email' => $request->email,
             'salary' => null,
-            'dni' => $request->dni,
+            'dni' => null,
             'iban' => null,
             'nuss' => null,
             'postsquantity' => 0,
         ]);
 
-        return view("users.index"); // buscar como redirigir a login
+        return redirect("login"); // buscar como redirigir a login
 
     }
 

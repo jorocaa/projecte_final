@@ -13,7 +13,7 @@
 <body>
     <!-- NAbEvAR -->
 <h3>REGISTER</h3>
-<form method="post" name=form action="recibir.php">
+<form method="post" name=form action="{{route('users.store')}}">
     @include('navbarBase')
     <div class="container">
         <!-- CAMP 1 -->

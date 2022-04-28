@@ -16,7 +16,7 @@ class Reservation extends Model
      */
     protected $fillable = [
         'reservationlink',
-        'idcompany',
+        'namecompany',
         'idclient',
         'idmoderator',
     ];

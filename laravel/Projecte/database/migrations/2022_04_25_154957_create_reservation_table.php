@@ -16,7 +16,7 @@ class CreateReservationTable extends Migration
         Schema::create('reservation', function (Blueprint $table) {
             $table->id();
             $table->string('reservationlink');
-            $table->foreignId('idcompany')->references('id')->on('company');
+            $table->string('namecompany');
             $table->foreignId('idclient')->references('id')->on('users');
             $table->foreignId('idmoderator')->references('id')->on('users');
             $table->timestamps();

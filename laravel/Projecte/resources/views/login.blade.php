@@ -14,7 +14,7 @@
     <!-- NAbEvAR -->
 <h3>LOGIN</h3>
 @include('navbarBase')
-<form method="post" name=form action="recibir.php">
+<form method="post" name=form action="{{route('users.login')}}">
     <div class="container">
         <!-- CAMP 1 -->
         <div class="row justify-content-center">
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="row justify-content-center mt-1">
-            
+
             <div class="col-2 ">
                 <input class="col3 justify-content-center" type="submit" name="submitregister" value="Registro">
             </div>
