@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\HomeController;
+use function Symfony\Component\String\s;
 
 
 class UserController extends Controller
@@ -136,11 +137,12 @@ class UserController extends Controller
             'password' => $request->contrasenya,
         ])){
             $u = User::all()->where('username', $request->username);
-            $data = [
-                'usertype' => $u->usertype,
-                '10blogs' => Blog::all()->sortByDesc('id')->take(10)->get(),
-            ];
-            return view('home')->with($data);
+            foreach ($u as $us){
+                session(['usertype' => $us->usertype]);
+            }
+
+            $return = Blog::all()->sortByDesc('id')->take(10)->get();
+            return view('home', $return);
             //    return view('home');
         }else{
             return view('login');
