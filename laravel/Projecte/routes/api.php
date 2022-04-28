@@ -28,7 +28,8 @@ Route::apiResource("blogs/{bid}/comments", CommentController::class);
 Route::post("/", [HomeController::class, 'carga']);
 
 Route::apiResource("users",UserController::class);
+//Route::resource('login',UserController::class);
 
 Route::apiResource("breachs",BreachController::class);
 
-//Route::post("/login", [UserController::class, 'login']);
+Route::post("/login", [UserController::class, 'login'])->name('users.login');

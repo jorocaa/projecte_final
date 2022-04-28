@@ -9,11 +9,13 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Formulario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <!-- NAbEvAR -->
+    @include('navbarBase')
 <h3>LOGIN</h3>
-@include('navbarBase')
+
 <form method="post" name=form action="{{route('users.login')}}">
     <div class="container">
         <!-- CAMP 1 -->
@@ -57,13 +59,15 @@
             </div>
         </div>
         <div class="row justify-content-center mt-1">
-
-            <div class="col-2 ">
-                <input class="col3 justify-content-center" type="submit" name="submitregister" value="Registro">
+            <div class="col-2">
+                <button><a class="button" href="{{route('auth.register')}}" style="text-decoration: none">Registro</a></button>
             </div>
         </div>
-    </div>
+    </div><
     @include('rightmenu')
 </form>
+
+
+
 </body>
 </html>

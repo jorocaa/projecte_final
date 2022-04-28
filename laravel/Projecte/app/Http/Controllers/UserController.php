@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\HomeController;
+
 
 class UserController extends Controller
 {
@@ -52,7 +54,7 @@ class UserController extends Controller
             'name' => $request->name,
             'surnames' => $request->surnames,
             'username' => $request->username,
-            'password' => Hash::make($request->contrasenya),
+            'password' => $request->contrasenya,
             'location' => $request->location,
             'email' => $request->email,
             'salary' => null,
@@ -113,13 +115,29 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        if (Auth::attempt([
-            'username' => $request->username,
-            'password' => $request->password
-        ])) {
+        //if (Auth::attempt([
+        //    'username' => $request->username,
+        //    'password' => $request->password
+        //])) {
             //$return = HomeController::index(); // HELPEP
             //return view('home', $return);
-            return view('home');
+        //    return view('home');
+        //}else{
+        //    return view('login');
+        //}
+
+        $request->validate([
+            'username' => ['required'],
+            'contrasenya' => ['required'],
+        ]);
+
+        if(Auth::attempt([
+            'username' => $request->username,
+            'password' => $request->contrasenya,
+        ])){
+            $return = Blog::all()->sortByDesc('id')->take(10)->get();
+            return view('home', $return);
+            //    return view('home');
         }else{
             return view('login');
         }

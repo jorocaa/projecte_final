@@ -17,17 +17,17 @@ use \App\Http\Controllers\UserController;
 // HOME PAGE
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');;
 
 Route::get('/register', function () {
     return view('register');
-});
+})->name('auth.register');
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('auth.login');
 
-//Route::resource('/login',UserController::class);
+//Route::resource('login','UserController');
 
 // PARA PROBRAR, AÑADIR EN CRUD RUTA
 //Route::get('/makepost', function(){
