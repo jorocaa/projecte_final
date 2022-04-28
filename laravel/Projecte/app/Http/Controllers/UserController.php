@@ -54,7 +54,7 @@ class UserController extends Controller
             'name' => $request->name,
             'surnames' => $request->surnames,
             'username' => $request->username,
-            'password' => $request->contrasenya,
+            'password' => Hash::make($request->contrasenya),
             'location' => $request->location,
             'email' => $request->email,
             'salary' => null,
@@ -135,8 +135,12 @@ class UserController extends Controller
             'username' => $request->username,
             'password' => $request->contrasenya,
         ])){
-            $return = Blog::all()->sortByDesc('id')->take(10)->get();
-            return view('home', $return);
+            $u = User::all()->where('username', $request->username);
+            $data = [
+                'usertype' => $u->usertype,
+                '10blogs' => Blog::all()->sortByDesc('id')->take(10)->get(),
+            ];
+            return view('home')->with($data);
             //    return view('home');
         }else{
             return view('login');
