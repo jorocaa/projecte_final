@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -27,7 +28,38 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required|max:255|unique:users',
+            ]);
+
+        
+        Image::create([
+
+        
+        ]);
+        Reservation::create([
+            'reservationlink',
+            'namecompany',
+            'idclient',
+            'idmoderator',
+        ]);
+        Blog::create([
+
+            'idclient' => Auth::user()->id,
+            'idmoderator'=> null,
+            'idcomment'=> null,
+            'title' => $request->title,
+            'category'=> $request->category,
+            'content'=> $request->content,
+            'wikipedia'=> $request->linkwiki,
+            'idimage'=> $request->,
+            'latitude'=> $request->latitude,
+            'longitude'=> $request->longitude,
+            'idreservation'=> $request->linkres,
+        ]);
+
+        return redirect("login");
     }
 
     /**
