@@ -66,8 +66,5 @@
     </div><
     @include('rightmenu')
 </form>
-
-
-
 </body>
 </html>

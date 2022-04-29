@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,22 +13,12 @@ use \App\Http\Controllers\UserController;
 |
 */
 
-// HOME PAGE
 Route::get('/', function () {
     return view('home');
-})->name('home');;
+});
 
-Route::get('/register', function () {
-    return view('register');
-})->name('auth.register');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('auth.login');
-
-//Route::resource('login','UserController');
-
-// PARA PROBRAR, AÑADIR EN CRUD RUTA
-//Route::get('/makepost', function(){
-//    return view('crear_post');
-//});
+require __DIR__.'/auth.php';

@@ -1,6 +1,3 @@
-@php
-    $usertype = session('usertype')
-@endphp
 <!DOCTYPE html>
 <html lang="en">
     <head>
