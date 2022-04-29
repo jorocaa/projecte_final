@@ -7,11 +7,13 @@
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="showimg.php">Categories </a></li>
-            @if (Route::has('login'))
-                @if(\Illuminate\Support\Facades\Auth::user())
+                @php $ut = Session::get('usertype')
+                @endphp
+            @if (isset($ut))
+                @if(Session::get('usertype') == "A" or Session::get('usertype') == "M")
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Posts </a></li>
                 @endif
-                @if($usertype=="A")
+                @if(Session::get('usertype') == "A")
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Usuaris </a></li>
                 @endif
             </ul>
