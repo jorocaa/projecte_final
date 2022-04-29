@@ -12,8 +12,8 @@
         <title>Formulario</title>
     </head>
     <body>
-        <form method="post" name=form action="{{route('blogs.store')}}"> <!--recibir.php-->
             @include('navbarBase')
+            <form method="post" name=form action="{{route('blogs.store')}}"> <!--recibir.php-->
             <h3>CREAR POST</h3>
             <div class="container col-9 float-start ">
                 <div class="row justify-content-center">

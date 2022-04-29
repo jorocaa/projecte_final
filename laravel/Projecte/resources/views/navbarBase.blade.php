@@ -17,8 +17,14 @@
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Usuaris </a></li>
                 @endif
             </ul>
-            <form method="POST" action="http://127.0.0.1:8000/logout">
-                <a class="nav-link link-light" href="http://127.0.0.1:8000/logout">Sortir</a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <x-dropdown-link :href="route('logout')"
+                                 onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </x-dropdown-link>
             </form>
             @else
             </ul>
