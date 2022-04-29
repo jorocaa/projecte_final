@@ -7,11 +7,15 @@ use App\Models\Blog;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
-        $result =  Blog::all()->orderBy('id','desc')->take(10)->get();
-        return redirect("home",$result);
+        $result =  Blog::all()->sortByDesc('id')->take(10)->get();
+        return view('home', $result);
     }
 
     /**

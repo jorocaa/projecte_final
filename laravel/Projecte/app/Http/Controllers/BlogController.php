@@ -28,42 +28,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required|max:255|unique:users',
-            ]);
-
-        
-        Image::create([
-
-        
-        ]);
-        Reservation::create([
-            'reservationlink',
-            'namecompany',
-            'idclient',
-            'idmoderator',
-        ]);
-        Blog::create([
-
-            'idclient' => Auth::user()->id,
-            'idmoderator'=> null,
-            'idcomment'=> null,
-            'title' => $request->title,
-            'category'=> $request->category,
-            'content'=> $request->content,
-            'wikipedia'=> $request->linkwiki,
-            'idimage'=> $request->,
-            'latitude'=> $request->latitude,
-            'longitude'=> $request->longitude,
-            'idreservation'=> $request->linkres,
-        ]);
-
-        return redirect("login");
-=======
         return view("blogs.create");
->>>>>>> ae305447892d30976b05b26a7951b4a48e9df302
     }
 
     /**
@@ -74,7 +39,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
