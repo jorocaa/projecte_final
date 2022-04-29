@@ -19,7 +19,6 @@ class Blog extends Model
     protected $fillable = [
         'idclient',
         'idmoderator',
-        'idcomment',
         'title',
         'category',
         'content',

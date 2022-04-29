@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource("blogs",BlogController::class);
 Route::apiResource("blogs/{bid}/comments", CommentController::class);
-Route::post("/", [HomeController::class, 'carga']);
+Route::apiResource("/", [HomeController::class]);
 
 Route::apiResource("users",UserController::class);
 //Route::resource('login',UserController::class);

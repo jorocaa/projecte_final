@@ -7,16 +7,11 @@ use App\Models\Blog;
 
 class HomeController extends Controller
 {
-    public function carga()
-    {
-        $result =  Blog::all()->orderBy('id','desc')->take(10)->get();
-        //return view('home', $result);
-        return $result;
-    }
 
     public function index()
     {
-        //
+        $result =  Blog::all()->orderBy('id','desc')->take(10)->get();
+        return redirect("home",$result);
     }
 
     /**

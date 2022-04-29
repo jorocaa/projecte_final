@@ -23,8 +23,9 @@
         <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     </head>
     <body>
+        @include('navbarBase')
         <form method="post" name=form action="recibir.php">
-            @include('navbarBase')
+            
             @foreach($result as $row)
                 <div class="container col-9 float-start ">
                     <div class="row justify-content-center mt-1">
