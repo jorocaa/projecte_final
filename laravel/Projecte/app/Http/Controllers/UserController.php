@@ -134,11 +134,6 @@ class UserController extends Controller
             'username' => $request->username,
             'password' => $request->contrasenya,
         ])){
-            $u = User::all()->where('username', $request->username);
-            foreach ($u as $us){
-                Session::put('usertype', $us->usertype);
-            }
-
             $return = Blog::all()->sortByDesc('id')->take(10)->get();
             return view('home', $return);
             //    return view('home');
