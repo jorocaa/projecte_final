@@ -15,16 +15,15 @@ class CreateBlogTable extends Migration
         Schema::create('blog', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idclient')->references('id')->on('users')->nullable();
-            $table->foreignId('idmoderator')->references('id')->on('users')->nullable();
-            $table->foreignId('idcomment')->references('id')->on('comment')->nullable();
+            $table->foreignId('idmoderator')->references('id')->on('users')->nullable()->constrained();
             $table->string('title');
             $table->string('category')->nullable();
             $table->string('content');
             $table->string('wikipedia')->nullable();
-            $table->foreignId('idimage')->references('id')->on('image')->nullable();
+            $table->foreignId('idimage')->references('id')->on('image')->nullable()->constrained();
             $table->float('latitude')->nullable();
             $table->float('longitude')->nullable();
-            $table->foreignId('idreservation')->references('id')->on('reservation')->nullable();
+            $table->foreignId('idreservation')->references('id')->on('reservation')->nullable()->constrained();
             $table->timestamps();
         });
     }

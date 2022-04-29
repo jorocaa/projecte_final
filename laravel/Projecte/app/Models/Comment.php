@@ -16,6 +16,7 @@ class Comment extends Model
      */
     protected $fillable = [
         'iduser',
+        'idblog',
         'title',
         'content',
     ];

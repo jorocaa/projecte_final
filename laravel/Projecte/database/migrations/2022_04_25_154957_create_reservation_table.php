@@ -18,7 +18,7 @@ class CreateReservationTable extends Migration
             $table->string('reservationlink');
             $table->string('namecompany');
             $table->foreignId('idclient')->references('id')->on('users');
-            $table->foreignId('idmoderator')->references('id')->on('users');
+            $table->foreignId('idmoderator')->references('id')->on('users')->constrained();
             $table->timestamps();
         });
     }
