@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReservationTable extends Migration
+class CreateReserveTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateReservationTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservation', function (Blueprint $table) {
+        Schema::create('reserve', function (Blueprint $table) {
             $table->id();
-            $table->string('reservationlink');
-            $table->string('namecompany');
-            $table->foreignId('idclientcreateblog')->references('id')->on('users');
-            $table->foreignId('idmoderator')->references('id')->on('users')->constrained();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateReservationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservation');
+        Schema::dropIfExists('reserve');
     }
 }
