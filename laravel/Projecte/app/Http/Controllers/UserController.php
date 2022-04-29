@@ -138,7 +138,7 @@ class UserController extends Controller
         ])){
             $u = User::all()->where('username', $request->username);
             foreach ($u as $us){
-                session(['usertype' => $us->usertype]);
+                Session::put('usertype', $us->usertype);
             }
 
             $return = Blog::all()->sortByDesc('id')->take(10)->get();
