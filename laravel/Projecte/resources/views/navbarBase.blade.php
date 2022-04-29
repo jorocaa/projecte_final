@@ -8,10 +8,10 @@
                 <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="showimg.php">Categories </a></li>
             @if (Route::has('login'))
-                @if(Auth::user()->usertype == "A" or Auth::user()->usertype == "M")
+                @if(\Illuminate\Support\Facades\Auth::user())
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Posts </a></li>
                 @endif
-                @if(Auth::user()->usertype == "A")
+                @if($usertype=="A")
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Usuaris </a></li>
                 @endif
             </ul>
