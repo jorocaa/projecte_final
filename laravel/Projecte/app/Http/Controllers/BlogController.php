@@ -28,6 +28,7 @@ class BlogController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         $request->validate([
             'title' => 'required',
             'content' => 'required|max:255|unique:users',
@@ -60,6 +61,9 @@ class BlogController extends Controller
         ]);
 
         return redirect("login");
+=======
+        return view("blogs.create");
+>>>>>>> ae305447892d30976b05b26a7951b4a48e9df302
     }
 
     /**

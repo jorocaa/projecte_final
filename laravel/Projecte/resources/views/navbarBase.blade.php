@@ -7,15 +7,19 @@
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="showimg.php">Categories </a></li>
-            @if (isset(Session::get('usertype')))
-                @if(Session::get('usertype') == "A" or Session::get('usertype') == "M")
+                @php //$ut = Session::get('usertype')
+                @endphp
+            @if (isset(Auth::user()->usertype))
+                @if(Auth::user()->usertype == "A" or Auth::user()->usertype == "M")
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Posts </a></li>
                 @endif
-                @if(Session::get('usertype') == "A")
+                @if(Auth::user()->usertype == "A")
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Usuaris </a></li>
                 @endif
             </ul>
-                <a class="nav-link link-light" href="logout.php">Sortir</a>
+            <form method="POST" action="http://127.0.0.1:8000/logout">
+                <a class="nav-link link-light" href="http://127.0.0.1:8000/logout">Sortir</a>
+            </form>
             @else
             </ul>
                 <a class="nav-link link-light" href="/login">Login</a>
