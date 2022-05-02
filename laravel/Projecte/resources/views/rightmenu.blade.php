@@ -10,7 +10,7 @@
         </br>
         <a href="#">Post Aleatori</a> </br>
         @if(isset(Auth::user()->usertype))
-            <a href="crear_post">Crear Post</a> </br>
+            <a href="crear_blog">Crear Post</a> </br>
             <a href="#">Llistar Posts Propi</a> </br>
         @endif
     </div>
