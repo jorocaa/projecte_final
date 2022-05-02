@@ -42,14 +42,14 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-9 col-md-5">
-                        <label class="intlef" for="contingut">Contingut:*</label>
+                        <label class="intlef" for="contents">Contingut:*</label>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-9 col-md-6">
                         <div class="row justify-content-center">
                             <div class="col-md-12 col-lg-10">
-                                <textarea class="form-control col-20 border border-secondary" id="contingut" name="contingut" rows="5"></textarea><br>
+                                <textarea class="form-control col-20 border border-secondary" id="contents" name="contents" rows="5"></textarea><br>
                             </div>
                         </div>
                     </div>

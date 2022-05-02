@@ -39,7 +39,52 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-       
+        if(isset($request->img)){
+            $upload = $request->file('img');
+            $fileName = $upload->getClientOriginalName();
+            $fileSize = $upload->getSize();
+
+            $uploadName = time() . '_' . $fileName;
+            $filePath = $upload->storeAs(
+                'uploads',
+                $uploadName,
+                'public'
+            );
+
+            \Storage::disk('public')->exists($filePath){
+                //Existe la ruta"
+                $fullPath = \Storage::disk('public')->path($filePath);
+                $image = Image::create([
+                    'filepath' => $filePath,
+                    'filesize' => $fileSize
+                ]);
+                $idimg = DB::table('Image')->select('id')->where('filepath', '=', $filePath);
+       }else{
+            $idimg = 1;
+       }
+
+        if(isset($request->idreservation)){
+            $idres = $request->idreservation;
+        }else{
+            $idres = 1;
+        }
+
+        Blog::create([
+
+            'idclient' => Auth::user()->id,
+            'idmoderator'=> null,
+            'idcomment'=> null,
+            'title' => $request->title,
+            'category'=> $request->category,
+            'content'=> $request->contents,
+            'wikipedia'=> $request->linkwiki,
+            'idimage'=> $idimg,
+            'latitude'=> $request->latitude,
+            'longitude'=> $request->longitude,
+            'idreservation'=> $idres,
+        ]);
+
+        return redirect("login");
     }
 
     /**
