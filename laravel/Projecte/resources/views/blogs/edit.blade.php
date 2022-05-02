@@ -100,15 +100,30 @@
                         <label class="intlef" for="linkres">Enllaç Reserva:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
-                        <input type="hidden" value={{$blog->idreservation}}/>
-                        <input type="hidden" value={{$blog->idimage}}/>
-                        <input class="input-group " type="text" id="linkres" name="linkres" value="{{$blog->idreservation}}"/><br> <!-- Coger el link de la tabla reservation -->
+                        <input class="input-group " type="text" id="linkres" name="linkres" value="{{$reserva->reservationlink}}"/><br>
                     </div>
                 </div>
             </div>
         </div>
+        @if(Auth::user()->usertype != "U"){
+            <div class="row justify-content-center">
+                <div class="col-9 col-md-5">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="intlef" for="nomempresa">Nom empresa:</label>
+                        </div>
+                        <div class="col-md-8 col-lg-6">
+                            <input class="input-group " type="text" id="nomempresa" name="nomempresa"/><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
         <div class="row justify-content-center mt-1">
             <div class="col-2">
+                <input type="hidden" name="idreservation" value={{$blog->idreservation}}/>
+                <input type="hidden" name="imgid" value={{$blog->idimage}}/>
+                <input type="hidden" name="namebefore" value={{$image->filePath}}/>
                 <input class="col3 justify-content-center" type="submit" name="submitpost" value="Actualitzar Dades">
             </div>
         </div>
