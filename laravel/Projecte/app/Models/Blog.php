@@ -27,5 +27,6 @@ class Blog extends Model
         'latitude',
         'longitude',
         'idreservation',
+        'state',
     ];
 }
