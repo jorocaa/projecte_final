@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Image;
 use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -17,9 +19,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view("blogs.show", [
-            'blog' => Blog::all()
-        ]);
+        //
     }
 
     /**
@@ -40,11 +40,11 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $idimg = 1;
         if(isset($request->img)) {
-            $upload = $request->file('img');
+            $upload = $request->img;
             $fileName = $upload->getClientOriginalName();
             $fileSize = $upload->getSize();
-
             $uploadName = time() . '_' . $fileName;
             $filePath = $upload->storeAs(
                 'uploads',
@@ -61,31 +61,29 @@ class BlogController extends Controller
                     'filesize' => $fileSize
                 ]);
 
-                $idimg = DB::table('Image')->select('id')->where('filepath', '=', $filePath);
+                $idimg2 = Image::latest('id')->first();
+                $idimg = $idimg2->id;
 
-            } else {
-                $idimg = 1;
+                //$idimg = DB::table('image')->select('id')->where('filepath', '=', $filePath);
             }
         }
-
+        $idres = 1;
         if(isset($request->idreservation)){
             $idres = $request->idreservation;
 
             Reservation::create([
                 'reservationlink' => $request,
                 'namecompany' => "",
-                'idclient' => Auth::user()->id,
+                'idclient' => $request->idid,
                 'idmoderator' => 2,
             ]);
-        }else{
-            $idres = 1;
         }
 
         Blog::create([
 
-            'idclient' => Auth::user()->id,
-            'idmoderator'=> null,
-            'idcomment'=> null,
+            'idclient' => $request->idid,
+            'idmoderator'=> 2,
+            'idcomment'=> 1,
             'title' => $request->titol,
             'category'=> $request->categoria,
             'content'=> $request->contents,
@@ -96,7 +94,7 @@ class BlogController extends Controller
             'idreservation'=> $idres,
         ]);
 
-        return redirect("login");
+        return redirect('homes.index');
     }
 
     /**

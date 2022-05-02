@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use mysql_xdevapi\Table;
 
 class Image extends Model
 {
@@ -14,6 +15,8 @@ class Image extends Model
      *
      * @var array<int, string>
      */
+    protected $table = 'image';
+
     protected $fillable = [
         'filepath',
         'filesize',

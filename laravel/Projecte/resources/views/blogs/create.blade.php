@@ -13,7 +13,7 @@
     </head>
     <body>
             @include('navbarBase')
-            <form method="post" name=form action="{{route('blogs.store')}}"> <!--recibir.php-->
+            <form method="post" name=form action="{{route('blogs.store')}}" enctype="multipart/form-data">
             <h3>CREAR POST</h3>
             <div class="container col-9 float-start ">
                 <div class="row justify-content-center">
@@ -21,6 +21,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label class="intlef" for="titol">Titol:*</label>
+
                             </div>
                             <div class="col-md-8 col-lg-6">
                                 <input class="input-group " type="text" id="titol" name="titol"><br>
@@ -88,7 +89,7 @@
                                 <label class="intlef" for="img">Imatge:</label>
                             </div>
                             <div class="col-md-8 col-lg-6">
-                                <input class="input-group " type="file" id="img" name="img"><br>
+                                <input class="input-group" type="file" id="img" name="img"><br>
                             </div>
                         </div>
                     </div>
@@ -108,6 +109,7 @@
                 <div class="row justify-content-center mt-1">
                     <div class="col-2">
                         <input class="col3 justify-content-center" type="submit" name="submitpost" value="Enviar Datos">
+                        <input type="hidden" name="idid" value="{{Auth::user()->id}}"></input>
                     </div>
                 </div>
             </div>
