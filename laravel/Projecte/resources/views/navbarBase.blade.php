@@ -17,7 +17,7 @@
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Usuaris </a></li>
                 @endif
             </ul>
-            <!-- AWAWWQAWAWWAWAWWAWAWAWAWAWAWWAWAWAWAWWA hacer vista awawawawawawawawawaw -->
+            <!-- AWAWWAWAWWAWAWWAWAWAWAWAWAWWAWAWAWAWWA hacer vista awawawawawawawawawaw -->
             <a class="nav-link link-light" href="profile">{{Auth::user()->username}}</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

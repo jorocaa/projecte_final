@@ -19,7 +19,15 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::user()->usertype == "U"){
+            $result =  Blog::all()->where('idclient',Auth::user()->id);
+            
+        }else{
+            $result =  Blog::all();
+        }
+        return view('administrarpost', [
+                'result' => $result,
+            ]);
     }
 
     /**
@@ -69,14 +77,14 @@ class BlogController extends Controller
         }
         $idres = 1;
         if(isset($request->idreservation)){
-            $idres = $request->idreservation;
-
             Reservation::create([
-                'reservationlink' => $request,
+                'reservationlink' => $request->linkres,
                 'namecompany' => "",
-                'idclient' => $request->idid,
+                'idclientcreateblog' => $request->idid,
                 'idmoderator' => 2,
             ]);
+            $idres2 = Reservation::latest('id')->first();
+            $idres = $idres2->id;
         }
 
         Blog::create([
@@ -92,6 +100,7 @@ class BlogController extends Controller
             'latitude'=> $request->lat,
             'longitude'=> $request->long,
             'idreservation'=> $idres,
+            'state'=>'no publicat',
         ]);
 
         return redirect('index');
@@ -118,7 +127,15 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return view("blogs.edit",$blog);
+        $resultB =  Blog::get()->where('id',$blog->id);
+        $resultI =  Image::get()->where('id',$blog->idimage);
+        $resultR =  Image::get()->where('id',$blog->idreservation);
+        return view("blogs.edit",[
+            'blog' => $resultB,
+            'image' => $resultI,
+            'reserva' => $resultR
+
+        ]);
     }
 
     /**
@@ -130,7 +147,62 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        Blog::;
+        $idimg = 1;
+        if(isset($request->img)) {
+            $upload = $request->img;
+            $fileName = $upload->getClientOriginalName();
+            $fileSize = $upload->getSize();
+            $uploadName = time() . '_' . $fileName;
+            if($filename != $request->namebefore){
+                $filePath = $upload->storeAs(
+                    'uploads',
+                    $uploadName,
+                    'public'
+                );
+
+                if (\Storage::disk('public')->exists($filePath)) {
+                    $fullPath = \Storage::disk('public')->path($filePath);
+
+                    Image::where('id',$request->imgid)->update([
+                        'filepath' => $filePath,
+                        'filesize' => $fileSize
+                    ]);
+
+                    $idimg2 = Image::orderBy('updated_at','DESC')->first()->id;
+                    $idimg = $idimg2->id;
+                }
+            }
+            
+        }
+        $idres = $request->idreservation;
+        
+        $idmod = 2;
+        $state = 'no publicat';
+        if(Auth::user()->usertype != "U"){
+            $idmod = Auth::user()->id;
+            $state = 'publicat';
+        }
+
+        Reservation::where('id',$request->linkres)([
+            'reservationlink' => $request->linkres,
+            'namecompany' => $request->nomempresa,
+            'idmoderator' => $idmod,
+        ]);
+
+        Blog::where('id',$blog->id)->update(array(
+            'idmoderator'=> $idmod,
+            'title' => $request->titol,
+            'category'=> $request->categoria,
+            'content'=> $request->contents,
+            'wikipedia'=> $request->linkwiki,
+            'idimage'=> $idimg,
+            'latitude'=> $request->lat,
+            'longitude'=> $request->long,
+            'idreservation'=> $idres,
+            'state'=> $state,
+        ));
+
+        return redirect('index');
     }
 
     /**
