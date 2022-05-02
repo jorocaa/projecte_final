@@ -25,7 +25,7 @@ class BlogController extends Controller
         }else{
             $result =  Blog::all();
         }
-        return view('administrarpost', [
+        return view('administrarposts', [
                 'result' => $result,
             ]);
     }
