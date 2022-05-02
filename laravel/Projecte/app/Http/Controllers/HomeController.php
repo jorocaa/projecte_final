@@ -14,8 +14,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        $result =  Blog::all()->sortByDesc('id')->take(10)->get();
-        return view('home', $result);
+        $result =  Blog::get()->where('state','publicat')->sortByDesc('id')->take(10);
+        return view('home', [
+            'result' => $result,
+        ]);
     }
 
     /**
