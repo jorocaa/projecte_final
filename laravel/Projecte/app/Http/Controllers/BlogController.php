@@ -94,7 +94,7 @@ class BlogController extends Controller
             'idreservation'=> $idres,
         ]);
 
-        return redirect('homes.index');
+        return redirect('index');
     }
 
     /**
@@ -118,7 +118,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view("blogs.edit",$blog);
     }
 
     /**
@@ -130,7 +130,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        Blog::;
     }
 
     /**
@@ -144,3 +144,16 @@ class BlogController extends Controller
         //
     }
 }
+
+//@php
+  //$edit= $_GET['edit'];
+    //$where= $_REQUEST['where'];
+    //$showout = "SELECT * FROM blog WHERE `id`='$edit'";
+    //$result = $conexion->query($showout);
+    //$row=mysqli_fetch_assoc($result);
+
+    //$reser = $row["idreservation"];
+    //$showoutres = "SELECT * FROM reservation WHERE `id`='$reser'";
+    //$resultres = $conexion->query($showoutres);
+    //$rowres=mysqli_fetch_assoc($resultres);
+//@endphp
