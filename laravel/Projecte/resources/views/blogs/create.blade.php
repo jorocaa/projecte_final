@@ -73,10 +73,10 @@
                                 <label class="intlef" for="coor">Coordenades:</label>
                             </div>
                             <div class="col-lg-4">
-                            <label class="intlef" for="coor">latitude:</label><input class="input-group " type="text" id="nom" name="nom"><br>
+                            <label class="intlef" for="lat">latitude:</label><input class="input-group " type="text" id="lat" name="lat"><br>
                             </div>
                             <div class="col-lg-4">
-                            <label class="intlef" for="coor">longitude:</label><input class="input-group " type="text" id="nom" name="nom"><br>
+                            <label class="intlef" for="long">longitude:</label><input class="input-group " type="text" id="long" name="long"><br>
                             </div>
                         </div>
                     </div>

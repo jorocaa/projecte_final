@@ -86,13 +86,13 @@ class BlogController extends Controller
             'idclient' => Auth::user()->id,
             'idmoderator'=> null,
             'idcomment'=> null,
-            'title' => $request->title,
-            'category'=> $request->category,
+            'title' => $request->titol,
+            'category'=> $request->categoria,
             'content'=> $request->contents,
             'wikipedia'=> $request->linkwiki,
             'idimage'=> $idimg,
-            'latitude'=> $request->latitude,
-            'longitude'=> $request->longitude,
+            'latitude'=> $request->lat,
+            'longitude'=> $request->long,
             'idreservation'=> $idres,
         ]);
 
