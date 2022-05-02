@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        if(isset($request->img)){
+        if(isset($request->img)) {
             $upload = $request->file('img');
             $fileName = $upload->getClientOriginalName();
             $fileSize = $upload->getSize();
@@ -51,20 +52,31 @@ class BlogController extends Controller
                 'public'
             );
 
-            \Storage::disk('public')->exists($filePath){
+            if (\Storage::disk('public')->exists($filePath)) {
                 //Existe la ruta"
                 $fullPath = \Storage::disk('public')->path($filePath);
-                $image = Image::create([
+
+                Image::create([
                     'filepath' => $filePath,
                     'filesize' => $fileSize
                 ]);
+
                 $idimg = DB::table('Image')->select('id')->where('filepath', '=', $filePath);
-       }else{
-            $idimg = 1;
-       }
+
+            } else {
+                $idimg = 1;
+            }
+        }
 
         if(isset($request->idreservation)){
             $idres = $request->idreservation;
+
+            Reservation::create([
+                'reservationlink' => $request,
+                'namecompany' => "",
+                'idclient' => Auth::user()->id,
+                'idmoderator' => 2,
+            ]);
         }else{
             $idres = 1;
         }
@@ -95,7 +107,9 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        return view("blogs.show", [
+            'post' => $blog,
+        ]);
     }
 
     /**
