@@ -14,9 +14,15 @@ class HomeController extends Controller
 
     public function index()
     {
-        $result =  Blog::get()->where('state','publicat')->sortByDesc('id')->take(10);
+        $result = Blog::get()->where('state','publicat')->sortByDesc('id')->take(10);
+        foreach($result as $row){
+            $img = Image::get()->where('id',$row->idimg);
+            $filepaths = array($img->id => "$img->filepath");
+        }
+        
         return view('home', [
             'result' => $result,
+            'images' => $filepaths,
         ]);
     }
 

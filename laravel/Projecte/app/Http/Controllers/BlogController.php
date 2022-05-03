@@ -213,7 +213,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        if(Auth::user()->usertype == "U"){
+            
+        }
     }
 }
 
