@@ -11,7 +11,7 @@
                 @endphp
             @if (isset(Auth::user()->usertype))
                 @if(Auth::user()->usertype == "A" or Auth::user()->usertype == "M")
-                    <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Posts </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('blogs.index')}}">Administrar Posts </a></li>
                 @endif
                 @if(Auth::user()->usertype == "A")
                     <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Usuaris </a></li>
