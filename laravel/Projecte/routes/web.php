@@ -20,6 +20,10 @@ Route::get('/crear_blog', function () {
     return view('blogs.create');
 });
 
+Route::get('/editar_blog', function () {
+    return view('blogs.edit');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

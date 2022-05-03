@@ -11,7 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Formulario</title>
 </head>
-<form method="post" name=form action="{{route('blogs.update')}}" enctype="multipart/form-data">
+<body>
+<form method="post" name=form action="{{route('blogs.update',$blog)}}" enctype="multipart/form-data">
     @include('navbarBase')
     <h3>EDITAR POST</h3>
     <div class="container">
@@ -66,7 +67,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
+            <div class="col-9 col-md-5">id
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="coor">Coordenades:</label>
@@ -119,6 +120,7 @@
                 </div>
             </div>
         }
+        @endif
         <div class="row justify-content-center mt-1">
             <div class="col-2">
                 <input type="hidden" name="idreservation" value={{$blog->idreservation}}/>

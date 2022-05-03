@@ -21,7 +21,7 @@ class BlogController extends Controller
     {
         if(Auth::user()->usertype == "U"){
             $result =  Blog::all()->where('idclient',Auth::user()->id);
-            
+
         }else{
             $result =  Blog::all();
         }
@@ -153,7 +153,7 @@ class BlogController extends Controller
             $fileName = $upload->getClientOriginalName();
             $fileSize = $upload->getSize();
             $uploadName = time() . '_' . $fileName;
-            if($filename != $request->namebefore){
+            if($fileName != $request->namebefore){
                 $filePath = $upload->storeAs(
                     'uploads',
                     $uploadName,
@@ -172,10 +172,10 @@ class BlogController extends Controller
                     $idimg = $idimg2->id;
                 }
             }
-            
+
         }
         $idres = $request->idreservation;
-        
+
         $idmod = 2;
         $state = 'no publicat';
         if(Auth::user()->usertype != "U"){
