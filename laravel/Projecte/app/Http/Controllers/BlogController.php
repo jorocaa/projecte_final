@@ -25,7 +25,7 @@ class BlogController extends Controller
         }else{
             $result =  Blog::all();
         }
-        return view('administrarpost', [
+        return view('administrarposts', [
                 'result' => $result,
             ]);
     }
@@ -213,7 +213,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        if(Auth::user()->usertype == "U"){
+            
+        }
     }
 }
 
