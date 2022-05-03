@@ -27,7 +27,6 @@ Route::apiResource("blogs",BlogController::class);
 Route::apiResource("blogs/{bid}/comments", CommentController::class);
 
 Route::apiResource("users",UserController::class);
-//Route::resource('login',UserController::class);
 
 Route::apiResource("breachs",BreachController::class);
 

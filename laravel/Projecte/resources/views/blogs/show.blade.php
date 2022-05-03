@@ -9,7 +9,6 @@
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <title>Post</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -23,42 +22,37 @@
         <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     </head>
     <body>
-        @include('navbarHome')
-        <form method="post" name=form>
-        @foreach($result as $row)
+        <form method="post" name=form action="recibir.php">
+            @include('navbarBase')
             <div class="container col-9 float-start ">
                 <div class="row justify-content-center mt-1">
                     <div class="col-2">
                         <button>WIKI</button>
-                    </div>
-                </div>
+                    </div> 
+                </div> 
                 <div class="row">
                     <div class="col-9">
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="{{route('blogs.show',$row)}}"><h3>{{$row->title}}</h3></a>
+                                <h3><?php echo $row["title"] ?></h3>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p>{{$row->content}}</p>
+                                <p><?php echo $row["content"] ?></p>
                             </div>
                         </div>
-                        @foreach($images as $i)
-                            @if($i->id == $row->idimage)
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img src="{{asset("storage/$i->filepath")}}" /> <!-- Solo lo se hacer cogiendo las rows de la database e insertandolo de esta manera, mira como hacer con array -->
-                                </div>
-                            </div>
-                            @endif
-                        @endforeach
                         <div class="row">
                             <div class="col-md-12">
-                            <div id="map"></div>
+                               img
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div id="map"></div>    
                                 <script>
                                     var listener = new window.keypress.Listener();
-                                    var map = L.map('map').setView([{{$row->latitude}}, {{$row->longitude}}], 18);
+                                    var map = L.map('map').setView([<?php echo $row["latitude"] ?>, <?php echo $row["longitude"] ?>], 18);
                                     if (navigator.geolocation) {
                                         navigator.geolocation.getCurrentPosition(showposition);
                                     }
@@ -69,9 +63,9 @@
                                     marker2.bindPopup("<b>Vosté está aquí</b>").openPopup();
                                     marker2._icon.classList.add("huechange2");
                                     }
-                                    var marker = new L.marker([{{$row->latitude}}, {{$row->longitude}}]).addTo(map);
+                                    var marker = new L.marker([<?php echo $row["latitude"] ?>, <?php echo $row["longitude"] ?>]).addTo(map);
                                     marker._icon.classList.add("huechange");
-
+                                    
                                     marker.bindPopup("<b>Institut</b></br>Joaquim Mir").openPopup();
                                     var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                                         maxZoom: 18,
@@ -84,16 +78,10 @@
                                 </script>
                             </div>
                         </div>
-                        <div class="row justify-content-center mt-1">
-                            <div class="col-2">
-                                <a href="#">Reservar viatge: {{$row->idreservation}}</a> <!-- Coger link correo reserva -->
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+            @include('rightmenu')
         </form>
-        @include('rightmenu')
     </body>
 </html>
