@@ -14,6 +14,7 @@
     <body>
             @include('navbarBase')
             <form method="post" name=form action="{{route('blogs.store')}}" enctype="multipart/form-data">
+            @csrf
             <h3>CREAR POST</h3>
             <div class="container col-9 float-start ">
                 <div class="row justify-content-center">
@@ -108,7 +109,6 @@
                 <div class="row justify-content-center mt-1">
                     <div class="col-2">
                         <input class="col3 justify-content-center" type="submit" name="submitpost" value="Enviar Datos">
-                        <input type="hidden" name="idid" value="{{Auth::user()->id}}"/>
                     </div>
                 </div>
             </div>

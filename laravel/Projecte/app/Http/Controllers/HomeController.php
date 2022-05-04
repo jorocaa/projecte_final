@@ -6,7 +6,6 @@ use App\Models\Image;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Models\Blog;
-use App\Models\Image;
 
 
 class HomeController extends Controller

@@ -7,9 +7,9 @@ use App\Models\Blog;
 
 class BlogPropiController extends Controller
 {
-    public function store( Request $request)
+    public function index()
     {
-        $result =  Blog::all()->where('idclient',$request->iduser);
+        $result =  Blog::get()->where('idclient',\Auth::user()->id);
         return view('blogs.administrarposts', [
                 'result' => $result,
         ]);

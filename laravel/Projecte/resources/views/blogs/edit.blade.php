@@ -12,8 +12,10 @@
     <title>Formulario</title>
 </head>
 <body>
+@include('navbarBase')
 <form method="post" name=form action="{{route('blogs.update',$blog)}}" enctype="multipart/form-data">
-    @include('navbarBase')
+    @csrf
+    @method('PUT')
     <h3>EDITAR POST</h3>
     <div class="container">
         <div class="row justify-content-center">
@@ -49,7 +51,7 @@
             <div class="col-9 col-md-6">
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-10">
-                        <textarea class="form-control col-20 border border-secondary" id="contingut" name="contingut" value="{{$blog->contents}}" rows="5"></textarea><br>
+                        <textarea class="form-control col-20 border border-secondary" id="contingut" name="contingut" rows="5">{{$blog->content}}</textarea><br>
                     </div>
                 </div>
             </div>
@@ -87,9 +89,11 @@
                     <div class="col-md-4">
                         <label class="intlef" for="img">Imagte:</label>
                     </div>
-                    <img class="col-md-8 col-lg-6">
-                        <input class="input-group " type="text" id="img" name="img"><br>
-                        <img src="{{asset("storage/$file->filepath")}}"/>
+                    <div class="col-md-8 col-lg-6">
+                        @foreach($image as $imag)
+                            <input class="input-group " type="file" id="img" name="img" value="{{asset('storage/$imag->filepath')}}"><br>
+                            <img src="{{asset('storage/$imag->filepath')}}"/>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -98,15 +102,17 @@
             <div class="col-9 col-md-5">
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="intlef" for="linkres">Enllaç Reserva:</label>
+                        <label class="intlef" for="linkres">Correu Reserva:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
-                        <input class="input-group " type="text" id="linkres" name="linkres" value="{{$reserve->reservationlink}}"/><br>
+                        @foreach($reserva as $res)
+                            <input class="input-group " type="text" id="linkres" name="linkres" value="{{$res->reservationlink}}"><br>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-        @if(Auth::user()->usertype != "U"){
+        @if(Auth::user()->usertype != "U")
             <div class="row justify-content-center">
                 <div class="col-9 col-md-5">
                     <div class="row">
@@ -119,13 +125,14 @@
                     </div>
                 </div>
             </div>
-        }
         @endif
         <div class="row justify-content-center mt-1">
             <div class="col-2">
                 <input type="hidden" name="idreservation" value={{$blog->idreservation}}/>
                 <input type="hidden" name="imgid" value={{$blog->idimage}}/>
-                <input type="hidden" name="namebefore" value={{$image->filePath}}/>
+                @foreach($image as $img)
+                    <input type="hidden" name="namebefore" value={{$img->filePath}}/>
+                @endforeach
                 <input type="hidden" name="usertype" value={{Auth::user()->usertype}}/>
                 <input type="hidden" name="idusr" value={{Auth::user()->id}}/>
                 <input class="col3 justify-content-center" type="submit" name="submitpost" value="Actualitzar Dades">
@@ -136,3 +143,13 @@
 </form>
 </body>
 </html>
+<script>
+
+    inputF = document.getElementById('inputFile')
+    inputF.onchange = evt => {
+        const [file] = inputF.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+        }
+    }
+</script>

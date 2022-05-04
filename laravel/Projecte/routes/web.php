@@ -47,4 +47,5 @@ Route::post("/login", [UserController::class, 'login'])->name('users.login');
 Route::Resource("reserves",ReserveController::class);
 
 Route::Resource("blogspropis",BlogPropiController::class);
+
 require __DIR__.'/auth.php';

@@ -8,13 +8,10 @@
             </button>
         </form>
         </br>
-        <a href="#">Post Aleatori</a> </br>
+        <a href="#">Post Aleatori</a><br/>
         @if(isset(Auth::user()->usertype))
-            <a href="crear_blog">Crear Post</a> </br>
-            <form method="POST" action="{{ route('blogspropis.index') }}">
-                <input type="hidden" name="iduser" value={{Auth::user()->id}}>
-                <button type="submit">Llistar Posts Propis</button> </br>
-            </from>
+            <a href="crear_blog">Crear Post</a><br/>
+            <a href="{{ route('blogspropis.index') }}">Llistar posts propis</a><br/>
         @endif
     </div>
 </div>

@@ -43,6 +43,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        // dd("optimim pride huawhawuahw");
         $idimg = 1;
         if(isset($request->img)) {
             $upload = $request->img;
@@ -75,7 +76,7 @@ class BlogController extends Controller
             Reservation::create([
                 'reservationlink' => $request->linkres,
                 'namecompany' => "",
-                'idclientcreateblog' => $request->idid,
+                'idclientcreateblog' => \Auth::user()->id,
                 'idmoderator' => 2,
             ]);
             $idres2 = Reservation::latest('id')->first();
@@ -84,7 +85,7 @@ class BlogController extends Controller
 
         Blog::create([
 
-            'idclient' => $request->idid,
+            'idclient' => \Auth::user()->id,
             'idmoderator'=> 2,
             'idcomment'=> 1,
             'title' => $request->titol,
@@ -122,13 +123,12 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        $resultB =  Blog::get()->where('id',$blog->id);
         $resultI =  Image::get()->where('id',$blog->idimage);
-        $resultR =  Image::get()->where('id',$blog->idreservation);
+        $resultR =  Reservation::get()->where('id',$blog->idreservation);
         return view("blogs.edit",[
-            'blog' => $resultB,
+            'blog' => $blog,
             'image' => $resultI,
-            'reserva' => $resultR
+            'reserva' => $resultR,
         ]);
     }
 
@@ -172,8 +172,8 @@ class BlogController extends Controller
 
         $idmod = 2;
         $state = 'no publicat';
-        if($request->usertype != "U"){
-            $idmod = $request->idusr;
+        if(\Auth::user()->usertype != "U"){
+            $idmod = \Auth::user()->id;
             $state = 'publicat';
         }
 

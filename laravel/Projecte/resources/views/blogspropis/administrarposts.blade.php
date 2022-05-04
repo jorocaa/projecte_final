@@ -26,9 +26,9 @@
                         <th>Titol</th>
                         <th>Categoria</th>
                         <th>Estat</th>
-                        <th>Mostrar</th>
                         <th>Editar</th>
                         <th>Borrar</th>
+                        <th>Publicar</th>
                     </tr>
                 </thead>
                 <tbody>
