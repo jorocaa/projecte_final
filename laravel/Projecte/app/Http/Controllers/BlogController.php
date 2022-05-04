@@ -176,12 +176,14 @@ class BlogController extends Controller
             $idmod = \Auth::user()->id;
             $state = 'publicat';
         }
+        if(isset($request->linkres)){
+            Reservation::where('id',$idres)->update([
+                'reservationlink' => $request->linkres,
+                'namecompany' => $request->nomempresa,
+                'idmoderator' => $idmod,
+            ]);
+        }
 
-        Reservation::where('id',$idres)([
-            'reservationlink' => $request->linkres,
-            'namecompany' => $request->nomempresa,
-            'idmoderator' => $idmod,
-        ]);
 
         Blog::where('id',$blog->id)->update(array(
             'idmoderator'=> $idmod,
