@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">id
+            <div class="col-9 col-md-5">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="coor">Coordenades:</label>
@@ -90,10 +90,19 @@
                         <label class="intlef" for="img">Imagte:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
-                        @foreach($image as $imag)
-                            <input class="input-group " type="file" id="img" name="img" value="{{asset('storage/$imag->filepath')}}"><br>
-                            <img src="{{asset('storage/$imag->filepath')}}"/>
-                        @endforeach
+                        <a href="{{asset('/storage/'.$image->filepath)}}" target="_blank"><img width="100%" height="100%" src="{{asset('/storage/'.$image->filepath)}}"/></a><br/>
+                    </div>
+                </div>
+            </div>
+        </div><br/>
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="intlef" for="img">Imagte:</label>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <input class="input-group" type="file" id="img" name="img"><br>
                     </div>
                 </div>
             </div>
@@ -128,13 +137,11 @@
         @endif
         <div class="row justify-content-center mt-1">
             <div class="col-2">
-                <input type="hidden" name="idreservation" value={{$blog->idreservation}}/>
-                <input type="hidden" name="imgid" value={{$blog->idimage}}/>
-                @foreach($image as $img)
-                    <input type="hidden" name="namebefore" value={{$img->filePath}}/>
-                @endforeach
-                <input type="hidden" name="usertype" value={{Auth::user()->usertype}}/>
-                <input type="hidden" name="idusr" value={{Auth::user()->id}}/>
+                <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
+                <input type="hidden" name="imgid" value="{{$blog->idimage}}"/>
+                <input type="hidden" name="namebefore" value="{{asset($image->filePath)}}"/>
+                <input type="hidden" name="usertype" value="{{Auth::user()->usertype}}"/>
+                <input type="hidden" name="idusr" value="{{Auth::user()->id}}"/>
                 <input class="col3 justify-content-center" type="submit" name="submitpost" value="Actualitzar Dades">
             </div>
         </div>
@@ -144,7 +151,6 @@
 </body>
 </html>
 <script>
-
     inputF = document.getElementById('inputFile')
     inputF.onchange = evt => {
         const [file] = inputF.files

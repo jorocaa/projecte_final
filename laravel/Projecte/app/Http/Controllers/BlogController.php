@@ -123,7 +123,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        $resultI =  Image::get()->where('id',$blog->idimage);
+        $resultI =  Image::get()->where('id',$blog->idimage)->first();
         $resultR =  Reservation::get()->where('id',$blog->idreservation);
         return view("blogs.edit",[
             'blog' => $blog,
@@ -177,7 +177,7 @@ class BlogController extends Controller
             $state = 'publicat';
         }
 
-        Reservation::where('id',$request->linkres)([
+        Reservation::where('id',$idres)([
             'reservationlink' => $request->linkres,
             'namecompany' => $request->nomempresa,
             'idmoderator' => $idmod,

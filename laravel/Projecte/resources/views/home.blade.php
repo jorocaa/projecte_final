@@ -47,7 +47,7 @@
                             @if($i->id == $row->idimage)
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img src="{{asset("storage/$i->filepath")}}" /> <!-- Solo lo se hacer cogiendo las rows de la database e insertandolo de esta manera, mira como hacer con array -->
+                                    <img src="{{asset('storage/'.$i->filepath)}}"/>
                                 </div>
                             </div>
                             @endif
