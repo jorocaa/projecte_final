@@ -14,6 +14,8 @@ class Reservation extends Model
      *
      * @var array<int, string>
      */
+    protected $table = "reservation";
+
     protected $fillable = [
         'reservationlink',
         'namecompany',

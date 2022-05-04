@@ -101,7 +101,7 @@
                         <label class="intlef" for="linkres">Enllaç Reserva:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
-                        <input class="input-group " type="text" id="linkres" name="linkres" value="{{$reserva->reservationlink}}"/><br>
+                        <input class="input-group " type="text" id="linkres" name="linkres" value="{{$reserve->reservationlink}}"/><br>
                     </div>
                 </div>
             </div>

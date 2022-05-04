@@ -2,32 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
-use App\Models\Reservation;
+use App\Models\Reserve;
 use Illuminate\Http\Request;
-use App\Models\Blog;
 
-
-class HomeController extends Controller
+class ReserveController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $result = Blog::get()->where('state','publicat')->sortByDesc('id')->take(10);
-        foreach($result as $row){
-            $img = Image::get()->where('id',$row->idimg);
-            $reserve = Reservation::get()->where('id',$row->idreservation);
-        }
-
-        return view('home', [
-            'result' => $result,
-            'images' => $img,
-            'reserve' => $reserve,
-        ]);
+        //
     }
 
     /**
@@ -48,26 +35,39 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'idclient',
+            'idreservation',
+        ]);
 
+        Reserve::create([
+            'idclient' => $request->idclient,
+            'idreservation'=> $request->idreservation,
+        ]);
+
+        // ENVIAR MAIL
+
+        return "MAIL ENVIAT, REVISA LA TEVA SAFATA D'ENTRADA";
     }
 
     /**
      * Display the specified resource.
      *
+     * @param  \App\Models\Reserve  $reserve
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Reserve $reserve)
     {
-
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
+     * @param  \App\Models\Reserve  $reserve
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Reserve $reserve)
     {
         //
     }
@@ -76,9 +76,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Reserve  $reserve
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Reserve $reserve)
     {
         //
     }
@@ -86,9 +87,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \App\Models\Reserve  $reserve
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Reserve $reserve)
     {
         //
     }

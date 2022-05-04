@@ -7,6 +7,7 @@ use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\HomeController;
 use \App\Http\Controllers\BreachController;
 use \App\Http\Controllers\CommentController;
+use \App\Http\Controllers\ReserveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource("blogs",BlogController::class);
-Route::apiResource("blogs/{bid}/comments", CommentController::class);
 
-Route::apiResource("users",UserController::class);
-
-Route::apiResource("breachs",BreachController::class);
-
-Route::post("/login", [UserController::class, 'login'])->name('users.login');

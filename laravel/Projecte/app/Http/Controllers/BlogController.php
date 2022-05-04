@@ -115,7 +115,7 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         return view("blogs.show", [
-            'post' => $blog,
+            'row' => $blog,
         ]);
     }
 
@@ -214,7 +214,7 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         if(Auth::user()->usertype == "U"){
-            
+
         }
     }
 }

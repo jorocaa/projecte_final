@@ -24,7 +24,6 @@
     </head>
     <body>
         @include('navbarHome')
-        <form method="post" name=form>
         @foreach($result as $row)
             <div class="container col-9 float-start ">
                 <div class="row justify-content-center mt-1">
@@ -84,16 +83,23 @@
                                 </script>
                             </div>
                         </div>
-                        <div class="row justify-content-center mt-1">
-                            <div class="col-2">
-                                <a href="#">Reservar viatge: {{$row->idreservation}}</a> <!-- Coger link correo reserva -->
-                            </div>
-                        </div>
+                        @foreach($reserve as $res)
+                            @if($row->idreservation == $res->id)
+                                <form method="post" name="form" action="{{route('reserves.store')}}">
+                                    <div class="row justify-content-center mt-1">
+                                        <div class="col-2">
+                                            <button type="submit" id="reservar" name="reservar">RESERVAR</button>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="idclient" value="{{Auth::user()->id}}"/>
+                                    <input type="hidden" name="idreservation" value="{{$row->idreservation}}"/>
+                                </form>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         @endforeach
-        </form>
         @include('rightmenu')
     </body>
 </html>

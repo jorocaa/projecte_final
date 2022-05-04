@@ -21,7 +21,6 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label class="intlef" for="titol">Titol:*</label>
-
                             </div>
                             <div class="col-md-8 col-lg-6">
                                 <input class="input-group " type="text" id="titol" name="titol"><br>
@@ -109,7 +108,7 @@
                 <div class="row justify-content-center mt-1">
                     <div class="col-2">
                         <input class="col3 justify-content-center" type="submit" name="submitpost" value="Enviar Datos">
-                        <input type="hidden" name="idid" value="{{Auth::user()->id}}"></input>
+                        <input type="hidden" name="idid" value="{{Auth::user()->id}}"/>
                     </div>
                 </div>
             </div>

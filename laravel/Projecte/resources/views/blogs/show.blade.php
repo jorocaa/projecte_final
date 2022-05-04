@@ -28,18 +28,18 @@
                 <div class="row justify-content-center mt-1">
                     <div class="col-2">
                         <button>WIKI</button>
-                    </div> 
-                </div> 
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-9">
                         <div class="row">
                             <div class="col-md-4">
-                                <h3><?php echo $row["title"] ?></h3>
+                                <h3>{{$row->title}}</h3>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p><?php echo $row["content"] ?></p>
+                                <p>{{$row->content}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -49,10 +49,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                            <div id="map"></div>    
+                            <div id="map"></div>
                                 <script>
                                     var listener = new window.keypress.Listener();
-                                    var map = L.map('map').setView([<?php echo $row["latitude"] ?>, <?php echo $row["longitude"] ?>], 18);
+                                    var map = L.map('map').setView([{{$row->latitude}},{{$row->longitude}}], 18);
                                     if (navigator.geolocation) {
                                         navigator.geolocation.getCurrentPosition(showposition);
                                     }
@@ -63,9 +63,9 @@
                                     marker2.bindPopup("<b>Vosté está aquí</b>").openPopup();
                                     marker2._icon.classList.add("huechange2");
                                     }
-                                    var marker = new L.marker([<?php echo $row["latitude"] ?>, <?php echo $row["longitude"] ?>]).addTo(map);
+                                    var marker = new L.marker([{{$row->latitude}},{{$row->longitude}}]).addTo(map);
                                     marker._icon.classList.add("huechange");
-                                    
+
                                     marker.bindPopup("<b>Institut</b></br>Joaquim Mir").openPopup();
                                     var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                                         maxZoom: 18,

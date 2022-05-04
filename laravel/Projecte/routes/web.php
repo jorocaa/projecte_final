@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\HomeController;
+use \App\Http\Controllers\BlogController;
+use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\BreachController;
+use \App\Http\Controllers\CommentController;
+use \App\Http\Controllers\ReserveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +33,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::Resource("blogs",BlogController::class);
+
+Route::Resource("blogs/{bid}/comments", CommentController::class);
+
+Route::Resource("users",UserController::class);
+
+Route::Resource("breachs",BreachController::class);
+
+Route::post("/login", [UserController::class, 'login'])->name('users.login');
+
+Route::Resource("reserves",ReserveController::class);
 require __DIR__.'/auth.php';
