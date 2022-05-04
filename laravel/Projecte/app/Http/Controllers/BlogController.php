@@ -17,17 +17,12 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request)
     {
-        if(Auth::user()->usertype == "U"){
-            $result =  Blog::all()->where('idclient',Auth::user()->id);
-
-        }else{
-            $result =  Blog::all();
-        }
-        return view('administrarposts', [
+        $result =  Blog::all();
+        return view('blogs.administrarposts', [
                 'result' => $result,
-            ]);
+        ]);
     }
 
     /**
@@ -134,7 +129,6 @@ class BlogController extends Controller
             'blog' => $resultB,
             'image' => $resultI,
             'reserva' => $resultR
-
         ]);
     }
 
@@ -178,8 +172,8 @@ class BlogController extends Controller
 
         $idmod = 2;
         $state = 'no publicat';
-        if(Auth::user()->usertype != "U"){
-            $idmod = Auth::user()->id;
+        if($request->usertype != "U"){
+            $idmod = $request->idusr;
             $state = 'publicat';
         }
 

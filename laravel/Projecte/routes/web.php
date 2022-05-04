@@ -7,6 +7,7 @@ use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\BreachController;
 use \App\Http\Controllers\CommentController;
 use \App\Http\Controllers\ReserveController;
+use \App\Http\Controllers\BlogPropiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,6 @@ Route::Resource("breachs",BreachController::class);
 Route::post("/login", [UserController::class, 'login'])->name('users.login');
 
 Route::Resource("reserves",ReserveController::class);
+
+Route::Resource("blogspropis",BlogPropiController::class);
 require __DIR__.'/auth.php';

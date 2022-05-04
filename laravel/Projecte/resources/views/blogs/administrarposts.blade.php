@@ -19,7 +19,7 @@
         } );</script>
 </head>
     <body>
-        @include('navbarHome')
+        @include('navbarAdPo')
         <table id="table" class="display" style="width:100%">
                 <thead>
                     <tr>
@@ -33,14 +33,13 @@
                 </thead>
                 <tbody>
                     @foreach($result as $row)
-                        @$id1 = $row->id;
                         <tr>
                             <td><label>{{$row->title}}</label></td>
-                            <td><label>{{$row->Categoria}}</label></td>
-                            <td><label>{{$row->Estat}}</label></td>
-                            <td><a href="{{route('blogs.show',$row)}}"><button name="show" value="{{$id1}}"><i class="fa">&#xf06e;</i></button></a></td>
-                            <td><a href="{{route('blogs.edit',$row)}}"><button name="edit" value="{{$id1}}"><i class="fa">&#xf044;</i></button></a></td>
-                            <td><a href="{{route('blogs.destroy',$row)}}"><button name="del" value="{{$id1}}"><i class="fa">&#xf1f8;</i></button></a></td>
+                            <td><label>{{$row->category}}</label></td>
+                            <td><label>{{$row->state}}</label></td>
+                            <td><a href="{{route('blogs.show',$row)}}"><button name="show" value="{{$row->id}}"><i class="fa">&#xf06e;</i></button></a></td>
+                            <td><a href="{{route('blogs.edit',$row)}}"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a></td>
+                            <td><a href="{{route('blogs.destroy',$row)}}"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a></td>
                         </tr>
                     @endforeach
                 </tbody>

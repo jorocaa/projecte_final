@@ -126,6 +126,8 @@
                 <input type="hidden" name="idreservation" value={{$blog->idreservation}}/>
                 <input type="hidden" name="imgid" value={{$blog->idimage}}/>
                 <input type="hidden" name="namebefore" value={{$image->filePath}}/>
+                <input type="hidden" name="usertype" value={{Auth::user()->usertype}}/>
+                <input type="hidden" name="idusr" value={{Auth::user()->id}}/>
                 <input class="col3 justify-content-center" type="submit" name="submitpost" value="Actualitzar Dades">
             </div>
         </div>

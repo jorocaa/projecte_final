@@ -8,6 +8,7 @@ use \App\Http\Controllers\HomeController;
 use \App\Http\Controllers\BreachController;
 use \App\Http\Controllers\CommentController;
 use \App\Http\Controllers\ReserveController;
+use \App\Http\Controllers\BlogPropiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,3 @@ use \App\Http\Controllers\ReserveController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
