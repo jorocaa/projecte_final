@@ -160,10 +160,10 @@ class BlogController extends Controller
 
             if (\Storage::disk('public')->exists($filePath)) {
                 $fullPath = \Storage::disk('public')->path($filePath);
-
-                \Storage::disk('public')->delete($imatge->filepath);
-                //$imatge->delete();
-
+                if($imatge->id != 1) {
+                    \Storage::disk('public')->delete($imatge->filepath);
+                    //$imatge->delete();
+                }
                 $imagen = Image::create([
                     'filepath' => $filePath,
                     'filesize' => $fileSize
