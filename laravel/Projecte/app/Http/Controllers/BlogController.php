@@ -20,7 +20,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        
+
         return view('blogs.administrarposts');
     }
     public function getblogs(Request $request){
@@ -206,7 +206,6 @@ class BlogController extends Controller
             ]);
         }
 
-
         Blog::where('id',$blog->id)->update(array(
             'idmoderator'=> $idmod,
             'title' => $request->titol,
@@ -236,7 +235,6 @@ class BlogController extends Controller
         }
     }
 }
-
 //@php
   //$edit= $_GET['edit'];
     //$where= $_REQUEST['where'];
