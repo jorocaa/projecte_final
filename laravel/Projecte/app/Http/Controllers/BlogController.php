@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use DataTables;
 
 class BlogController extends Controller
 {
@@ -19,10 +20,37 @@ class BlogController extends Controller
      */
     public function index( Request $request)
     {
-        $result =  Blog::all();
-        return view('blogs.administrarposts', [
-                'result' => $result,
-        ]);
+        
+        return view('blogs.administrarposts');
+    }
+    public function getblogs(Request $request){
+        if ($request->ajax()) {
+            $result =  Blog::all();
+            return DataTables::of($result)
+            ->addIndexColumn()
+            ->addColumn('action', function($row){
+                $btn = '<a href="{{route(blogs.show,$row)}}"><button name="show" value="{{$row->id}}"><i class="fa">&#xf06e;</i></button></a>';
+                $btn = $btn.'<a href="{{route(blogs.edit,$row)}}"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>';
+                $btn = $btn.'<a href="{{route(blogs.destroy,$row)}}"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            // ->addIndexColumn()
+            // ->addColumn('edit', function($row){
+            //     $btn2 = '<a href="{{route(blogs.edit,$row)}}"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>';
+            //     return $btn2;
+            // })
+            // ->addIndexColumn()
+            // ->rawColumns(['edit'])
+            // ->addColumn('destroy', function($row){
+            //     $btn3 = '<a href="{{route(blogs.destroy,$row)}}"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a>';
+            //     return $btn3;
+            // })
+            // ->rawColumns(['destroy'])
+            ->make(true);
+
+        }
+        return view('blogs.administrarposts');
     }
 
     /**

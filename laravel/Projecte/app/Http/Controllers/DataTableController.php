@@ -14,7 +14,7 @@ class DataTableController extends Controller
      */
     public function index()
     {
-        return view('datatable.list');
+        return view('blogs.adminstrarposts');
     }
     public function get()
     {

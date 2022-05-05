@@ -48,8 +48,6 @@ Route::Resource("reserves",ReserveController::class);
 
 Route::Resource("blogspropis",BlogPropiController::class);
 
-Route::get('datatable', 'DataTableController@index'); 
-
-Route::get('get', 'DataTableController@get');
+Route::get('blogsa', [BlogController::class, 'getblogs'])->name('bllistar');
 
 require __DIR__.'/auth.php';
