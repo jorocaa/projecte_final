@@ -27,6 +27,7 @@
                     <table class="table table-striped data-table">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Titol</th>
                                 <th>Email</th>
                                 <th>Estat</th>
@@ -47,6 +48,7 @@
         serverSide: true,
         ajax: "{{ route('bllistar') }}",
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'title', name: 'title'},
             {data: 'category', name: 'category'},
             {data: 'state', name: 'state'},
@@ -54,5 +56,6 @@
         ]
         });
     })
+
     </script>
 </html>
