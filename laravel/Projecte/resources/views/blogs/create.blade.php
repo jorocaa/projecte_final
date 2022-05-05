@@ -12,8 +12,9 @@
         <title>Formulario</title>
     </head>
     <body>
-            @include('navbarBase')
-            <form method="post" name=form action="{{route('blogs.store')}}" enctype="multipart/form-data">
+        @include('navbarBase')
+        @include('rightmenu')
+        <form method="post" name=form action="{{route('blogs.store')}}" enctype="multipart/form-data">
             @csrf
             <h3>CREAR POST</h3>
             <div class="container col-9 float-start ">
@@ -112,7 +113,6 @@
                     </div>
                 </div>
             </div>
-            @include('rightmenu')
         </form>
     </body>
 </html>

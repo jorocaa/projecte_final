@@ -14,6 +14,7 @@
 <body>
     <!-- NAbEvAR -->
     @include('navbarBase')
+    @include('rightmenu')
 <h3>LOGIN</h3>
 
 <form method="post" name=form action="{{route('users.login')}}">
@@ -63,8 +64,7 @@
                 <button><a class="button" href="{{route('auth.register')}}" style="text-decoration: none">Registro</a></button>
             </div>
         </div>
-    </div><
-    @include('rightmenu')
+    </div>
 </form>
 </body>
 </html>

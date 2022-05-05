@@ -24,6 +24,7 @@
     </head>
     <body>
         @include('navbarHome')
+        @include('rightmenu')
         @foreach($result as $row)
             <div class="container col-9 float-start ">
                 <div class="row justify-content-center mt-1">
@@ -43,15 +44,6 @@
                                 <p>{{$row->content}}</p>
                             </div>
                         </div>
-                        @foreach($images as $i)
-                            @if($i->id == $row->idimage)
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img src="{{asset('storage/'.$i->filepath)}}"/>
-                                </div>
-                            </div>
-                            @endif
-                        @endforeach
                         <div class="row">
                             <div class="col-md-12">
                             <div id="map"></div>
@@ -83,23 +75,9 @@
                                 </script>
                             </div>
                         </div>
-                        @foreach($reserve as $res)
-                            @if($row->idreservation == $res->id)
-                                <form method="post" name="form" action="{{route('reserves.store')}}">
-                                    <div class="row justify-content-center mt-1">
-                                        <div class="col-2">
-                                            <button type="submit" id="reservar" name="reservar">RESERVAR</button>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="idclient" value="{{Auth::user()->id}}"/>
-                                    <input type="hidden" name="idreservation" value="{{$row->idreservation}}"/>
-                                </form>
-                            @endif
-                        @endforeach
                     </div>
                 </div>
             </div>
         @endforeach
-        @include('rightmenu')
     </body>
 </html>

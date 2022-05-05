@@ -17,6 +17,7 @@ $usertype = session('usertype')
 <body>
     <!-- NAbEvAR -->
     @include('navbarBase')
+    @include('rightmenu')
 <h3>REGISTER</h3>
 <form method="post" name=form action="{{route('users.store')}}">
 
@@ -129,7 +130,6 @@ $usertype = session('usertype')
             </div>
         </div>
     </div>
-    @include('rightmenu')
 </form>
 </body>
 </html>

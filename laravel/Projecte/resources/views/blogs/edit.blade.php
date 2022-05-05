@@ -13,6 +13,7 @@
 </head>
 <body>
 @include('navbarBase')
+@include('rightmenu')
 <form method="post" name=form action="{{route('blogs.update',$blog)}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -83,6 +84,7 @@
                 </div>
             </div>
         </div>
+        @if($image->filepath != '')
         <div class="row justify-content-center">
             <div class="col-9 col-md-5">
                 <div class="row">
@@ -95,6 +97,7 @@
                 </div>
             </div>
         </div><br/>
+        @endif
         <div class="row justify-content-center">
             <div class="col-9 col-md-5">
                 <div class="row">
@@ -102,7 +105,7 @@
                         <label class="intlef" for="img">Imagte:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
-                        <input class="input-group" type="file" id="img" name="img"><br>
+                        <input class="input-group" type="file" id="img" name="img" onchange="readURL(this);"><br>
                     </div>
                 </div>
             </div>
@@ -138,7 +141,6 @@
         <div class="row justify-content-center mt-1">
             <div class="col-2">
                 <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
-                <input type="hidden" name="imgid" value="{{$blog->idimage}}"/>
                 <input type="hidden" name="namebefore" value="{{asset($image->filePath)}}"/>
                 <input type="hidden" name="usertype" value="{{Auth::user()->usertype}}"/>
                 <input type="hidden" name="idusr" value="{{Auth::user()->id}}"/>
@@ -146,12 +148,11 @@
             </div>
         </div>
     </div>
-    @include('rightmenu')
 </form>
 </body>
 </html>
 <script>
-    inputF = document.getElementById('inputFile')
+    inputF = document.getElementById('linkres')
     inputF.onchange = evt => {
         const [file] = inputF.files
         if (file) {

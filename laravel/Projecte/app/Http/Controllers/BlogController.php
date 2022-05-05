@@ -72,11 +72,11 @@ class BlogController extends Controller
             }
         }
         $idres = 1;
-        if(isset($request->idreservation)){
+        if(isset($request->linkres)){
             Reservation::create([
                 'reservationlink' => $request->linkres,
                 'namecompany' => "",
-                'idclientcreateblog' => \Auth::user()->id,
+                'idclient' => \Auth::user()->id,
                 'idmoderator' => 2,
             ]);
             $idres2 = Reservation::latest('id')->first();
@@ -99,7 +99,7 @@ class BlogController extends Controller
             'state'=>'no publicat',
         ]);
 
-        return redirect('index');
+        return redirect('/');
     }
 
     /**
@@ -110,8 +110,12 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
+        $resultI =  Image::get()->where('id',$blog->idimage)->first();
+        $resultR =  Reservation::get()->where('id',$blog->idreservation);
         return view("blogs.show", [
             'row' => $blog,
+            'image' => $resultI,
+            'reserve' => $resultR,
         ]);
     }
 
@@ -141,33 +145,35 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        $idimg = 1;
         if(isset($request->img)) {
+            $imatge = Image::get()->where('id',$blog->idimage)->first();
             $upload = $request->img;
             $fileName = $upload->getClientOriginalName();
             $fileSize = $upload->getSize();
             $uploadName = time() . '_' . $fileName;
-            if($fileName != $request->namebefore){
-                $filePath = $upload->storeAs(
-                    'uploads',
-                    $uploadName,
-                    'public'
-                );
 
-                if (\Storage::disk('public')->exists($filePath)) {
-                    $fullPath = \Storage::disk('public')->path($filePath);
+            $filePath = $upload->storeAs(
+                'uploads',
+                $uploadName,
+                'public'
+            );
 
-                    Image::where('id',$request->imgid)->update([
-                        'filepath' => $filePath,
-                        'filesize' => $fileSize
-                    ]);
+            if (\Storage::disk('public')->exists($filePath)) {
+                $fullPath = \Storage::disk('public')->path($filePath);
 
-                    $idimg2 = Image::orderBy('updated_at','DESC')->first()->id;
-                    $idimg = $idimg2->id;
-                }
+                \Storage::disk('public')->delete($imatge->filepath);
+                //$imatge->delete();
+
+                $imagen = Image::create([
+                    'filepath' => $filePath,
+                    'filesize' => $fileSize
+                ]);
             }
-
         }
+        else{
+            $imagen = Image::get()->where('id',1)->first();
+        }
+
         $idres = $request->idreservation;
 
         $idmod = 2;
@@ -189,16 +195,16 @@ class BlogController extends Controller
             'idmoderator'=> $idmod,
             'title' => $request->titol,
             'category'=> $request->categoria,
-            'content'=> $request->contents,
+            'content'=> $request->contingut,
             'wikipedia'=> $request->linkwiki,
-            'idimage'=> $idimg,
+            'idimage'=> $imagen->id,
             'latitude'=> $request->lat,
             'longitude'=> $request->long,
             'idreservation'=> $idres,
             'state'=> $state,
         ));
 
-        return redirect('index');
+        return redirect('/');
     }
 
     /**

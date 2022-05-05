@@ -22,66 +22,84 @@
         <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     </head>
     <body>
-        <form method="post" name=form action="recibir.php">
-            @include('navbarBase')
-            <div class="container col-9 float-start ">
-                <div class="row justify-content-center mt-1">
-                    <div class="col-2">
-                        <button>WIKI</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-9">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h3>{{$row->title}}</h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>{{$row->content}}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                               img
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                            <div id="map"></div>
-                                <script>
-                                    var listener = new window.keypress.Listener();
-                                    var map = L.map('map').setView([{{$row->latitude}},{{$row->longitude}}], 18);
-                                    if (navigator.geolocation) {
-                                        navigator.geolocation.getCurrentPosition(showposition);
-                                    }
-                                    function showposition(position){
-                                    var lat=position.coords.latitude
-                                    var long=position.coords.longitude
-                                    var marker2 = new  L.marker([lat, long]).addTo(map);
-                                    marker2.bindPopup("<b>Vosté está aquí</b>").openPopup();
-                                    marker2._icon.classList.add("huechange2");
-                                    }
-                                    var marker = new L.marker([{{$row->latitude}},{{$row->longitude}}]).addTo(map);
-                                    marker._icon.classList.add("huechange");
-
-                                    marker.bindPopup("<b>Institut</b></br>Joaquim Mir").openPopup();
-                                    var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                                        maxZoom: 18,
-                                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-                                            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                                        id: 'mapbox/streets-v11',
-                                        tileSize: 512,
-                                        zoomOffset: -1
-                                    }).addTo(map);
-                                </script>
-                            </div>
-                        </div>
-                    </div>
+        @include('navbarBase')
+        @include('rightmenu')
+        <div class="container col-9 float-start ">
+            <div class="row justify-content-center mt-1">
+                <div class="col-2">
+                    <button>WIKI</button>
                 </div>
             </div>
-            @include('rightmenu')
-        </form>
+            <div class="row">
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>{{$row->title}}</h3>
+                        </div>
+                    </div>
+                    <div class="row p-3 text-center">
+                        <div class="col-md-12">
+                            <p>{{$row->content}}</p>
+                        </div>
+                    </div>
+                    @if($image->id != 1)
+                        <div class="row justify-content-center">
+                            <div class="col-9 col-md-5">
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-6">
+                                        <a href="{{asset('/storage/'.$image->filepath)}}" target="_blank"><img width="100%" height="100%" src="{{asset('/storage/'.$image->filepath)}}"/></a><br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br/>
+                    @endif
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div id="map"></div>
+                            <script>
+                                var listener = new window.keypress.Listener();
+                                var map = L.map('map').setView([{{$row->latitude}},{{$row->longitude}}], 18);
+                                if (navigator.geolocation) {
+                                    navigator.geolocation.getCurrentPosition(showposition);
+                                }
+                                function showposition(position){
+                                var lat=position.coords.latitude
+                                var long=position.coords.longitude
+                                var marker2 = new  L.marker([lat, long]).addTo(map);
+                                marker2.bindPopup("<b>Vosté está aquí</b>").openPopup();
+                                marker2._icon.classList.add("huechange2");
+                                }
+                                var marker = new L.marker([{{$row->latitude}},{{$row->longitude}}]).addTo(map);
+                                marker._icon.classList.add("huechange");
+
+                                marker.bindPopup("<b>Institut</b></br>Joaquim Mir").openPopup();
+                                var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                                    maxZoom: 18,
+                                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                                    id: 'mapbox/streets-v11',
+                                    tileSize: 512,
+                                    zoomOffset: -1
+                                }).addTo(map);
+                            </script>
+                        </div>
+                    </div>
+                    @foreach($reserve as $res)
+                        @if($row->idreservation == $res->id)
+                            <form method="post" name="form" action="{{route('reserves.store')}}">
+                                <div class="row justify-content-center mt-1">
+                                    <div class="col-2">
+                                        <button type="submit" id="reservar" name="reservar">RESERVAR</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="idclient" value="{{Auth::user()->id}}"/>
+                                <input type="hidden" name="idreservation" value="{{$row->idreservation}}"/>
+                            </form>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>
