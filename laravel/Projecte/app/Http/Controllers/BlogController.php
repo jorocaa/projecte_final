@@ -29,9 +29,9 @@ class BlogController extends Controller
             return DataTables::of($result)
             ->addIndexColumn()
             ->addColumn('action', function($row){
-                $btn = '<a href="{{route(blogs.show,$row)}}"><button name="show" value="{{$row->id}}"><i class="fa">&#xf06e;</i></button></a>';
-                $btn = $btn.'<a href="{{route(blogs.edit,$row)}}"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>';
-                $btn = $btn.'<a href="{{route(blogs.destroy,$row)}}"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a>';
+                $btn = '<a href="blogs/'.$row->id.'"><button name="show" value="{{$row->id}}"><i class="fa">&#xf06e;</i></button></a>';
+                $btn = $btn.'<a href="blogs/'.$row->id.'/edit"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>';
+                $btn = $btn.'<a href="blogs/'.$row->id.'/delete"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a>';
                 return $btn;
             })
             ->rawColumns(['action'])

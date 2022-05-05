@@ -48,6 +48,8 @@ Route::Resource("reserves",ReserveController::class);
 
 Route::Resource("blogspropis",BlogPropiController::class);
 
+Route::get('blogs/{blog}/delete', [BlogController::class, 'destroy'])->name('bdestroy');
+
 Route::get('blogsa', [BlogController::class, 'getblogs'])->name('bllistar');
 
 require __DIR__.'/auth.php';
