@@ -18,7 +18,7 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Request $request)
+    public function index()
     {
         
         return view('blogs.administrarposts');
@@ -35,18 +35,6 @@ class BlogController extends Controller
                 return $btn;
             })
             ->rawColumns(['action'])
-            // ->addIndexColumn()
-            // ->addColumn('edit', function($row){
-            //     $btn2 = '<a href="{{route(blogs.edit,$row)}}"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>';
-            //     return $btn2;
-            // })
-            // ->addIndexColumn()
-            // ->rawColumns(['edit'])
-            // ->addColumn('destroy', function($row){
-            //     $btn3 = '<a href="{{route(blogs.destroy,$row)}}"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a>';
-            //     return $btn3;
-            // })
-            // ->rawColumns(['destroy'])
             ->make(true);
 
         }

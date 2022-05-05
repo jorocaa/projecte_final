@@ -29,7 +29,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Titol</th>
-                                <th>Email</th>
+                                <th>Categoria</th>
                                 <th>Estat</th>
                                 <th>Crud</th>
                             </tr>
@@ -56,6 +56,5 @@
         ]
         });
     })
-
     </script>
 </html>
