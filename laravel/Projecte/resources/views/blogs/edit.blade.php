@@ -94,24 +94,33 @@
             </div>
         </div>
         @if($image->filepath != '')
-        <div class="row justify-content-center">
-            <div class="col-9 col-md-12 ">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="intlef" for="img">Imagte:</label>
+            <div class="row justify-content-center">
+                <div class="col-9 col-md-12 ">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="intlef" for="img">Imatge:</label>
+                        </div>
+                        <div class="col-md-8 col-lg-6">
+                            <a href="{{asset('/storage/'.$image->filepath)}}" target="_blank"><img width="100%" height="100%" src="{{asset('/storage/'.$image->filepath)}}"/></a>
+                        </div>
                     </div>
-                    <div class="col-md-8 col-lg-6">
-                        <a href="{{asset('/storage/'.$image->filepath)}}" target="_blank"><img width="100%" height="100%" src="{{asset('/storage/'.$image->filepath)}}"/></a><br/>
+                    <div class="row">
+                        <fieldset class="mt-4 mb-5">
+                            <label class="col-md-4">Eliminar la imatge:</label>
+                            <input type="radio" id="si" name="deleteimage" value="si" class="col-md-2 col-lg-1">
+                            <label for="si">Sí</label>
+                            <input type="radio" id="no" name="deleteimage" value="no" class="col-md-2 col-lg-1" checked>
+                            <label for="no">No</label>
+                        </fieldset>
                     </div>
                 </div>
             </div>
-        </div>
         @endif
-        <div class="row justify-content-center">
-            <div class="col-9 col-md-12 ">
+        <div class="row justify-content-center" id="triarimatge" hidden>
+            <div class="col-9 col-md-12">
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="intlef" for="img">Imagte:</label>
+                        <label class="intlef" for="img">Afegir imatge:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
                         <input class="input-group" type="file" id="img" name="img" onchange="readURL(this);"><br>
@@ -161,7 +170,7 @@
 </form>
 </body>
 </html>
-<script>
+<script type="text/javascript">
     inputF = document.getElementById('linkres')
     inputF.onchange = evt => {
         const [file] = inputF.files
@@ -169,4 +178,19 @@
             blah.src = URL.createObjectURL(file)
         }
     }
+
+    var radiobuttonsi = document.getElementById('si');
+    var radiobuttonno = document.getElementById('no');
+    var triarimatge = document.getElementById('triarimatge');
+
+    radiobuttonsi.addEventListener('click',event=>{
+
+        triarimatge.removeAttribute('hidden');
+
+    });
+
+    radiobuttonno.addEventListener('click',event=>{
+
+        triarimatge.setAttribute('hidden',true);
+    });
 </script>
