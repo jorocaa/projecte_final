@@ -23,21 +23,28 @@
     </head>
     <body>
         @include('navbarBase')
-        @include('rightmenu')
-        <div class="container col-9 float-start ">
-            <div class="row justify-content-center mt-1">
-                <div class="col-2">
-                    <button>WIKI</button>
-                </div>
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
             </div>
+        @endif
+        @include('rightmenu')
+        <div class="container col-12 float-start ">
+            @if(isset($row->wikipedia))
+                <div class="row justify-content-center mt-1">
+                    <div class="col-2">
+                        <button>WIKI</button>
+                    </div>
+                </div>
+            @endif
             <div class="row">
-                <div class="col-9">
+                <div class="col-9 justify-content-center">
                     <div class="row">
                         <div class="col-md-4">
                             <h3>{{$row->title}}</h3>
                         </div>
                     </div>
-                    <div class="row p-3 text-center">
+                    <div class="row p-3">
                         <div class="col-md-12">
                             <p>{{$row->content}}</p>
                         </div>
@@ -53,53 +60,83 @@
                             </div>
                         </div><br/>
                     @endif
+                @if(isset($row->latitude))
+                    <input type="hidden" id="latitude" name="lat" value="{{$row->latitude}}"/>
+                    <input type="hidden" id="longitude" name="lon" value="{{$row->longitude}}"/>
                     <div class="row">
                         <div class="col-md-12">
-                        <div id="map"></div>
-                            <script>
-                                var listener = new window.keypress.Listener();
-                                var map = L.map('map').setView([{{$row->latitude}},{{$row->longitude}}], 18);
-                                if (navigator.geolocation) {
-                                    navigator.geolocation.getCurrentPosition(showposition);
-                                }
-                                function showposition(position){
-                                var lat=position.coords.latitude
-                                var long=position.coords.longitude
-                                var marker2 = new  L.marker([lat, long]).addTo(map);
-                                marker2.bindPopup("<b>Vosté está aquí</b>").openPopup();
-                                marker2._icon.classList.add("huechange2");
-                                }
-                                var marker = new L.marker([{{$row->latitude}},{{$row->longitude}}]).addTo(map);
-                                marker._icon.classList.add("huechange");
-
-                                marker.bindPopup("<b>Institut</b></br>Joaquim Mir").openPopup();
-                                var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                                    maxZoom: 18,
-                                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-                                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                                    id: 'mapbox/streets-v11',
-                                    tileSize: 512,
-                                    zoomOffset: -1
-                                }).addTo(map);
-                            </script>
+                            <div class="Mapa">
+                                <div id="map" style="height: 500px; margin-left: 20%"></div>
+                            </div>
                         </div>
                     </div>
-                    @foreach($reserve as $res)
-                        @if($row->idreservation == $res->id)
-                            <form method="post" name="form" action="{{route('reserves.store')}}">
-                                <div class="row justify-content-center mt-1">
-                                    <div class="col-2">
-                                        <button type="submit" id="reservar" name="reservar">RESERVAR</button>
+                @endif
+                    @if(!session()->has('success'))
+                        @foreach($reserve as $res)
+                            @if($row->idreservation == $res->id)
+                                <form method="POST" name="reservar" action="{{route('reserves.store')}}">
+                                    @csrf
+                                    <div class="row justify-content-center mt-1">
+                                        <div class="col-2">
+                                            <button type="submit" id="reservar" name="reservar">RESERVAR</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <input type="hidden" name="idclient" value="{{Auth::user()->id}}"/>
-                                <input type="hidden" name="idreservation" value="{{$row->idreservation}}"/>
-                            </form>
-                        @endif
-                    @endforeach
+                                    <input type="hidden" name="idclient" value="{{Auth::user()->id}}"/>
+                                    <input type="hidden" name="idreservation" value="{{$row->idreservation}}"/>
+                                </form>
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
-
     </body>
 </html>
+<script type="text/javascript">
+    var llaatt = document.getElementById('latitude');
+    var lloonn = document.getElementById('longitude');
+    // HACEMOS GEOLOCALIZACIÓN SI LE DAMOS A PERMITIR
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    var l1
+    var l2
+    var mapaF = document.getElementById('map')
+    // MOSTRAR POSICIÓN LATITUDINAL Y LONGITUDINAL
+    function showPosition(position) {
+
+        // CREAMOS POSICIONES DE LATITUD Y LONGITUD
+        l1 = position.coords.latitude
+        l2 = position.coords.longitude;
+
+        // CREAMOS MARCADOR DEL CLIENTE
+        var marker2 = new L.marker([l1, l2]).addTo(map);
+
+        // AÑADIMOS ESTE MARCADOR AL ESTILO
+        marker2._icon.classList.add("huechange");
+        marker2.bindPopup("<b>ESTIC AQUÍ</b>").openPopup();
+
+    }
+
+    // SITUAMOS EL MAPA EN LAS CORDENADAS DEL LUGAR DEL POST
+    var map = L.map('map').setView([llaatt, lloonn], 18);
+
+    // CREAMOS MARCADOR CON LAS CORDENADAS DEL LUGAR DEL POST
+    var marker = new L.marker([llaatt, lloonn]).addTo(map);
+
+    var tiles
+
+    // AÑADIMOS POPUP
+    marker.bindPopup("<b>PUNT D'INTERÉS</b>").openPopup();
+
+    // CREACIÓN DE MAPA (LA PARTE DE LA API)
+
+    tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(map);
+</script>

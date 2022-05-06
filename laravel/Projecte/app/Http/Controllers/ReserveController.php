@@ -36,8 +36,8 @@ class ReserveController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idclient',
-            'idreservation',
+            'idclient:required',
+            'idreservation:required',
         ]);
 
         Reserve::create([
@@ -45,9 +45,14 @@ class ReserveController extends Controller
             'idreservation'=> $request->idreservation,
         ]);
 
-        // ENVIAR MAIL
 
-        return "MAIL ENVIAT, REVISA LA TEVA SAFATA D'ENTRADA";
+
+        //... ENVIAR MAIL
+
+
+
+
+        return redirect()->back()->with('success', 'MAIL ENVIAT, REVISA LA TEVA SAFATA D ENTRADA');
     }
 
     /**
