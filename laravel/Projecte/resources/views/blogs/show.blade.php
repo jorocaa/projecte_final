@@ -16,7 +16,7 @@
             img.huechange2 { filter: hue-rotate(330deg); }
             img.huechange { filter: hue-rotate(180deg); }
             body{
-                background: #CEB87E;
+                background: ##513a8b;
             }
             .eee{
                 background: #eee;

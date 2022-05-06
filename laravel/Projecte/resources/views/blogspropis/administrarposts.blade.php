@@ -19,9 +19,9 @@
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <style>
             body{
-                background: #EFF37F;
+                background: #513a8b;
             }
-            .awawa{
+            .eee{
                 background: #eee;
             }
         </style>
@@ -29,7 +29,7 @@
 <body>
         @include('navbarBase')
         @include('rightmenu')
-        <div class="container awawa">
+        <div class="container eee">
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped data-table">

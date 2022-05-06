@@ -12,7 +12,7 @@
         <title>Formulario</title>
         <style>
         body{
-                background: #60386D;
+                background: #513a8b;
         }
         .eee{
             background: #eee; 

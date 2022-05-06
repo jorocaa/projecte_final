@@ -12,9 +12,9 @@
     <title>Formulario</title>
     <style>
             body{
-                background: #8CE577;
+                background: #513a8b;
             }
-            .awawa{
+            .eee{
                 background: #eee;
             }
     </style>
@@ -28,7 +28,7 @@
     <h3>EDITAR POST</h3>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 awawa">
+            <div class="col-9 col-md-8 eee">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="titol">Titol:*</label>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 awawa">
+            <div class="col-9 col-md-8 eee">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="categoria">Categoria:</label>
@@ -52,12 +52,12 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 awawa">
+            <div class="col-9 col-md-8 eee">
                 <label class="intlef" for="contingut">Contingut:</label>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 awawa">
+            <div class="col-9 col-md-8 eee">
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-10">
                         <textarea class="form-control col-20 border border-secondary" id="contingut" name="contingut" rows="5">{{$blog->content}}</textarea><br>
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 awawa">
+            <div class="col-9 col-md-8 eee">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="linkwiki">Enllaç a wikipedia:</label>
@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 awawa">
+            <div class="col-9 col-md-8 eee">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="coor">Coordenades:</label>
@@ -94,7 +94,7 @@
         </div>
         @if($image->filepath != '')
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 awawa">
+            <div class="col-9 col-md-8 eee">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="img">Imagte:</label>
@@ -107,7 +107,7 @@
         </div><br/>
         @endif
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 awawa">
+            <div class="col-9 col-md-8 eee">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="img">Imagte:</label>
@@ -119,7 +119,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 awawa">
+            <div class="col-9 col-md-8 eee">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="linkres">Correu Reserva:</label>
@@ -134,7 +134,7 @@
         </div>
         @if(Auth::user()->usertype != "U")
             <div class="row justify-content-center">
-                <div class="col-9 col-md-8 awawa">
+                <div class="col-9 col-md-8 eee">
                     <div class="row">
                         <div class="col-md-4">
                             <label class="intlef" for="nomempresa">Nom empresa:</label>
@@ -146,8 +146,8 @@
                 </div>
             </div>
         @endif
-        <div class="row justify-content-center mt-1">
-            <div class="col-2">
+        <div class="row justify-content-center text-center">
+            <div class="col-8 text-center eee">
                 <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
                 <input type="hidden" name="namebefore" value="{{asset($image->filePath)}}"/>
                 <input type="hidden" name="usertype" value="{{Auth::user()->usertype}}"/>

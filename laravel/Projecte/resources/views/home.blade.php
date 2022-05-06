@@ -25,7 +25,7 @@
                 background-color: #eee; 
             }
             body{
-                background: linear-gradient(to bottom, #EA9800, #00D89A);
+                background: #513a8b;
             }
             .atit{
                 color:#505;
