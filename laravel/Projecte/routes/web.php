@@ -53,6 +53,7 @@ Route::Resource("blogspropis",BlogPropiController::class);
 Route::get('blogs/{blog}/delete', [BlogController::class, 'destroy'])->name('bdestroy');
 
 Route::get('blogsa', [BlogController::class, 'getblogs'])->name('bllistar');
+Route::get('blogsp', [BlogPropiController::class, 'getblogspropis'])->name('bllistarp');
 
 Route::get('reserva', function (){
     $correu = new MailReserve;
