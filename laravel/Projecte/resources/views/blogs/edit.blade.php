@@ -108,7 +108,7 @@
                             <label class="col-md-4">Eliminar la imatge:</label>
                             <input type="radio" id="si" name="deleteimage" value="si" class="col-md-2 col-lg-1">
                             <label for="si">Sí</label>
-                            <input type="radio" id="no" name="deleteimage" value="no" class="col-md-2 col-lg-1">
+                            <input type="radio" id="no" name="deleteimage" value="no" class="col-md-2 col-lg-1" checked>
                             <label for="no">No</label>
                         </fieldset>
                     </div>
@@ -168,7 +168,7 @@
 </form>
 </body>
 </html>
-<script>
+<script type="text/javascript">
     inputF = document.getElementById('linkres')
     inputF.onchange = evt => {
         const [file] = inputF.files
@@ -176,8 +176,7 @@
             blah.src = URL.createObjectURL(file)
         }
     }
-</script>
-<script type="text/javascript">
+
     var radiobuttonsi = document.getElementById('si');
     var radiobuttonno = document.getElementById('no');
     var triarimatge = document.getElementById('triarimatge');
