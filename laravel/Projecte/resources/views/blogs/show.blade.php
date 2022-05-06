@@ -59,7 +59,7 @@
                         <div class="row justify-content-center">
                             <div class="col-9 col-md-5">
                                 <div class="row">
-                                    <div class="col-md-8 col-lg-6">
+                                    <div class="col-md-8 col-lg-6" style="max-height: 300px;">
                                         <a href="{{asset('/storage/'.$image->filepath)}}" target="_blank"><img width="100%" height="100%" src="{{asset('/storage/'.$image->filepath)}}"/></a><br/>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="Mapa">
-                                <div id="map" style="height: 500px; margin-left: 20%"></div>
+                                <div id="map" style="height: 350px; margin-left: 20%"></div>
                             </div>
                         </div>
                     </div>
@@ -99,8 +99,8 @@
     </body>
 </html>
 <script type="text/javascript">
-    var llaatt = document.getElementById('latitude');
-    var lloonn = document.getElementById('longitude');
+    var llaatt = document.getElementById('latitude').value;
+    var lloonn = document.getElementById('longitude').value;
     // HACEMOS GEOLOCALIZACIÓN SI LE DAMOS A PERMITIR
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -129,6 +129,8 @@
 
     // CREAMOS MARCADOR CON LAS CORDENADAS DEL LUGAR DEL POST
     var marker = new L.marker([llaatt, lloonn]).addTo(map);
+    marker._icon.classList.add("huechange2");
+
 
     var tiles
 
@@ -136,12 +138,9 @@
     marker.bindPopup("<b>PUNT D'INTERÉS</b>").openPopup();
 
     // CREACIÓN DE MAPA (LA PARTE DE LA API)
-
-    tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    var tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
         maxZoom: 18,
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1
     }).addTo(map);
