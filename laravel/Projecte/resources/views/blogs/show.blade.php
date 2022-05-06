@@ -99,8 +99,8 @@
     </body>
 </html>
 <script type="text/javascript">
-    var llaatt = document.getElementById('latitude');
-    var lloonn = document.getElementById('longitude');
+    var llaatt = document.getElementById('latitude').value;
+    var lloonn = document.getElementById('longitude').value;
     // HACEMOS GEOLOCALIZACIÓN SI LE DAMOS A PERMITIR
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
