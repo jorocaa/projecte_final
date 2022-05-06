@@ -54,6 +54,7 @@ Route::get('blogs/{blog}/delete', [BlogController::class, 'destroy'])->name('bde
 
 Route::get('blogsa', [BlogController::class, 'getblogs'])->name('bllistar');
 Route::get('blogsp', [BlogPropiController::class, 'getblogspropis'])->name('bllistarp');
+Route::get('blogs/{blog}/delform  ', [BlogPropiController::class, 'beforedestroy'])->name('befdes');
 
 Route::get('reserva', function (){
     $correu = new MailReserve;
