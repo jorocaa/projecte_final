@@ -16,27 +16,39 @@
         <style>
             img.huechange2 { filter: hue-rotate(330deg); }
             img.huechange { filter: hue-rotate(180deg); }
+            hr{
+                height: 1px;
+                background-color: black;
+                border: none;
+            }
+            .global{
+                background-color: #eee; 
+            }
+            body{
+                background: linear-gradient(to bottom, #EA9800, #00D89A);
+            }
+            .atit{
+                color:#505;
+                text-decoration: none;
+            }
         </style>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
         <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+        
     </head>
     <body>
         @include('navbarHome')
         @include('rightmenu')
+        <div class="container col-12 float-center clearfix global">
         @foreach($result as $row)
-            <div class="container col-9 float-start clearfix">
-                <div class="row justify-content-center mt-1">
-                    <div class="col-2">
-                        <button>WIKI</button>
-                    </div>
-                </div>
-                <div class="row justify-content-center mt-1">
-                    <div class="col-9">
+            
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-11 inin" >
                         <div class="row">
-                            <div class="col-md-4">
-                                <a href="{{route('blogs.show',$row)}}"><h3>{{$row->title}}</h3></a>
+                            <div class="col-md-12">
+                                <a class="atit" href="{{route('blogs.show',$row)}}"><h3>{{$row->title}}</h3></a>
                             </div>
                         </div>
                         <div class="row ">
@@ -44,9 +56,15 @@
                                 {{$row->content}}
                             </div>
                         </div>
+                        <div class="row ">
+                            <div class="col-md-12 ">
+                                <hr>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            
         @endforeach
+    </div>
     </body>
 </html>

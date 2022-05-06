@@ -17,11 +17,19 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <link  href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <style>
+            body{
+                background: #5AACDA;
+            }
+            .awawa{
+                background: #eee;
+            }
+        </style>
     </head>
 <body>
         @include('navbarAdPo')
         @include('rightmenu')
-        <div class="container">
+        <div class="container awawa">
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped data-table">

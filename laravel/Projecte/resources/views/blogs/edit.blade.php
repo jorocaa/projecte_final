@@ -10,6 +10,14 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Formulario</title>
+    <style>
+            body{
+                background: #8CE577;
+            }
+            .awawa{
+                background: #eee;
+            }
+    </style>
 </head>
 <body>
 @include('navbarBase')
@@ -20,7 +28,7 @@
     <h3>EDITAR POST</h3>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
+            <div class="col-9 col-md-8 awawa">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="titol">Titol:*</label>
@@ -32,7 +40,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
+            <div class="col-9 col-md-8 awawa">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="categoria">Categoria:</label>
@@ -44,12 +52,12 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
+            <div class="col-9 col-md-8 awawa">
                 <label class="intlef" for="contingut">Contingut:</label>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-6">
+            <div class="col-9 col-md-8 awawa">
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-10">
                         <textarea class="form-control col-20 border border-secondary" id="contingut" name="contingut" rows="5">{{$blog->content}}</textarea><br>
@@ -58,7 +66,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
+            <div class="col-9 col-md-8 awawa">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="linkwiki">Enllaç a wikipedia:</label>
@@ -70,7 +78,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
+            <div class="col-9 col-md-8 awawa">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="coor">Coordenades:</label>
@@ -86,7 +94,7 @@
         </div>
         @if($image->filepath != '')
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
+            <div class="col-9 col-md-8 awawa">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="img">Imagte:</label>
@@ -99,7 +107,7 @@
         </div><br/>
         @endif
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
+            <div class="col-9 col-md-8 awawa">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="img">Imagte:</label>
@@ -111,7 +119,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
+            <div class="col-9 col-md-8 awawa">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="linkres">Correu Reserva:</label>
@@ -126,7 +134,7 @@
         </div>
         @if(Auth::user()->usertype != "U")
             <div class="row justify-content-center">
-                <div class="col-9 col-md-5">
+                <div class="col-9 col-md-8 awawa">
                     <div class="row">
                         <div class="col-md-4">
                             <label class="intlef" for="nomempresa">Nom empresa:</label>

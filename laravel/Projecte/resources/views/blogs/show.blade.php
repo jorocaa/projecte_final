@@ -15,6 +15,12 @@
         <style>
             img.huechange2 { filter: hue-rotate(330deg); }
             img.huechange { filter: hue-rotate(180deg); }
+            body{
+                background: #CEB87E;
+            }
+            .eee{
+                background: #eee;
+            }
         </style>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -24,7 +30,7 @@
     <body>
         @include('navbarBase')
         @include('rightmenu')
-        <div class="container col-9 float-start ">
+        <div class="container col-9 float-start eee">
             <div class="row justify-content-center mt-1">
                 <div class="col-2">
                     <button>WIKI</button>
