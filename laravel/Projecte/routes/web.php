@@ -8,6 +8,8 @@ use \App\Http\Controllers\BreachController;
 use \App\Http\Controllers\CommentController;
 use \App\Http\Controllers\ReserveController;
 use \App\Http\Controllers\BlogPropiController;
+use \App\Mail\MailReserve;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +54,12 @@ Route::get('blogs/{blog}/delete', [BlogController::class, 'destroy'])->name('bde
 
 Route::get('blogsa', [BlogController::class, 'getblogs'])->name('bllistar');
 Route::get('blogsp', [BlogPropiController::class, 'getblogspropis'])->name('bllistarp');
+
+Route::get('reserva', function (){
+    $correu = new MailReserve;
+    Mail::to('2daw.equip04@fp.insjoaquimmir.cat')->send($correu);
+
+    return "Missatge enviat al correu de l'empresa. Es ficaran en contacte amb tú. Gràcies! :)";
+});
 
 require __DIR__.'/auth.php';
