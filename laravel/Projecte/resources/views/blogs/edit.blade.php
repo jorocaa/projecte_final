@@ -26,10 +26,11 @@
     @csrf
     @method('PUT')
     <h3>EDITAR POST</h3>
-    <div class="container">
+    <div class="container col-12 justify-content-center ">
+    <div class="container col-9 justify-content-center eee">
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 eee">
-                <div class="row">
+            <div class="col-9 col-md-12 ">
+                <div class="row ">
                     <div class="col-md-4">
                         <label class="intlef" for="titol">Titol:*</label>
                     </div>
@@ -40,7 +41,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 eee">
+            <div class="col-9 col-md-12 ">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="categoria">Categoria:</label>
@@ -52,12 +53,12 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 eee">
+            <div class="col-9 col-md-12 ">
                 <label class="intlef" for="contingut">Contingut:</label>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 eee">
+            <div class="col-9 col-md-12 ">
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-10">
                         <textarea class="form-control col-20 border border-secondary" id="contingut" name="contingut" rows="5">{{$blog->content}}</textarea><br>
@@ -66,7 +67,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 eee">
+            <div class="col-9 col-md-12 ">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="linkwiki">Enllaç a wikipedia:</label>
@@ -78,7 +79,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 eee">
+            <div class="col-9 col-md-12 ">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="coor">Coordenades:</label>
@@ -94,7 +95,7 @@
         </div>
         @if($image->filepath != '')
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 eee">
+            <div class="col-9 col-md-12 ">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="img">Imagte:</label>
@@ -104,10 +105,10 @@
                     </div>
                 </div>
             </div>
-        </div><br/>
+        </div>
         @endif
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 eee">
+            <div class="col-9 col-md-12 ">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="img">Imagte:</label>
@@ -119,7 +120,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-8 eee">
+            <div class="col-9 col-md-12 ">
                 <div class="row">
                     <div class="col-md-4">
                         <label class="intlef" for="linkres">Correu Reserva:</label>
@@ -134,7 +135,7 @@
         </div>
         @if(Auth::user()->usertype != "U")
             <div class="row justify-content-center">
-                <div class="col-9 col-md-8 eee">
+                <div class="col-9 col-md-12 ">
                     <div class="row">
                         <div class="col-md-4">
                             <label class="intlef" for="nomempresa">Nom empresa:</label>
@@ -147,7 +148,7 @@
             </div>
         @endif
         <div class="row justify-content-center text-center">
-            <div class="col-8 text-center eee">
+            <div class="col-9 col-md-12 text-center ">
                 <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
                 <input type="hidden" name="namebefore" value="{{asset($image->filePath)}}"/>
                 <input type="hidden" name="usertype" value="{{Auth::user()->usertype}}"/>
@@ -155,6 +156,7 @@
                 <input class="col3 justify-content-center" type="submit" name="submitpost" value="Actualitzar Dades">
             </div>
         </div>
+    </div>
     </div>
 </form>
 </body>

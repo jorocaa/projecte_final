@@ -43,7 +43,6 @@
         @include('rightmenu')
         <div class="container col-12 float-center clearfix global">
         @foreach($result as $row)
-            
                 <div class="row justify-content-center mt-4">
                     <div class="col-md-11 inin" >
                         <div class="row">

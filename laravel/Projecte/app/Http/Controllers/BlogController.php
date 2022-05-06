@@ -228,6 +228,18 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
+    public function beforedestroy(Blog $blog)
+    {
+        if(Auth::user()->usertype == "U"){
+
+        }
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Blog  $blog
+     * @return \Illuminate\Http\Response
+     */
     public function destroy(Blog $blog)
     {
         if(Auth::user()->usertype == "U"){

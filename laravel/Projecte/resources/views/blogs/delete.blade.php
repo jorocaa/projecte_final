@@ -22,18 +22,38 @@
     <body>
         @include('navbarBase')
         @include('rightmenu')
-        <form method="post" name=form action="{{route('blogs.store')}}" enctype="multipart/form-data">
+        <form method="post" name=form action="{{route('bdestroy')}}" enctype="multipart/form-data">
             @csrf
             <h3>PETICIÓ ELIMINACIÓ</h3>
             <div class="container col-12 justify-content-center ">
                 <div class="row justify-content-center ">
                     <div class="col-9 col-md-8 eee">
                         <div class="row ">
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <label class="intlef" for="reason">Motiu:*</label>
                             </div>
                             <div class="col-md-8 col-lg-6">
-                                <input class="input-group " type="text" id="reason" name="reason"><br>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Selecciona el motiu d'eliminació</option>
+                                <option value="no me gusta el contenido">No m'agrada el contingut</option>
+                                <option value="imatge == nono">La imatge es inapropiada</option>
+                                <option value="spam">Es spam</option>
+                                <option value="errors">La informació es incorrecta</option>
+                            </select>
+                            </div> -->
+                            <div class="row justify-content-center ">
+                                <div class="col-9 col-md-8 eee">
+                                    <label class="intlef" for="contents">Motiu:*</label>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-9 col-md-8 eee">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 col-lg-10">
+                                            <textarea class="form-control col-20 border border-secondary" id="contents" name="contents" rows="5"></textarea><br>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
