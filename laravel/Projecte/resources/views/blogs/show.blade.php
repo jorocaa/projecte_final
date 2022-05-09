@@ -95,6 +95,17 @@
                     @endif
                 </div>
             </div>
+            <form method="post" name=form action="{{route('comments.store',$row)}}">
+                @csrf
+                <h3>AFEGIR COMENTARI</h3>
+                <label>Contingut:</label><br><textarea id="comentari" name="comentari"></textarea>
+                <br><input type="submit" name="submitcomment" value="Enviar">
+            </form>
+            @foreach($comment as $com)
+                <hr></hr>
+                <h5>{{$com->title}}</h5>
+                <p>{{$com->content}}</p>
+            @endforeach
         </div>
     </body>
 </html>
