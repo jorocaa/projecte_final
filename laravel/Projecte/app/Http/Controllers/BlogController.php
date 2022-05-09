@@ -114,7 +114,8 @@ class BlogController extends Controller
             'idreservation'=> $idres,
             'state'=>'no publicat',
         ]);
-
+        User::where('id',\Auth::user()->id)->increment('postsquantity');
+        
         return redirect('/');
     }
 
@@ -221,19 +222,6 @@ class BlogController extends Controller
 
         return redirect('/');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
-    public function beforedestroy(Blog $blog)
-    {
-        return view("blogs.edit",[
-            'blog' => $blog,
-        ]);
-    }
     /**
      * Remove the specified resource from storage.
      *
@@ -242,6 +230,6 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        
+        Blog::where('id',$blog)->delete();
     }
 }

@@ -20,7 +20,7 @@ class BlogPropiController extends Controller
             ->addColumn('action', function($row){
                 $btn = '<a href="blogs/'.$row->id.'"><button name="show" value="{{$row->id}}"><i class="fa">&#xf06e;</i></button></a>';
                 $btn = $btn.'<a href="blogs/'.$row->id.'/edit"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>';
-                $btn = $btn.'<a href="blogs/'.$row->id.'/delete"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a>';
+                $btn = $btn.'<a href="blogsp/'.$row->id.'/delform"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a>';
                 return $btn;
             })
             ->rawColumns(['action'])
@@ -28,5 +28,17 @@ class BlogPropiController extends Controller
 
         }
         return view('blogspropis.administrarposts');
+    }
+    public function beforedestroy(Blog $blog)
+    {
+        return view("blogs.edit",[
+            'blog' => $blog,
+        ]);
+    }
+    public function destroy(Request $request, Blog $blog)
+    {
+        Blog::where('id',$blog->id)->update(array(
+            'reasondelete'=> $request->whydel,
+        ));
     }
 }

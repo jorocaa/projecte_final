@@ -28,5 +28,6 @@ class Blog extends Model
         'longitude',
         'idreservation',
         'state',
+        'reasondelete',
     ];
 }

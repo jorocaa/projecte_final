@@ -19,8 +19,26 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::select('name','email')->get();
-        return \response($user);
+        // $user = User::select('name','email')->get();
+        // return \response($user);
+        return view('users.administrarusuaris');
+    }
+    public function getusers(Request $request){
+        if ($request->ajax()) {
+            $result =  User::all();
+            return DataTables::of($result)
+            ->addIndexColumn()
+            ->addColumn('action', function($row){
+                $btn = '<a href="users/'.$row->id.'"><button name="show" value="{{$row->id}}"><i class="fa">&#xf06e;</i></button></a>';
+                $btn = $btn.'<a href="users/'.$row->id.'/edit"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>';
+                $btn = $btn.'<a href="users/'.$row->id.'/delete"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+
+        }
+        return view('users.administrarusuaris');
     }
 
     /**

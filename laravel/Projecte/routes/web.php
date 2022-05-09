@@ -26,15 +26,15 @@ Route::resource('/', HomeController::class);
 
 Route::get('/crear_blog', function () {
     return view('blogs.create');
-});
+})->middleware(['auth','verified']);
 
 Route::get('/editar_blog', function () {
     return view('blogs.edit');
-});
+})->middleware(['auth','verified']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 Route::Resource("blogs",BlogController::class);
 
@@ -51,10 +51,15 @@ Route::Resource("reserves",ReserveController::class);
 Route::Resource("blogspropis",BlogPropiController::class);
 
 Route::get('blogs/{blog}/delete', [BlogController::class, 'destroy'])->name('bdestroy');
+Route::get('users/{blog}/delete', [UserController::class, 'destroy'])->name('udestroy');
 
 Route::get('blogsa', [BlogController::class, 'getblogs'])->name('bllistar');
 Route::get('blogsp', [BlogPropiController::class, 'getblogspropis'])->name('bllistarp');
-Route::get('blogs/{blog}/delform  ', [BlogPropiController::class, 'beforedestroy'])->name('befdes');
+
+Route::get('usersa', [UserController::class, 'getusers'])->name('ullistar');
+
+Route::get('blogsp/{blog}/delform  ', [BlogPropiController::class, 'beforedestroy'])->name('befdes');
+Route::get('blogsp/{blog}/delete', [BlogPropiController::class, 'destroy'])->name('bdestroyp');
 
 Route::get('reserva', function (){
     $correu = new MailReserve;
