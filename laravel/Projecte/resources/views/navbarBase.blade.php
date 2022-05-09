@@ -6,7 +6,7 @@
         <div class="navbar-collapse collapse " id="navbartop">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="showimg.php">Categories </a></li>
+                <li class="nav-item"><a class="nav-link" href="nada">Categories </a></li>
                 @php //$ut = Session::get('usertype')
                 @endphp
             @if (isset(Auth::user()->usertype))
@@ -30,7 +30,8 @@
             </form>
             @else
             </ul>
-                <a class="nav-link link-light" href="/login">Login</a>
+            <a class="nav-link link-light" href="/register">Register</a>
+            <a class="nav-link link-light" href="/login">Login</a>
             @endif
         </div>
     </div>

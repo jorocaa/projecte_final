@@ -30,6 +30,7 @@
             </form>
             @else
             </ul>
+            <a class="nav-link link-light" href="/register">Register</a>
             <a class="nav-link link-light" href="/login">Login</a>
             @endif
         </div>

@@ -162,33 +162,39 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        if(isset($request->img)) {
-            $imatge = Image::get()->where('id',$blog->idimage)->first();
-            $upload = $request->img;
-            $fileName = $upload->getClientOriginalName();
-            $fileSize = $upload->getSize();
-            $uploadName = time() . '_' . $fileName;
+        if($request->deleteimage == 'si'){
+            if(isset($request->img)){
+                $imatge = Image::get()->where('id',$blog->idimage)->first();
+                $upload = $request->img;
+                $fileName = $upload->getClientOriginalName();
+                $fileSize = $upload->getSize();
+                $uploadName = time() . '_' . $fileName;
 
-            $filePath = $upload->storeAs(
-                'uploads',
-                $uploadName,
-                'public'
-            );
+                $filePath = $upload->storeAs(
+                    'uploads',
+                    $uploadName,
+                    'public'
+                );
 
-            if (\Storage::disk('public')->exists($filePath)) {
-                $fullPath = \Storage::disk('public')->path($filePath);
-                if($imatge->id != 1) {
-                    \Storage::disk('public')->delete($imatge->filepath);
-                    //$imatge->delete();
+                if (\Storage::disk('public')->exists($filePath)) {
+                    $fullPath = \Storage::disk('public')->path($filePath);
+                    if($imatge->id != 1) {
+                        \Storage::disk('public')->delete($imatge->filepath);
+                        //$imatge->delete();
+                    }
+                    $imagen = Image::create([
+                        'filepath' => $filePath,
+                        'filesize' => $fileSize
+                    ]);
                 }
-                $imagen = Image::create([
-                    'filepath' => $filePath,
-                    'filesize' => $fileSize
-                ]);
+            }
+            else{
+                $imagen = Image::get()->where('id',1)->first();
             }
         }
         else{
-            $imagen = Image::get()->where('id',1)->first();
+            $idimg = $blog->idimage;
+            $imagen = Image::get()->where('id',$idimg)->first();
         }
 
         $idres = $request->idreservation;
