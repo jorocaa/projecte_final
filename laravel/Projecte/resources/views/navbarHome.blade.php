@@ -18,7 +18,7 @@
                     @endif
             </ul>
             <!-- AWAWWQAWAWWAWAWWAWAWAWAWAWAWWAWAWAWAWWA hacer vista awawawawawawawawawaw -->
-            <a class="nav-link link-light" href="profile">{{Auth::user()->username}}</a>
+            <a class="nav-link link-light" href="{{route('users.show',Auth::user()->id)}}">{{Auth::user()->username}}</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use \Illuminate\Support\Facades\Session;
+use DataTables;
 
 
 class UserController extends Controller
@@ -93,7 +94,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view("users.show",[
+            'row' => $user,
+        ]);
     }
 
     /**
@@ -104,7 +107,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view("users.edit",[
+            'user' => $user,
+        ]);
     }
 
     /**

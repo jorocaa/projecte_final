@@ -31,7 +31,7 @@
         @include('rightmenu')
         <div class="container eee">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mt-2">
                     <table class="table table-striped data-table">
                         <thead>
                             <tr>
