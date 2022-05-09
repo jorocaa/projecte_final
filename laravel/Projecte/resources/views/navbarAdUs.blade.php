@@ -5,19 +5,18 @@
         </button>
         <div class="navbar-collapse collapse " id="navbartop">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="/">Home </a></li>
                 <li class="nav-item"><a class="nav-link" href="nada">Categories </a></li>
                 @php //$ut = Session::get('usertype')
                 @endphp
-            @if (isset(Auth::user()->usertype))
-                @if(Auth::user()->usertype == "A" or Auth::user()->usertype == "M")
-                    <li class="nav-item"><a class="nav-link" href="{{route('blogs.index')}}">Administrar Posts </a></li>
-                @endif
-                @if(Auth::user()->usertype == "A")
-                    <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Usuaris </a></li>
-                @endif
+                @if (isset(Auth::user()->usertype))
+                    @if(Auth::user()->usertype == "A" or Auth::user()->usertype == "M")
+                        <li class="nav-item"><a class="nav-link" href="{{route('blogs.index')}}">Administrar Posts </a></li>
+                    @endif
+                    @if(Auth::user()->usertype == "A")
+                        <li class="nav-item"><a class="nav-link active" href="{{route('users.index')}}">Administrar Usuaris </a></li>
+                    @endif
             </ul>
-            <!-- AWAWWAWAWWAWAWWAWAWAWAWAWAWWAWAWAWAWWA hacer vista awawawawawawawawawaw -->
             <a class="nav-link link-light" href="{{route('users.show',Auth::user()->id)}}">{{Auth::user()->username}}</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -30,7 +29,6 @@
             </form>
             @else
             </ul>
-            <a class="nav-link link-light" href="/register">Register</a>
             <a class="nav-link link-light" href="/login">Login</a>
             @endif
         </div>
