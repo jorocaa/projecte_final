@@ -26,15 +26,15 @@ Route::resource('/', HomeController::class);
 
 Route::get('/crear_blog', function () {
     return view('blogs.create');
-});
+})->middleware(['auth','verified']);
 
 Route::get('/editar_blog', function () {
     return view('blogs.edit');
-});
+})->middleware(['auth','verified']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth'])->name('dashboard');
 
 Route::Resource("blogs",BlogController::class);
 
@@ -58,7 +58,7 @@ Route::get('blogs/{blog}/delform  ', [BlogPropiController::class, 'beforedestroy
 
 Route::get('reserva', function (){
     $correu = new MailReserve;
-    Mail::to('2daw.equip04@fp.insjoaquimmir.cat')->send($correu);
+    Mail::to('joroca@fp.insjoaquimmir.cat')->send($correu);
 
     return "Missatge enviat al correu de l'empresa. Es ficaran en contacte amb tú. Gràcies! :)";
 });
