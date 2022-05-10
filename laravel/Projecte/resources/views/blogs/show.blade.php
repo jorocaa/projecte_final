@@ -16,7 +16,7 @@
             img.huechange2 { filter: hue-rotate(330deg); }
             img.huechange { filter: hue-rotate(180deg); }
             body{
-                background: ##513a8b;
+                background: #513a8b;
             }
             .eee{
                 background: #eee;
@@ -35,7 +35,7 @@
             </div>
         @endif
         @include('rightmenu')
-        <div class="container col-12 float-start eee">
+        <div class="container col-12 justify-content-center eee">
             @if(isset($row->wikipedia))
                 <div class="row justify-content-center mt-1">
                     <div class="col-2">
@@ -79,7 +79,7 @@
                 @endif
                     @if(!session()->has('success'))
                         @foreach($reserve as $res)
-                            @if($row->idreservation == $res->id)
+                            @if($row->idreservation == $res->id && $row->idreservation != 1)
                                 <form method="POST" name="reservar" action="{{route('reserves.store')}}">
                                     @csrf
                                     <div class="row justify-content-center mt-1">

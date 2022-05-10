@@ -238,4 +238,15 @@ class BlogController extends Controller
     {
         Blog::where('id',$blog)->delete();
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Blog  $blog
+     * @return \Illuminate\Http\Response
+     */
+    public function randompage()
+    {
+        $blog = Blog::inRandomOrder()->first();
+        return redirect()->route('blogs.show',$blog);
+    }
 }

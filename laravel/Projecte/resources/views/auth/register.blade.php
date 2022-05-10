@@ -8,14 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Formulario</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    </style>
 </head>
 <x-guest-layout>
     @include('navbarBase')
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
         </x-slot>
 
         <!-- Validation Errors -->
@@ -49,12 +48,6 @@
 
                 <x-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location')"/>
             </div>
-            <!-- Telefon -->
-            <div>
-                <x-label for="telefon" :value="__('Telefon')" />
-
-                <x-input id="telefon" class="block mt-1 w-full" type="text" name="telefon" :value="old('telefon')"/>
-            </div>
             <!-- Email Address -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
@@ -79,6 +72,9 @@
                 <x-input id="confirmarcontrasenya" class="block mt-1 w-full"
                                 type="password"
                                 name="confirmarcontrasenya" required />
+            </div>
+            <div class="mt-4">
+                <x-label>Aquesta informació no es visible per altres usuaris</x-label>
             </div>
 
             <div class="flex items-center justify-end mt-4">

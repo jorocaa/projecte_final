@@ -14,10 +14,9 @@
                     <li class="nav-item"><a class="nav-link" href="{{route('blogs.index')}}">Administrar Posts </a></li>
                 @endif
                 @if(Auth::user()->usertype == "A")
-                    <li class="nav-item"><a class="nav-link" href="showimg.php">Administrar Usuaris </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('users.index')}}">Administrar Usuaris </a></li>
                 @endif
             </ul>
-            <!-- AWAWWAWAWWAWAWWAWAWAWAWAWAWWAWAWAWAWWA hacer vista awawawawawawawawawaw -->
             <a class="nav-link link-light" href="{{route('users.show',Auth::user()->id)}}">{{Auth::user()->username}}</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

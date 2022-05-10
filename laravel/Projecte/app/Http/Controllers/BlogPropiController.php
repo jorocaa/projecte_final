@@ -31,7 +31,7 @@ class BlogPropiController extends Controller
     }
     public function beforedestroy(Blog $blog)
     {
-        return view("blogs.edit",[
+        return view("blogs.delete",[
             'blog' => $blog,
         ]);
     }

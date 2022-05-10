@@ -8,7 +8,7 @@
             </button>
         </form>
         </br>
-        <a href="#">Post Aleatori</a><br/>
+        <a href="{{route('randompage')}}">Post Aleatori</a><br/>
         @if(isset(Auth::user()->usertype))
             <a href="{{ route('blogs.create')}}">Crear Post</a><br/>
             <a href="{{ route('blogspropis.index')}}">Llistar posts propis</a><br/>

@@ -27,7 +27,7 @@
         </style>
     </head>
 <body>
-        @include('navbarAdPo')
+        @include('navbarAdUs')
         @include('rightmenu')
         <div class="container eee">
             <div class="row">

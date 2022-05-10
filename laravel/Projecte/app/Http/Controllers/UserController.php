@@ -121,7 +121,25 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'username' => 'required',
+        ]);
+
+        User::where('id',$user->id)->update([
+            'usertype' => $request->ut,
+            'name' => $request->name,
+            'surnames' => $request->surnames,
+            'username' => $request->username,
+            'location' => $request->location,
+            'salary' => $request->salary,
+            'dni' => $request->dni,
+            'iban' => $request->iban,
+            'nuss' => $request->nuss,
+            'postsquantity' => \Auth::user()->postsquantity,
+        ]);
+        return view("users.show",[
+            'row' => $user,
+        ]);
     }
 
     /**

@@ -11,12 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Formulario</title>
     <style>
-            body{
-                background: #513a8b;
-            }
-            .eee{
-                background: #eee;
-            }
+        body{
+            background: #513a8b;
+        }
+        .eee{
+            background: #eee;
+        }
     </style>
 </head>
 <body>
@@ -29,140 +29,147 @@
     <div class="container col-12 justify-content-center ">
     <div class="container col-9 justify-content-center eee">
         <div class="row justify-content-center">
-            <div class="col-9 col-md-12 ">
-                <div class="row ">
-                    <div class="col-md-4">
-                        <label class="intlef" for="titol">Titol:*</label>
-                    </div>
-                    <div class="col-md-8 col-lg-6">
-                        <input class="input-group " type="text" id="titol" name="titol" value="{{$user->title}}"/><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-9 col-md-12 ">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="intlef" for="categoria">Categoria:</label>
-                    </div>
-                    <div class="col-md-8 col-lg-6">
-                        <input class="input-group " type="text" id="categoria" name="categoria" value="{{$user->category}}"/><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-9 col-md-12 ">
-                <label class="intlef" for="contingut">Contingut:</label>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-9 col-md-12 ">
-                <div class="row justify-content-center">
-                    <div class="col-md-12 col-lg-10">
-                        <textarea class="form-control col-20 border border-secondary" id="contingut" name="contingut" rows="5">{{$user->content}}</textarea><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-9 col-md-12 ">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="intlef" for="linkwiki">Enllaç a wikipedia:</label>
-                    </div>
-                    <div class="col-md-8 col-lg-6">
-                        <input class="input-group " type="text" id="linkwiki" name="linkwiki" value="{{$user->wikipedia}}"/><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-9 col-md-12 ">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="intlef" for="coor">Coordenades:</label>
-                    </div>
-                    <div class="col-md-4 col-lg-3">
-                        <label class="intlef" for="coor">latitude:</label><input class="input-group " type="text" id="lat" name="lat" value="{{$user->latitude}}"/><br>
-                    </div>
-                    <div class="col-md-4 col-lg-3">
-                        <label class="intlef" for="coor">longitude:</label><input class="input-group " type="text" id="long" name="long"value="{{$user->longitude}}"/><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @if($image->filepath != '')
-            <div class="row justify-content-center">
-                <div class="col-9 col-md-12 ">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label class="intlef" for="img">Imatge:</label>
-                        </div>
-                        <div class="col-md-8 col-lg-6">
-                            <a href="{{asset('/storage/'.$image->filepath)}}" target="_blank"><img width="100%" height="100%" src="{{asset('/storage/'.$image->filepath)}}"/></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <fieldset class="mt-4 mb-5">
-                            <label class="col-md-4">Eliminar la imatge:</label>
-                            <input type="radio" id="si" name="deleteimage" value="si" class="col-md-2 col-lg-1">
-                            <label for="si">Sí</label>
-                            <input type="radio" id="no" name="deleteimage" value="no" class="col-md-2 col-lg-1" checked>
-                            <label for="no">No</label>
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
-        @endif
-        <div class="row justify-content-center" id="triarimatge" hidden>
             <div class="col-9 col-md-12">
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="intlef" for="img">Afegir imatge:</label>
+                        <label class="intlef" for="name">Nom:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
-                        <input class="input-group" type="file" id="img" name="img" onchange="readURL(this);"><br>
+                        <input class="input-group" type="text" id="name" name="name" value="{{$user->name}}"><br>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-9 col-md-12 ">
+            <div class="col-9 col-md-12">
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="intlef" for="linkres">Correu Reserva:</label>
+                        <label class="intlef" for="surnames">Cognom:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
-                        @foreach($reserva as $res)
-                            <input class="input-group " type="text" id="linkres" name="linkres" value="{{$res->reservationlink}}"><br>
-                        @endforeach
+                        <input class="input-group" type="text" id="surnames" name="surnames" value="{{$user->surnames}}"><br>
                     </div>
                 </div>
             </div>
         </div>
-        @if(Auth::user()->usertype != "U")
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="intlef" for="username">Username:</label>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <input class="input-group" type="text" id="username" name="username" value="{{$user->username}}"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if(Auth::user()->usertype == "A")
             <div class="row justify-content-center">
-                <div class="col-9 col-md-12 ">
+                <div class="col-9 col-md-12">
                     <div class="row">
                         <div class="col-md-4">
-                            <label class="intlef" for="nomempresa">Nom empresa:</label>
+                            <label class="intlef" for="ut">Tipus Usuari:</label>
                         </div>
                         <div class="col-md-8 col-lg-6">
-                            <input class="input-group " type="text" id="nomempresa" name="nomempresa"/><br>
+                            <select class="intlef" type="select" id="ut" name="ut">
+                                @if($user->usertype == "U")
+                                    <option selected>U</option>
+                                    <option>M</option>
+                                    <option>A</option>
+                                @endif
+                                @if($user->usertype == "M")
+                                    <option>U</option>
+                                    <option selected>M</option>
+                                    <option>A</option>
+                                @endif
+                                @if($user->usertype == "A")
+                                    <option>U</option>
+                                    <option>M</option>
+                                    <option selected>A</option>
+                                @endif
+                                
+                            </select></br></br>
                         </div>
                     </div>
                 </div>
             </div>
         @endif
-        <div class="row justify-content-center text-center">
-            <div class="col-9 col-md-12 text-center ">
-                <input type="hidden" name="idreservation" value="{{$user->idreservation}}"/>
-                <input type="hidden" name="namebefore" value="{{asset($image->filePath)}}"/>
-                <input type="hidden" name="usertype" value="{{Auth::user()->usertype}}"/>
-                <input type="hidden" name="idusr" value="{{Auth::user()->id}}"/>
-                <input class="col3 justify-content-center" type="submit" name="submitpost" value="Actualitzar Dades">
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="intlef" for="location">Ciutat:</label>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <input class="input-group " type="text" id="location" name="location" value="{{$user->location}}"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if(Auth::user()->usertype == "A")
+            <div class="row justify-content-center">
+                <div class="col-9 col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="intlef">DADES DE MODERADORS</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-9 col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="intlef" for="salary">Salari:</label>
+                        </div>
+                        <div class="col-md-8 col-lg-6">
+                            <input class="input-group " type="text" id="salary" name="salary" value="{{$user->salary}}"><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-9 col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="intlef" for="dni">DNI:</label>
+                        </div>
+                        <div class="col-md-8 col-lg-6">
+                            <input class="input-group " type="text" id="dni" name="dni" value="{{$user->dni}}"><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-9 col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="intlef" for="iban">IBAN:</label>
+                        </div>
+                        <div class="col-md-8 col-lg-6">
+                            <input class="input-group " type="text" id="iban" name="iban" value="{{$user->iban}}"><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-9 col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="intlef" for="nuss">NUSS:</label>
+                        </div>
+                        <div class="col-md-8 col-lg-6">
+                            <input class="input-group " type="text" id="nuss" name="nuss" value="{{$user->nuss}}"><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        <!-- BOTÓ -->
+        <div class="row justify-content-center mt-1">
+            <div class="col-3">
+                <input class="col-12 justify-content-center" type="submit" name="submitpost" value="Enviar Datos">
             </div>
         </div>
     </div>

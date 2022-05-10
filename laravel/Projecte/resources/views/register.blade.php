@@ -72,19 +72,6 @@ $usertype = session('usertype')
                 </div>
             </div>
         </div>
-        <!-- CAMP 3 -->
-        <div class="row justify-content-center">
-            <div class="col-9 col-md-5">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="intlef" for="telefon">Telèfon:</label>
-                    </div>
-                    <div class="col-md-8 col-lg-6">
-                        <input class="input-group " type="text" id="telefon" name="telefon"><br>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row justify-content-center">
             <div class="col-9 col-md-5">
                 <div class="row">
@@ -119,6 +106,15 @@ $usertype = session('usertype')
                     </div>
                     <div class="col-md-8 col-lg-6">
                         <input class="input-group " type="text" id="confirmarcontrasenya" name="confirmarcontrasenya"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="intlef">Aquesta informació no es visible per altres usuaris</label>
                     </div>
                 </div>
             </div>
