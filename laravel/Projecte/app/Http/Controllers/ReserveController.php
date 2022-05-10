@@ -45,14 +45,7 @@ class ReserveController extends Controller
             'idreservation'=> $request->idreservation,
         ]);
 
-
-
-        //... ENVIAR MAIL
-
-
-
-
-        return redirect()->back()->with('success', 'MAIL ENVIAT, REVISA LA TEVA SAFATA D ENTRADA');
+        return redirect()->action('\App\Http\Controllers\MailController@sendEmail',$request);
     }
 
     /**

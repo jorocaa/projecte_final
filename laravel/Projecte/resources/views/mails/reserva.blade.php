@@ -15,14 +15,14 @@
 
 -->
 @component('mail::message')
-    # Hello {{$content['name']}},
+    # Hola {{$content->name}},
 
-    {{$content['body']}}
+    {{$content->body}}
 
-    @component('mail::button', ['url' => $content['url']])
-        Click Here
+    @component('mail::button', ['url' => $content->url])
+        Clica aquí
     @endcomponent
 
-    Thanks,<br>
-    {{ config('app.name') }}
+    Gràcies,<br>
+    Empresa Reserva
 @endcomponent

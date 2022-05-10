@@ -6,20 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
 
-class MailReserve extends Mailable
+class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $content;
+    public $details;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(array $content)
+    public function __construct($details)
     {
-        $this->content = $content;
+        $this->details = $details;
     }
 
     /**
@@ -29,6 +31,6 @@ class MailReserve extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.reserva');
+        return $this->subject('RESERVA ' . Auth::user()->username)->view('mails.TestEmail');
     }
 }
