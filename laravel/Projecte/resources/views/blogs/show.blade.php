@@ -37,11 +37,14 @@
         @include('rightmenu')
         <div class="container col-12 justify-content-center eee">
             @if(isset($row->wikipedia))
-                <div class="row justify-content-center mt-1">
-                    <div class="col-2">
-                        <button>WIKI</button>
+                <form method="post" action="{{route('wikishow',$row)}}">
+                    @csrf
+                    <div class="row justify-content-center mt-1">
+                        <div class="col-2">
+                            <button>WIKI</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             @endif
             <div class="row">
                 <div class="col-9 justify-content-center">
@@ -95,6 +98,17 @@
                     @endif
                 </div>
             </div>
+            <form method="post" name=form action="{{route('comments.store',$row)}}">
+                @csrf
+                <h3>AFEGIR COMENTARI</h3>
+                <label>Contingut:</label><br><textarea id="comentari" name="comentari"></textarea>
+                <br><input type="submit" name="submitcomment" value="Enviar">
+            </form>
+            @foreach($comment as $com)
+                <hr></hr>
+                <h5>{{$com->title}}</h5>
+                <p>{{$com->content}}</p>
+            @endforeach
         </div>
     </body>
 </html>

@@ -8,8 +8,8 @@ use \App\Http\Controllers\BreachController;
 use \App\Http\Controllers\CommentController;
 use \App\Http\Controllers\ReserveController;
 use \App\Http\Controllers\BlogPropiController;
-use \App\Mail\MailReserve;
-use Illuminate\Support\Facades\Mail;
+use \App\Http\Controllers\MailController;
+use \App\Http\Controllers\WikiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +24,6 @@ use Illuminate\Support\Facades\Mail;
 
 Route::resource('/', HomeController::class);
 
-Route::get('/crear_blog', function () {
-    return view('blogs.create');
-})->middleware(['auth','verified']);
-
 Route::get('/editar_blog', function () {
     return view('blogs.edit');
 })->middleware(['auth','verified']);
@@ -39,6 +35,7 @@ Route::get('/editar_blog', function () {
 Route::Resource("blogs",BlogController::class);
 
 Route::Resource("blogs/{bid}/comments", CommentController::class);
+Route::get('blogs/create', [BlogController::class, 'create'])->middleware(['auth','verified'])->name('bcreate');
 
 Route::Resource("users",UserController::class);
 
@@ -63,11 +60,8 @@ Route::get('usersa', [UserController::class, 'getusers'])->name('ullistar');
 Route::get('blogsp/{blog}/delform  ', [BlogPropiController::class, 'beforedestroy'])->name('befdes');
 Route::get('blogsp/{blog}/delete', [BlogPropiController::class, 'destroy'])->name('bdestroyp');
 
-Route::get('reserva', function (){
-    $correu = new MailReserve;
-    Mail::to('joroca@fp.insjoaquimmir.cat')->send($correu);
+Route::get('/send-email', [MailController::class, 'sendEmail']);
 
-    return "Missatge enviat al correu de l'empresa. Es ficaran en contacte amb tú. Gràcies! :)";
-});
+Route::post('wikipedias/{blog}',[WikiController::class, 'show'])->name('wikishow');
 
 require __DIR__.'/auth.php';

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Blog;
 
 class CommentController extends Controller
 {
@@ -33,9 +36,32 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $bid)
     {
-        //
+        $blog = Blog::where('id',$bid)->first();
+        if($blog!=null){
+            $request->validate([
+                'comentari' => 'required||max:255'
+            ]);
+
+            $titolpart1 = Auth::user()->username;
+
+            $titolpart2 = Carbon::now();
+
+            $titolfinal = $titolpart1 . " - " . $titolpart2;
+
+            Comment::create([
+                'iduser' => Auth::user()->id,
+                'idblog' => $bid,
+                'title' => $titolfinal,
+                'content' => $request->comentari,
+            ]);
+
+            return redirect()->action('App\Http\Controllers\BlogController@show',$blog);
+        }
+        else {
+            return \response(["bid" => "no existeix"], 404);
+        }
     }
 
     /**

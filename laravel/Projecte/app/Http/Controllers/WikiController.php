@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reserve;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
-class ReserveController extends Controller
+class WikiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class ReserveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -35,37 +35,30 @@ class ReserveController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'idclient:required',
-            'idreservation:required',
-        ]);
-
-        Reserve::create([
-            'idclient' => $request->idclient,
-            'idreservation'=> $request->idreservation,
-        ]);
-
-        return redirect()->action('\App\Http\Controllers\MailController@sendEmail',$request);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Reserve  $reserve
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Reserve $reserve)
+    public function show(Blog $blog)
     {
-        //
+        dd($blog);
+        return view("wikipedia.show",[
+            'wikipedialink' => $blog->wikipedia,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Reserve  $reserve
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reserve $reserve)
+    public function edit(Blog $blog)
     {
         //
     }
@@ -74,10 +67,10 @@ class ReserveController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Reserve  $reserve
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reserve $reserve)
+    public function update(Request $request, Blog $blog)
     {
         //
     }
@@ -85,10 +78,10 @@ class ReserveController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Reserve  $reserve
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reserve $reserve)
+    public function destroy(Blog $blog)
     {
         //
     }

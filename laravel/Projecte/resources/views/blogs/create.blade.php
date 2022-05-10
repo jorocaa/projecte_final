@@ -15,7 +15,7 @@
                 background: #513a8b;
         }
         .eee{
-            background: #eee; 
+            background: #eee;
         }
         </style>
     </head>
@@ -108,7 +108,7 @@
                     <div class="col-9 col-md-12">
                         <div class="row">
                             <div class="col-md-4">
-                                <label class="intlef" for="linkres">Enllaç Reserva:</label>
+                                <label class="intlef" for="linkres">Correu de Contacte:</label>
                             </div>
                             <div class="col-md-8 col-lg-6">
                                 <input class="input-group " type="text" id="linkres" name="linkres"><br>
@@ -119,7 +119,7 @@
                 <div class="row justify-content-center text-center">
                 <div class="col-9 col-md-12 text-center ">
                         <input class="col3 " type="submit" name="submitpost" value="Enviar Datos">
-                </div>    
+                </div>
                 </div>
             </div>
         </form>

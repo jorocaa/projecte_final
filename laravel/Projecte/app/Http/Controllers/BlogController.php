@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use DataTables;
+use App\Models\Comment;
 
 class BlogController extends Controller
 {
@@ -115,7 +116,7 @@ class BlogController extends Controller
             'state'=>'no publicat',
         ]);
         User::where('id',\Auth::user()->id)->increment('postsquantity');
-        
+
         return redirect('/');
     }
 
@@ -127,12 +128,15 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        $resultI =  Image::get()->where('id',$blog->idimage)->first();
-        $resultR =  Reservation::get()->where('id',$blog->idreservation);
+        $resultI = Image::get()->where('id',$blog->idimage)->first();
+        $resultR = Reservation::get()->where('id',$blog->idreservation);
+        $resultC = Comment::get()->sortByDesc('id')->where('idblog',$blog->id);
+
         return view("blogs.show", [
             'row' => $blog,
             'image' => $resultI,
             'reserve' => $resultR,
+            'comment' => $resultC,
         ]);
     }
 
