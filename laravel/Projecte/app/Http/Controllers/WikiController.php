@@ -46,9 +46,8 @@ class WikiController extends Controller
      */
     public function show(Blog $blog)
     {
-        dd($blog);
         return view("wikipedia.show",[
-            'wikipedialink' => $blog->wikipedia,
+            'wikipedialink' => 'https://ca.wikipedia.org/api/rest_v1/page/html/'.$blog->wikipedia,
         ]);
     }
 

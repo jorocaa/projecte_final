@@ -35,77 +35,8 @@
     </div>
 @endif
 @include('rightmenu')
-<div class="container col-12 float-start eee">
-    @if(isset($row->wikipedia))
-        <div class="row justify-content-center mt-1">
-            <div class="col-2">
-                <button>WIKI</button>
-            </div>
-        </div>
-    @endif
-    <div class="row">
-        <div class="col-9 justify-content-center">
-            <div class="row">
-                <div class="col-md-4">
-                    <h3>{{$row->title}}</h3>
-                </div>
-            </div>
-            <div class="row p-3">
-                <div class="col-md-12">
-                    <p>{{$row->content}}</p>
-                </div>
-            </div>
-            @if($image->id != 1)
-                <div class="row justify-content-center">
-                    <div class="col-9 col-md-5">
-                        <div class="row">
-                            <div class="col-md-8 col-lg-6" style="max-height: 300px;">
-                                <a href="{{asset('/storage/'.$image->filepath)}}" target="_blank"><img width="100%" height="100%" src="{{asset('/storage/'.$image->filepath)}}"/></a><br/>
-                            </div>
-                        </div>
-                    </div>
-                </div><br/>
-            @endif
-            @if(isset($row->latitude))
-                <input type="hidden" id="latitude" name="lat" value="{{$row->latitude}}"/>
-                <input type="hidden" id="longitude" name="lon" value="{{$row->longitude}}"/>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="Mapa">
-                            <div id="map" style="height: 350px; margin-left: 20%"></div>
-                        </div>
-                    </div>
-                </div>
-            @endif
-            @if(!session()->has('success'))
-                @foreach($reserve as $res)
-                    @if($row->idreservation == $res->id)
-                        <form method="POST" name="reservar" action="{{route('reserves.store')}}">
-                            @csrf
-                            <div class="row justify-content-center mt-1">
-                                <div class="col-2">
-                                    <button type="submit" id="reservar" name="reservar">RESERVAR</button>
-                                </div>
-                            </div>
-                            <input type="hidden" name="idclient" value="{{Auth::user()->id}}"/>
-                            <input type="hidden" name="idreservation" value="{{$row->idreservation}}"/>
-                        </form>
-                    @endif
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <form method="post" name=form action="{{route('comments.store',$row)}}">
-        @csrf
-        <h3>AFEGIR COMENTARI</h3>
-        <label>Contingut:</label><br><textarea id="comentari" name="comentari"></textarea>
-        <br><input type="submit" name="submitcomment" value="Enviar">
-    </form>
-    @foreach($comment as $com)
-        <hr></hr>
-        <h5>{{$com->title}}</h5>
-        <p>{{$com->content}}</p>
-    @endforeach
+<div class="container col-12 justify-content-center eee">
+    <iframe src="{{$wikipedialink}}" title="Wikipedia"></iframe>
 </div>
 </body>
 </html>
