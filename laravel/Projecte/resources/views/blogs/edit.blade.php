@@ -132,7 +132,7 @@
             <div class="col-9 col-md-12 ">
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="intlef" for="linkres">Correu Reserva:</label>
+                        <label class="intlef" for="linkres">Correu de Contacte:</label>
                     </div>
                     <div class="col-md-8 col-lg-6">
                         @foreach($reserva as $res)

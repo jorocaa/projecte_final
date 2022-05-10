@@ -8,9 +8,8 @@ use \App\Http\Controllers\BreachController;
 use \App\Http\Controllers\CommentController;
 use \App\Http\Controllers\ReserveController;
 use \App\Http\Controllers\BlogPropiController;
-use \App\Mail\MailReserve;
-use Illuminate\Support\Facades\Mail;
 use \App\Http\Controllers\MailController;
+use \App\Http\Controllers\WikiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,5 +59,7 @@ Route::get('blogsp/{blog}/delform  ', [BlogPropiController::class, 'beforedestro
 Route::get('blogsp/{blog}/delete', [BlogPropiController::class, 'destroy'])->name('bdestroyp');
 
 Route::get('/send-email', [MailController::class, 'sendEmail']);
+
+Route::post('wikipedias/{blog}',[WikiController::class, 'show'])->name('wikishow');
 
 require __DIR__.'/auth.php';

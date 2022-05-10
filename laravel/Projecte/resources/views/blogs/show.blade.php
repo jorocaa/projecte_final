@@ -16,7 +16,7 @@
             img.huechange2 { filter: hue-rotate(330deg); }
             img.huechange { filter: hue-rotate(180deg); }
             body{
-                background: ##513a8b;
+                background: #513a8b;
             }
             .eee{
                 background: #eee;
@@ -37,11 +37,14 @@
         @include('rightmenu')
         <div class="container col-12 float-start eee">
             @if(isset($row->wikipedia))
-                <div class="row justify-content-center mt-1">
-                    <div class="col-2">
-                        <button>WIKI</button>
+                <form method="post" action="{{route('wikishow',$row)}}">
+                    @csrf
+                    <div class="row justify-content-center mt-1">
+                        <div class="col-2">
+                            <button>WIKI</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             @endif
             <div class="row">
                 <div class="col-9 justify-content-center">
