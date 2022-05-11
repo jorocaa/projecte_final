@@ -36,7 +36,7 @@
 @endif
 @include('rightmenu')
 <div class="container col-12 justify-content-center eee">
-    <iframe src="{{$wikipedialink}}" title="Wikipedia"></iframe>
+    <p>{{$infowiki["extract"]}}</p>
 </div>
 </body>
 </html>
