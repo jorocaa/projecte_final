@@ -28,6 +28,11 @@
     </head>
 <body>
         @include('navbarAdPo')
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @endif
         @include('rightmenu')
         <div class="container eee">
             <div class="row">

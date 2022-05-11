@@ -240,7 +240,8 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        Blog::where('id',$blog)->delete();
+        Blog::where('id',$blog->id)->delete();
+        return Redirect()->back()->with('success','Eliminado Nº'.$blog->id);
     }
     /**
      * Remove the specified resource from storage.
@@ -253,4 +254,19 @@ class BlogController extends Controller
         $blog = Blog::inRandomOrder()->first();
         return redirect()->route('blogs.show',$blog);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Blog  $blog
+     * @return \Illuminate\Http\Response
+     */
+    public function searched(Request $request)
+    {
+        $blog = Blog::where('title', 'like', '%' . $request->buscar . '%')->get();
+        return view("blogs.llistsearch", [
+            'result' => $blog,
+        ]);
+    }
+    
 }

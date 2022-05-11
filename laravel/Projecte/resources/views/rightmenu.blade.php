@@ -1,6 +1,6 @@
 <div class="card float-end" style="width: 16rem;">
     <div class="card-body">
-        <form>
+        <form method="GET" action="{{ route('searched') }}"> 
             <label>Buscar</label>
             <input type="text" id="buscar" name="buscar">
             <button type="submit">
@@ -13,5 +13,24 @@
             <a href="{{ route('bcreate')}}">Crear Post</a><br/>
             <a href="{{ route('blogspropis.index')}}">Llistar posts propis</a><br/>
         @endif
+        <form method="GET" action="{{ route('near.index') }}"> 
+            <input type="hidden" id="l1" name="l1" value="">
+            <input type="hidden" id="l2" name="l2" value="">
+            <button type="submit">
+                <label>A prop meu</label>
+            </button>
+        </form>
     </div>
 </div>
+<script>
+    if(!navigator.geolocation) {
+  } else {
+    navigator.geolocation.getCurrentPosition(godyea)
+  }
+    function godyea(position) {
+    const latitude  = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    document.getElementById("l1").value=latitude
+    document.getElementById("l2").value=longitude
+  }
+</script>

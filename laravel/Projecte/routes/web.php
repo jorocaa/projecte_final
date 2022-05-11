@@ -10,6 +10,7 @@ use \App\Http\Controllers\ReserveController;
 use \App\Http\Controllers\BlogPropiController;
 use \App\Http\Controllers\MailController;
 use \App\Http\Controllers\WikiController;
+use \App\Http\Controllers\ApropController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::get('blogs/create', [BlogController::class, 'create'])->middleware(['auth
 
 Route::Resource("users",UserController::class);
 
+Route::Resource("near",ApropController::class);
+
 Route::Resource("breachs",BreachController::class);
 
 Route::post("/login", [UserController::class, 'login'])->name('users.login');
@@ -50,6 +53,7 @@ Route::Resource("blogspropis",BlogPropiController::class);
 Route::get('blogs/{blog}/delete', [BlogController::class, 'destroy'])->name('bdestroy');
 Route::get('users/{blog}/delete', [UserController::class, 'destroy'])->name('udestroy');
 
+Route::get('blogssearch', [BlogController::class, 'searched'])->name('searched');
 Route::get('blogsrandom', [BlogController::class, 'randompage'])->name('randompage');
 
 Route::get('blogsa', [BlogController::class, 'getblogs'])->name('bllistar');
