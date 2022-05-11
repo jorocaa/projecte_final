@@ -1,0 +1,11 @@
+  @foreach($result as $blog)
+            var name = 'marker'+cont;
+            // CREAMOS MARCADOR CON LAS CORDENADAS DEL LUGAR DEL POST
+            console.log("hi")
+            name = new L.marker([{{$b->latitude}}, {{$b->longitude}}]).addTo(map);
+            name._icon.classList.add("huechange2");
+
+            // AÑADIMOS POPUP
+            name.bindPopup("<b>{{$b->title}}</b>").openPopup();
+            cont++
+    @endforeach
