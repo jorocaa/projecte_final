@@ -1,6 +1,6 @@
 <div class="card float-end" style="width: 16rem;">
     <div class="card-body">
-        <form method="GET" action="{{ route('searched') }}"> 
+        <form method="GET" action="{{ route('searched') }}">
             <label>Buscar</label>
             <input type="text" id="buscar" name="buscar">
             <button type="submit">
@@ -13,12 +13,10 @@
             <a href="{{ route('bcreate')}}">Crear Post</a><br/>
             <a href="{{ route('blogspropis.index')}}">Llistar posts propis</a><br/>
         @endif
-        <form method="GET" action="{{ route('near.index') }}"> 
+        <form method="GET" action="{{ route('near.index') }}">
             <input type="hidden" id="l1" name="l1" value="">
             <input type="hidden" id="l2" name="l2" value="">
-            <button type="submit">
-                <label>A prop meu</label>
-            </button>
+            <button type="submit">A prop meu</button>
         </form>
     </div>
 </div>
