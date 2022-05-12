@@ -40,18 +40,14 @@
         @include('navbarBase')
         @include('rightmenu')
         <div class="container col-12 float-center clearfix global">
-        <h3>Resultats de la busqueda</h3>
+            <h3>Categories</h3>
         @foreach($result as $row)
+            @if(isset($row->category))
                 <div class="row justify-content-center mt-4">
                     <div class="col-md-11 inin" >
                         <div class="row">
                             <div class="col-md-12">
-                                <a class="atit" href="{{route('blogs.show',$row)}}"><h3>{{$row->title}}</h3></a>
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col-md-12 ">
-                                {{$row->content}}
+                                <a class="atit" href="{{route('categoriesESP',$row->category)}}"><h3>{{$row->category}}</h3></a>
                             </div>
                         </div>
                         <div class="row ">
@@ -61,7 +57,25 @@
                         </div>
                     </div>
                 </div>
-            
+            @endif
+        @endforeach
+        @foreach($result as $row)
+            @if(!isset($row->category))
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-11 inin" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a class="atit" href="{{route('categoriesESP','NULL')}}"><h3>Sense Categoria</h3></a>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 ">
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         @endforeach
     </div>
     </body>

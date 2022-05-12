@@ -13,8 +13,7 @@ class ApropController extends Controller
      */
     public function index(Request $request)
     {
-        $blogs = Blog::get()->whereBetween('latitude', [$request->l1-0.02 , $request->l1+0.02])->whereBetween('longitude', [$request->l2-0.02 , $request->l2+0.02]);
-        dd($blogs);
+        $blogs = Blog::get()->whereBetween('latitude', [$request->l1-0.02 , $request->l1+0.02])->whereBetween('longitude', [$request->l2-0.02 , $request->l2+0.02])->where('state','publicat');
         return view("blogs.near", [
             'result' => $blogs,
         ]);
