@@ -54,16 +54,16 @@
                             <hr>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="Mapa">
-                                <div id="map" style="height: 500px; margin-left: 20%"></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         @endforeach
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="Mapa">
+                        <div id="map" style="height: 500px; margin-left: 20%"></div>
+                    </div>
+                </div>
+            </div>
             <input type="hidden"  id="blogs" value="{{$result}}"/>
     </div>
     </body>
@@ -104,13 +104,13 @@
         //////////////////////// PART DE POSTS ////////////////////////
 
         @foreach($result as $r)
-        // CREAMOS MARCADOR CON LAS CORDENADAS DEL LUGAR DEL POST
-        let lat = {{$r->latitude}};
-        let lon = {{$r->longitude}};
-        let marker = new L.marker([lat, lon]).addTo(map);
-        marker._icon.classList.add("huechange2");
-        // AÑADIMOS POPUP
-        marker.bindPopup("<b>{{$r->title}}</b>").openPopup();
+            // CREAMOS MARCADOR CON LAS CORDENADAS DEL LUGAR DEL POST
+            var lat = {{$r->latitude}};
+            var lon = {{$r->longitude}};
+            var marker = new L.marker([lat, lon]).addTo(map);
+            marker._icon.classList.add("huechange2");
+            // AÑADIMOS POPUP
+            marker.bindPopup("<b>{{$r->title}}</b>");
         @endforeach
     }
 
