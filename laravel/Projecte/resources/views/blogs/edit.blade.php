@@ -9,7 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <title>Formulario</title>
+    <title>editar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
             body{
                 background: #513a8b;
@@ -25,9 +26,10 @@
 <form method="post" name=form action="{{route('blogs.update',$blog)}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-    <h3>EDITAR POST</h3>
+    
     <div class="container col-12 justify-content-center ">
     <div class="container col-9 justify-content-center eee">
+        <h3>EDITAR POST</h3>
         <div class="row justify-content-center">
             <div class="col-9 col-md-12 ">
                 <div class="row ">

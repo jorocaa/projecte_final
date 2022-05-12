@@ -9,6 +9,7 @@
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <title>Post</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -35,23 +36,28 @@
             </div>
         @endif
         @include('rightmenu')
-        <div class="container col-12 justify-content-center eee">
-            @if(isset($row->wikipedia))
-                <form method="post" action="{{route('wikishow',$row)}}">
-                    @csrf
-                    <div class="row justify-content-center mt-1">
-                        <div class="col-2">
-                            <button>WIKI</button>
-                        </div>
-                    </div>
-                </form>
-            @endif
-            <div class="row">
-                <div class="col-9 justify-content-center">
+        <div class="container col-12 justify-content-center ">
+                <div class="col-10 justify-content-center eee">
+                    @if(isset($row->wikipedia))
+                        <form method="post" action="{{route('wikishow',$row)}}">
+                            @csrf
+                            <div class="row justify-content-center mt-1">
+                                <div class="col-2">
+                                    <button>WIKI</button>
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    @endif
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-11">
                             <h3>{{$row->title}}</h3>
                         </div>
+                        @if(Auth::user()->usertype != "U" || Auth::user()->id == $row->idclient)
+                            <div class="col-md-1">
+                                <a href="{{$row->id}}/edit"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>
+                            </div>
+                        @endif
                     </div>
                     <div class="row p-3">
                         <div class="col-md-12">
@@ -69,17 +75,17 @@
                             </div>
                         </div><br/>
                     @endif
-                @if(isset($row->latitude))
-                    <input type="hidden" id="latitude" name="lat" value="{{$row->latitude}}"/>
-                    <input type="hidden" id="longitude" name="lon" value="{{$row->longitude}}"/>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="Mapa">
-                                <div id="map" style="height: 350px; margin-left: 20%"></div>
+                    @if(isset($row->latitude))
+                        <input type="hidden" id="latitude" name="lat" value="{{$row->latitude}}"/>
+                        <input type="hidden" id="longitude" name="lon" value="{{$row->longitude}}"/>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div class="Mapa">
+                                    <div id="map" style="height: 350px; margin-left: 20%"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
                     @if(!session()->has('success'))
                         @foreach($reserve as $res)
                             @if($row->idreservation == $res->id && $row->idreservation != 1)
@@ -96,19 +102,27 @@
                             @endif
                         @endforeach
                     @endif
+                    <form method="post" name=form action="{{route('comments.store',$row)}}">
+                        @csrf
+                        <div class="row justify-content-center ">
+                            <div class="col-lg-11">
+                                <h3>AFEGIR COMENTARI</h3>
+                                <label>Contingut:</label><br><textarea class="col-md-12" id="comentari" name="comentari"></textarea>
+                                <br><input type="submit" name="submitcomment" value="Enviar">
+                            </div>
+                        </div>
+                        
+                    </form>
+                    @foreach($comment as $com)
+                        <div class="row justify-content-center ">
+                            <div class="col-11">
+                                <hr class="col-md-12"></hr>
+                                <h5 class="col-md-12">{{$com->title}}</h5>
+                                <p class="col-md-12">{{$com->content}}</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            </div>
-            <form method="post" name=form action="{{route('comments.store',$row)}}">
-                @csrf
-                <h3>AFEGIR COMENTARI</h3>
-                <label>Contingut:</label><br><textarea id="comentari" name="comentari"></textarea>
-                <br><input type="submit" name="submitcomment" value="Enviar">
-            </form>
-            @foreach($comment as $com)
-                <hr></hr>
-                <h5>{{$com->title}}</h5>
-                <p>{{$com->content}}</p>
-            @endforeach
         </div>
     </body>
 </html>
