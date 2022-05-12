@@ -46,8 +46,9 @@ class WikiController extends Controller
      */
     public function show(Blog $blog)
     {
-
-        $data = file_get_contents("https://ca.wikipedia.org/api/rest_v1/page/summary/$blog->wikipedia");
+        $leaf = class_basename($blog->wikipedia);
+        $leafconvert = str_replace(" ","_",$leaf);
+        $data = file_get_contents("https://ca.wikipedia.org/api/rest_v1/page/summary/$leafconvert");
         $json = json_decode($data,true);
 
         return view("wikipedia.show",[

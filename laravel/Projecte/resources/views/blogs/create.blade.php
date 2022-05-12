@@ -69,7 +69,7 @@
                     <div class="col-9 col-md-12">
                         <div class="row">
                             <div class="col-md-4">
-                                <label class="intlef" for="linkwiki">Enllaç a wikipedia:</label>
+                                <label class="intlef" for="linkwiki">Títol o Enllaç de viquipèdia:</label>
                             </div>
                             <div class="col-md-8 col-lg-6">
                                 <input class="input-group " type="text" id="linkwiki" name="linkwiki"><br>
