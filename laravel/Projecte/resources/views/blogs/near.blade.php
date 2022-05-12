@@ -69,72 +69,49 @@
     </body>
 </html>
 <script type="text/javascript">
-    var blogs = document.getElementById('blogs').value;
     // HACEMOS GEOLOCALIZACIÓN SI LE DAMOS A PERMITIR
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     }
-    //////////////// PARTE DE USUARIO ////////////////////////
-    var l1
-    var l2
 
-    var mapaF = document.getElementById('map')
+    var map, tiles
+
     // MOSTRAR POSICIÓN LATITUDINAL Y LONGITUDINAL
     function showPosition(position) {
+        //////////////////////// PART D'USUARI ////////////////////////
         // CREAMOS POSICIONES DE LATITUD Y LONGITUD
-        l1 = position.coords.latitude
-        l2 = position.coords.longitude;
+        let l1 = position.coords.latitude
+        let l2 = position.coords.longitude;
+
+        // SITUAMOS EL MAPA EN LAS CORDENADAS DEL USUARIO
+        map = L.map('map').setView([l1, l2], 13);
+
+        // CREACIÓN DE MAPA (LA PARTE DE LA API)
+        tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+            maxZoom: 18,
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(map);
 
         // CREAMOS MARCADOR DEL CLIENTE
-        var marker2 = new L.marker([l1, l2]).addTo(map);
+        let marker2 = new L.marker([l1, l2]).addTo(map);
 
         // AÑADIMOS ESTE MARCADOR AL ESTILO
         marker2._icon.classList.add("huechange");
         marker2.bindPopup("<b>ESTIC AQUÍ</b>").openPopup();
-    }
-    // SITUAMOS EL MAPA EN LAS CORDENADAS DEL USUARIO
- //   var map = L.map('map').setView([l1, l2], 18);
 
+        //////////////////////// PART DE POSTS ////////////////////////
 
-
-
-
-
-    let blogs2 = JSON.parse(blogs)
-
-    console.log(blogs2)
-
-
-    var cont=1
-    blogs2.map( event =>{
-        var name = 'marker'+cont;
+        @foreach($result as $r)
         // CREAMOS MARCADOR CON LAS CORDENADAS DEL LUGAR DEL POST
-        console.log('a')
-        name = new L.marker([event.latitude, event.longitude]).addTo(map);
-        name._icon.classList.add("huechange2");
-
+        let lat = {{$r->latitude}};
+        let lon = {{$r->longitude}};
+        let marker = new L.marker([lat, lon]).addTo(map);
+        marker._icon.classList.add("huechange2");
         // AÑADIMOS POPUP
-        cont++
-    })
+        marker.bindPopup("<b>{{$r->title}}</b>").openPopup();
+        @endforeach
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-    var tiles
-
-    // CREACIÓN DE MAPA (LA PARTE DE LA API)
-    var tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
-        maxZoom: 18,
-        tileSize: 512,
-        zoomOffset: -1
-    }).addTo(map);
 </script>
