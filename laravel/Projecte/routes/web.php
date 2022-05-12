@@ -11,6 +11,7 @@ use \App\Http\Controllers\BlogPropiController;
 use \App\Http\Controllers\MailController;
 use \App\Http\Controllers\WikiController;
 use \App\Http\Controllers\ApropController;
+use \App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,9 @@ Route::post("/login", [UserController::class, 'login'])->name('users.login');
 Route::Resource("reserves",ReserveController::class);
 
 Route::Resource("blogspropis",BlogPropiController::class);
+
+Route::get('categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('categories/{category}', [CategoryController::class, 'indexesp'])->name('categoriesESP');
 
 Route::get('blogs/{blog}/delete', [BlogController::class, 'destroy'])->name('bdestroy');
 Route::get('users/{blog}/delete', [UserController::class, 'destroy'])->name('udestroy');

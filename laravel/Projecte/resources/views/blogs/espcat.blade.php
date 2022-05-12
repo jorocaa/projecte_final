@@ -40,8 +40,20 @@
         @include('navbarBase')
         @include('rightmenu')
         <div class="container col-12 float-center clearfix global">
-        <h3>Resultats de la busqueda</h3>
+        @php
+        $title = "true"
+        @endphp
         @foreach($result as $row)
+                @if($title=="true")
+                    @if(isset($row->category))
+                        <h3>{{$row->category}}</h3>
+                    @else
+                        <h3>Sense Categoria</h3>
+                    @endif
+                    @php
+                    $title = "false"
+                    @endphp
+                @endif
                 <div class="row justify-content-center mt-4">
                     <div class="col-md-11 inin" >
                         <div class="row">

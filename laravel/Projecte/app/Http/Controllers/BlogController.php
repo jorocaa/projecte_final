@@ -207,7 +207,7 @@ class BlogController extends Controller
         $state = 'no publicat';
         if(\Auth::user()->usertype != "U"){
             $idmod = \Auth::user()->id;
-            $state = 'publicat';
+            
         }
         if(isset($request->linkres)){
             Reservation::where('id',$idres)->update([
@@ -215,6 +215,15 @@ class BlogController extends Controller
                 'namecompany' => $request->nomempresa,
                 'idmoderator' => $idmod,
             ]);
+        }
+        if($request->submitpost == "Actualizar i Publicar"){
+            $state = 'publicat';
+        }
+        if($request->submitpost == "Actualizar i Despublicar"){
+            $state = 'no publicat';
+        }
+        if($request->submitpost == "Actualizar Dades"){
+            $state = 'no publicat';
         }
 
         Blog::where('id',$blog->id)->update(array(
@@ -251,7 +260,7 @@ class BlogController extends Controller
      */
     public function randompage()
     {
-        $blog = Blog::inRandomOrder()->first();
+        $blog = Blog::inRandomOrder()->where('state','publicat')->first();
         return redirect()->route('blogs.show',$blog);
     }
 
@@ -263,7 +272,7 @@ class BlogController extends Controller
      */
     public function searched(Request $request)
     {
-        $blog = Blog::where('title', 'like', '%' . $request->buscar . '%')->get();
+        $blog = Blog::where('title', 'like', '%' . $request->buscar . '%')->where('state','publicat')->get();
         return view("blogs.llistsearch", [
             'result' => $blog,
         ]);

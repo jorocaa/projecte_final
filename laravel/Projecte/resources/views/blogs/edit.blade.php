@@ -155,16 +155,33 @@
                     </div>
                 </div>
             </div>
-        @endif
-        <div class="row justify-content-center text-center">
-            <div class="col-9 col-md-12 text-center ">
-                <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
-                <input type="hidden" name="namebefore" value="{{asset($image->filePath)}}"/>
-                <input type="hidden" name="usertype" value="{{Auth::user()->usertype}}"/>
-                <input type="hidden" name="idusr" value="{{Auth::user()->id}}"/>
-                <input class="col3 justify-content-center" type="submit" name="submitpost" value="Actualitzar Dades">
+            <div class="row justify-content-center text-center ">
+                <div class="col-9 col-md-6 text-center mb-2">
+                    <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
+                    <input class="col-11 justify-content-center" type="submit" name="submitpost" value="Actualizar i Publicar">
+                </div>
+                <div class="col-9 col-md-6 text-center ">
+                    <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
+                    <input class="col-11 justify-content-center" type="submit" name="submitpost" value="Actualizar i Despublicar">
+                </div>
             </div>
-        </div>
+        @else
+        @if($blog->state=="publicat")
+            <div class="row justify-content-center text-center">
+                <div class="col-9 col-md-12 text-center ">
+                    <p>*Aquest blog está publicat.. Si realitzes canvis es despublicará temporalment*</p>
+                </div>
+            </div>
+            
+        @endif
+            <div class="row justify-content-center text-center">
+                <div class="col-9 col-md-12 text-center ">
+                    <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
+                    <input class="col-3 justify-content-center" type="submit" name="submitpost" value="Actualitzar Dades">
+                </div>
+            </div>
+        @endif
+        
     </div>
     </div>
 </form>

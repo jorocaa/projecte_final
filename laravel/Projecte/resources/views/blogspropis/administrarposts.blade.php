@@ -30,6 +30,7 @@
         @include('navbarBase')
         @include('rightmenu')
         <div class="container eee">
+        <h3>Els meus posts</h3>
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped data-table">
