@@ -3,6 +3,19 @@
 <html lang="en">
 <head>
     @include('head')
+    @include('head')
+    @guest
+        <script>
+            window.location.href = '{{route("index")}}'; //using a named route
+        </script>
+    @endguest
+    @auth
+    @if(Auth::user()->id != $blog->idclient && Auth::user()->usertype == "U")
+        <script>
+            window.location.href = '{{route("index")}}'; //using a named route
+        </script>
+        @endif
+    @endauth
     <title>Editar Post</title>
     <style>
             body{
@@ -137,6 +150,7 @@
                 </div>
             </div>
         </div>
+        @auth
         @if(Auth::user()->usertype != "U")
             <div class="row justify-content-center">
                 <div class="col-9 col-md-12 ">
@@ -169,6 +183,7 @@
             </div>
 
         @endif
+        
             <div class="row justify-content-center text-center">
                 <div class="col-9 col-md-12 text-center ">
                     <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
@@ -176,7 +191,7 @@
                 </div>
             </div>
         @endif
-
+        @endauth
     </div>
     </div>
 </form>

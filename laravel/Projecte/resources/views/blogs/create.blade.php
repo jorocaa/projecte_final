@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         @include('head')
+        
         <title>Crear Post</title>
         <style>
         body{

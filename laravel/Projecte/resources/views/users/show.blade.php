@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        @if(Auth::user()->id != $row->id && Auth::user()->usertype == "U")
+            <script>
+                window.location.href = '{{route("index")}}'; //using a named route
+            </script>
+        @endif
         @include('head')
         <title>Perfil</title>
         <style>
