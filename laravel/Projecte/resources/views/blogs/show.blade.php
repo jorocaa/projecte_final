@@ -3,9 +3,6 @@
     <head>
         @include('head')
         @guest
-        <script>
-            window.location.href = '{{route("index")}}'; //using a named route
-        </script>
         @endguest
         @auth
         @if(Auth::user()->id != $row->idclient && Auth::user()->usertype == "U")
