@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <title>Post</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        @include('head')
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -20,7 +12,7 @@
                 border: none;
             }
             .global{
-                background-color: #eee; 
+                background-color: #eee;
             }
             body{
                 background: #513a8b;
@@ -34,7 +26,6 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
         <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-        
     </head>
     <body>
         @include('navbarBase')
@@ -47,8 +38,10 @@
                 @if($title=="true")
                     @if(isset($row->category))
                         <h3>{{$row->category}}</h3>
+                        <title>Categoria: {{$row->category}}</title>
                     @else
                         <h3>Sense Categoria</h3>
+                        <title>Categoria: sense categoria</title>
                     @endif
                     @php
                     $title = "false"
@@ -73,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-            
+
         @endforeach
     </div>
     </body>

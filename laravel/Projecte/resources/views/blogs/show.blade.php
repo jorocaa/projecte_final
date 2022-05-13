@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <title>Post</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        @include('head')
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
+        <title>Post</title>
         <style>
             img.huechange2 { filter: hue-rotate(330deg); }
             img.huechange { filter: hue-rotate(180deg); }
@@ -36,22 +29,21 @@
             </div>
         @endif
         @include('rightmenu')
-        <div class="container col-12 justify-content-center ">
+        <div class="container col-12 justify-content-center">
                 <div class="col-10 justify-content-center eee">
                     @if(isset($row->wikipedia))
                         <form method="post" action="{{route('wikishow',$row)}}">
                             @csrf
-                            <div class="row justify-content-center mt-1">
-                                <div class="col-2">
-                                    <button>WIKI</button>
-                                    
+                            <div class="row justify-content-center">
+                                <div class="col-2 mt-3">
+                                     <input type="submit" value="Informació a wikipedia"></input>
                                 </div>
                             </div>
                         </form>
                     @endif
-                    <div class="row">
-                        <div class="col-md-11">
-                            <h3>{{$row->title}}</h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <h2 class="m-1">{{$row->title}}</h2>
                         </div>
                         @if(Auth::user()->usertype != "U" || Auth::user()->id == $row->idclient)
                             <div class="col-md-1">
@@ -105,13 +97,13 @@
                     <form method="post" name=form action="{{route('comments.store',$row)}}">
                         @csrf
                         <div class="row justify-content-center ">
-                            <div class="col-lg-11">
-                                <h3>AFEGIR COMENTARI</h3>
-                                <label>Contingut:</label><br><textarea class="col-md-12" id="comentari" name="comentari"></textarea>
+                            <div class="col-lg-11 mt-5">
+                                <h4>COMENTARIS</h4>
+                                <label>Afegir:</label><br><textarea class="col-md-12" id="comentari" name="comentari"></textarea>
                                 <br><input type="submit" name="submitcomment" value="Enviar">
                             </div>
                         </div>
-                        
+
                     </form>
                     @foreach($comment as $com)
                         <div class="row justify-content-center ">
