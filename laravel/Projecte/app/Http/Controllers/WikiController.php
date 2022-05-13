@@ -53,6 +53,7 @@ class WikiController extends Controller
 
         return view("wikipedia.show",[
             'infowiki' => $json,
+            'post' => $blog,
         ]);
     }
 

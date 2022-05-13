@@ -207,7 +207,7 @@ class BlogController extends Controller
         $state = 'no publicat';
         if(\Auth::user()->usertype != "U"){
             $idmod = \Auth::user()->id;
-            
+
         }
         if(isset($request->linkres)){
             Reservation::where('id',$idres)->update([
@@ -275,7 +275,8 @@ class BlogController extends Controller
         $blog = Blog::where('title', 'like', '%' . $request->buscar . '%')->where('state','publicat')->get();
         return view("blogs.llistsearch", [
             'result' => $blog,
+            'buscar' => $request->buscar,
         ]);
     }
-    
+
 }
