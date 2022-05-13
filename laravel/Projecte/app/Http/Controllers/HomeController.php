@@ -10,11 +10,6 @@ use App\Models\Blog;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $result = Blog::get()->where('state','publicat')->sortByDesc('id')->take(10);
@@ -42,7 +37,7 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -52,8 +47,7 @@ class HomeController extends Controller
      */
     public function show()
     {
-
-
+        //
     }
 
     /**
