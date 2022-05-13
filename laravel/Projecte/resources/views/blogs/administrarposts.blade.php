@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         @include('head')
+        @include('nono')
         <title>Llista Posts General</title>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
