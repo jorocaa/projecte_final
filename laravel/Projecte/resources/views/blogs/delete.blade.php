@@ -15,11 +15,12 @@
     <body>
         @include('navbarBase')
         @include('rightmenu')
-        <form method="post" name=form action="{{route('bdestroyp',$blog)}}" enctype="multipart/form-data">
+        <form method="GET" name=form action="{{route('bdestroyp',$blog)}}" enctype="multipart/form-data">
             @csrf
-            <h3>PETICIÓ ELIMINACIÓ</h3>
+            
             <div class="container col-12 justify-content-center ">
                 <div class="col-9 justify-content-center eee" >
+                    <h3>PETICIÓ ELIMINACIÓ</h3>
                         <!-- <div class="col-md-4">
                             <label class="intlef" for="reason">Motiu:*</label>
                         </div>
@@ -33,17 +34,17 @@
                         </select>
                         </div> -->
                         <div class="row justify-content-center ">
-                            <div class="col-9 col-md-12 ">
+                            <div class="col-9 col-md-11 ">
                                 <label class="intlef" for="whydel">Motiu:*</label>
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-9 col-md-12 ">
+                            <div class="col-9 col-md-11 ">
                                 <textarea class="form-control col-20 border border-secondary" id="whydel" name="whydel" rows="5"></textarea><br>
                             </div>
                         </div>
                         <div class="row justify-content-center text-center">
-                            <div class="col-9 col-md-12 text-center ">
+                            <div class="col-9 col-md-11 text-center ">
                                 <input class="col3 justify-content-center" type="submit" name="submitpost" value="Actualitzar Dades">
                             </div>
                         </div>

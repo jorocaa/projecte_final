@@ -17,6 +17,7 @@
         @include('rightmenu')
         <div class="container col-12 justify-content-center ">
             <div class="col-9 justify-content-center eee">
+                <h3>Perfil</h3>
                 <div class="row justify-content-center">
                     <div class="col-md-5">
                         <p>Username:</p>

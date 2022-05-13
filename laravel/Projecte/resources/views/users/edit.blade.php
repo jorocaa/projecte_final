@@ -20,9 +20,9 @@
 <form method="post" name=form action="{{route('users.update',$user)}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-    <h3>EDITAR USUARI</h3>
     <div class="container col-12 justify-content-center ">
     <div class="container col-9 justify-content-center eee">
+    <h3>EDITAR USUARI</h3>
         <div class="row justify-content-center">
             <div class="col-9 col-md-12">
                 <div class="row">
