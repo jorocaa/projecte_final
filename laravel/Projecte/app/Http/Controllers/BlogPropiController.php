@@ -29,16 +29,4 @@ class BlogPropiController extends Controller
         }
         return view('blogspropis.administrarposts');
     }
-    public function beforedestroy(Blog $blog)
-    {
-        return view("blogs.delete",[
-            'blog' => $blog,
-        ]);
-    }
-    public function destroy(Request $request, Blog $blog)
-    {
-        Blog::where('id',$blog->id)->update(array(
-            'reasondelete'=> $request->whydel,
-        ));
-    }
 }

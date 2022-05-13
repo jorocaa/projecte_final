@@ -2,6 +2,18 @@
 <html lang="en">
     <head>
         @include('head')
+        @guest
+        <script>
+            window.location.href = '{{route("index")}}'; //using a named route
+        </script>
+        @endguest
+        @auth
+        @if(Auth::user()->id != $row->idclient && Auth::user()->usertype == "U")
+        <script>
+            window.location.href = '{{route("index")}}'; //using a named route
+        </script>
+        @endif
+        @endauth
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -45,11 +57,13 @@
                         <div class="col-md-12">
                             <h2 class="m-1">{{$row->title}}</h2>
                         </div>
+                        @auth
                         @if(Auth::user()->usertype != "U" || Auth::user()->id == $row->idclient)
                             <div class="col-md-1">
                                 <a href="{{$row->id}}/edit"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>
                             </div>
                         @endif
+                        @endauth
                     </div>
                     <div class="row p-3">
                         <div class="col-md-12">
@@ -88,7 +102,9 @@
                                             <button type="submit" id="reservar" name="reservar">RESERVAR</button>
                                         </div>
                                     </div>
+                                    @auth
                                     <input type="hidden" name="idclient" value="{{Auth::user()->id}}"/>
+                                    @endauth
                                     <input type="hidden" name="idreservation" value="{{$row->idreservation}}"/>
                                 </form>
                             @endif
