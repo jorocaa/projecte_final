@@ -14,6 +14,7 @@
         @if(isset(Auth::user()->usertype))
             <a href="{{ route('bcreate')}}">Crear Post</a><br/>
             <a href="{{ route('blogspropis.index')}}">Llistar posts propis</a><br/>
+
         @endif
 
         <form method="GET" action="{{ route('near.index') }}">
@@ -25,6 +26,9 @@
             <input type="hidden" id="l1" name="l1" value="">
             <input type="hidden" id="l2" name="l2" value="">
         </form>
+        @if(isset(Auth::user()->usertype))
+            <a href="{{ route('incidencies.index')}}">Crear incidencia</a><br/>
+        @endif
     </div>
 </div>
 <script>

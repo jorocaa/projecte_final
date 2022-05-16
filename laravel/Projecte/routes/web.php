@@ -12,6 +12,7 @@ use \App\Http\Controllers\MailController;
 use \App\Http\Controllers\WikiController;
 use \App\Http\Controllers\ApropController;
 use \App\Http\Controllers\CategoryController;
+use \App\Http\Controllers\IncidenciaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,8 @@ Route::get('blogs/create', [BlogController::class, 'create'])->middleware(['auth
 
 Route::Resource("users",UserController::class);
 
+Route::Resource("incidencies",IncidenciaController::class);
+
 Route::Resource("near",ApropController::class);
 
 Route::Resource("breachs",BreachController::class);
@@ -56,14 +59,15 @@ Route::get('categories/{category}', [CategoryController::class, 'indexesp'])->na
 
 Route::get('blogs/{blog}/delete', [BlogController::class, 'destroy'])->name('bdestroy');
 Route::get('users/{blog}/delete', [UserController::class, 'destroy'])->name('udestroy');
+Route::get('incidencies/{incidencia}/delete', [IncidenciaController::class, 'destroy'])->name('idestroy');
 
 Route::get('blogssearch', [BlogController::class, 'searched'])->name('searched');
 Route::get('blogsrandom', [BlogController::class, 'randompage'])->name('randompage');
 
 Route::get('blogsa', [BlogController::class, 'getblogs'])->name('bllistar');
 Route::get('blogsp', [BlogPropiController::class, 'getblogspropis'])->name('bllistarp');
-
 Route::get('usersa', [UserController::class, 'getusers'])->name('ullistar');
+Route::get('blogsp', [IncidenciaController::class, 'getincidencies'])->name('illistar');
 
 Route::get('blogsp/{blog}/delform  ', [BlogPropiController::class, 'beforedestroy'])->name('befdes');
 Route::get('blogsp/{blog}/delete', [BlogPropiController::class, 'destroy'])->name('bdestroyp');
