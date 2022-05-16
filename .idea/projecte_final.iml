@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/illuminate/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/illuminate/contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/illuminate/container" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/illuminate/macroable" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/illuminate/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/illuminate/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/illuminate/support" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/illuminate/validation" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/laravel/breeze" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
