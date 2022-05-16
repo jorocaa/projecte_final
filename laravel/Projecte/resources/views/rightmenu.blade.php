@@ -27,7 +27,7 @@
             <input type="hidden" id="l2" name="l2" value="">
         </form>
         @if(isset(Auth::user()->usertype))
-            <a href="{{ route('incidencies.index')}}">Crear incidencia</a><br/>
+            <a href="{{ route('incidencies.create')}}">Crear incidencia</a><br/>
         @endif
     </div>
 </div>

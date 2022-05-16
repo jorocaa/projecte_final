@@ -12,6 +12,7 @@
             @if (isset(Auth::user()->usertype))
                 @if(Auth::user()->usertype == "A" or Auth::user()->usertype == "M")
                     <li class="nav-item"><a class="nav-link" href="{{route('blogs.index')}}">Administrar Posts </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('incidencies.index')}}">Administrar incidencies </a></li>
                 @endif
                 @if(Auth::user()->usertype == "A")
                     <li class="nav-item"><a class="nav-link" href="{{route('users.index')}}">Administrar Usuaris </a></li>
