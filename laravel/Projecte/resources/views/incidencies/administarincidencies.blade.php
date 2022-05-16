@@ -39,7 +39,7 @@
         @endif
         @include('rightmenu')
         <div class="container eee">
-        <h3>Administrar Posts</h3>
+        <h3>Administrar Incidències</h3>
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped data-table">
