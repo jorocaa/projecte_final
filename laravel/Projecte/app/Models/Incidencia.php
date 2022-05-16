@@ -13,7 +13,6 @@ class Incidencia extends Model
         'idclient',
         'idmoderator',
         'title',
-        'type',
         'description',
     ];
 }

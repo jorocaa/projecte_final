@@ -18,7 +18,6 @@ class CreateIncidenciesTable extends Migration
             $table->foreignId('idclient')->references('id')->on('users');
             $table->foreignId('idmoderator')->references('id')->on('users');
             $table->string('title');
-            $table->string('type');
             $table->string('description');
             $table->timestamps();
         });
