@@ -36,17 +36,26 @@
         <div class="container col-12 justify-content-center">
             <div class="col-19 justify-content-center eee">
                 <div class="row justify-content-center">
-                    <div class="col-md-12">
-                        <h2 class="m-1">{{$row->title}}</h2>
+                    <div class="col-md-2">
+                        <h4 class="m-1">Tipus:</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="m-1">{{$row->title}}</p>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-12">
+                    <div class="col-md-2">
+                        <h4 class="m-1">Descripció:</h4>
+                    </div>
+                    <div class="col-md-4">
                         <p>{{$row->description}}</p>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-12">
+                    <div class="col-md-2">
+                        <h4 class="m-1">Usuari:</h4>
+                    </div>
+                    <div class="col-md-4">
                         <p>{{$users->username}}</p>
                     </div>
                 </div>

@@ -59,7 +59,7 @@ Route::get('categories/{category}', [CategoryController::class, 'indexesp'])->na
 
 Route::get('blogs/{blog}/delete', [BlogController::class, 'destroy'])->name('bdestroy');
 Route::get('users/{blog}/delete', [UserController::class, 'destroy'])->name('udestroy');
-Route::get('incidencies/{incidencia}/delete', [IncidenciaController::class, 'destroy'])->name('idestroy');
+Route::get('incidencies/{incidency}/delete', [IncidenciaController::class, 'destroy'])->name('idestroy');
 
 Route::get('blogssearch', [BlogController::class, 'searched'])->name('searched');
 Route::get('blogsrandom', [BlogController::class, 'randompage'])->name('randompage');

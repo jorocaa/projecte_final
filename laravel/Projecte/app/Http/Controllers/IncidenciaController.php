@@ -55,7 +55,6 @@ class IncidenciaController extends Controller
     public function store(Request $request)
     {
         Incidencia::create([
-
             'idclient' => \Auth::user()->id,
             'idmoderator'=> 2,
             'title' => $request->title,
@@ -70,12 +69,11 @@ class IncidenciaController extends Controller
      * @param  \App\Models\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
-    public function show(Incidencia $incidencia)
+    public function show(Incidencia $incidency)
     {
-        $resultU = User::get()->where('id',$incidencia->idclient)->first();
-
+        $resultU = User::get()->where('id',$incidency->idclient)->first();
         return view("incidencies.showincidencies", [
-            'row' => $incidencia,
+            'row' => $incidency,
             'users' => $resultU,
         ]);
     }
@@ -86,7 +84,7 @@ class IncidenciaController extends Controller
      * @param  \App\Models\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Incidencia $incidencia)
+    public function edit(Incidencia $incidency)
     {
         //
     }
@@ -98,7 +96,7 @@ class IncidenciaController extends Controller
      * @param  \App\Models\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Incidencia $incidencia)
+    public function update(Request $request, Incidencia $incidency)
     {
         //
     }
@@ -109,9 +107,9 @@ class IncidenciaController extends Controller
      * @param  \App\Models\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Incidencia $incidencia)
+    public function destroy(Incidencia $incidency)
     {
-        Incidencia::where('id',$incidencia->id)->delete();
-        return Redirect()->back()->with('Success','Eliminado Nº'.$blog->id);
+        Incidencia::where('id',$incidency->id)->delete();
+        return Redirect()->back()->with('success','Eliminado Nº'.$incidency->id);
     }
 }

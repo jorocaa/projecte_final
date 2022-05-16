@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         @include('head')
-        <title>Eliminar Post</title>
+        <title>Incidencia</title>
         <style>
         body{
                 background: #513a8b;
@@ -15,21 +15,23 @@
     <body>
         @include('navbarBase')
         @include('rightmenu')
-        <form method="GET" name=form action="{{route('incidencies.store')}}" enctype="multipart/form-data">
+        <form method="POST" name=form action="{{route('incidencies.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="container col-12 justify-content-center ">
                 <div class="col-9 justify-content-center eee" >
                     <h3>INCIDENCIES</h3>
-                    <div class="col-md-4">
-                        <label class="intlef" for="reason">Motiu:*</label>
-                    </div>
-                    <div class="col-md-8 col-lg-6">
-                    <select class="form-select" name="title" aria-label="Default select example">
-                        <option value="post">Un post</option>
-                        <option value="pagina">La pagina no carrega</option>
-                        <option value="funció">Una Funcionalitat</option>
-                        <option value="altres"> Altres </option>
-                    </select>
+                    <div class="row justify-content-center ">
+                        <div class="col-md-11 justify-content-center">
+                            <label class="intlef" for="reason">Motiu:*</label>
+                        </div>
+                        <div class="col-9 col-md-11 justify-content-center">
+                        <select class="form-select" name="title" aria-label="Default select example">
+                            <option name="title" value="post">Un post</option>
+                            <option name="title" value="pagina">La pagina no carrega</option>
+                            <option name="title" value="funció">Una Funcionalitat</option>
+                            <option name="title" value="altres"> Altres </option>
+                        </select>
+                        </div>
                     </div>
                     <div class="row justify-content-center ">
                         <div class="col-9 col-md-11 ">

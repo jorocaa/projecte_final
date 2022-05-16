@@ -31,7 +31,7 @@
         </style>
     </head>
 <body>
-        @include('navbarAdPo')
+        @include('navbarAdIn')
         @if(session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
