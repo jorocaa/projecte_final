@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Incidencia;
 use Illuminate\Http\Request;
 use DataTables;
+use App\Models\User;
 
 class IncidenciaController extends Controller
 {
@@ -16,7 +17,7 @@ class IncidenciaController extends Controller
     public function index()
     {
 
-        return view('incidencies.administrarincidencides');
+        return view('incidencies.administarincidencies');
     }
     public function getincidencies(Request $request){
         if ($request->ajax()) {
@@ -24,7 +25,7 @@ class IncidenciaController extends Controller
             return DataTables::of($result)
             ->addIndexColumn()
             ->addColumn('action', function($row){
-                $btn = '<a href="blogs/'.$row->id.'"><button name="show" value="{{$row->id}}"><i class="fa">&#xf06e;</i></button></a>';
+                $btn = '<a href="incidencies/'.$row->id.'"><button name="show" value="{{$row->id}}"><i class="fa">&#xf06e;</i></button></a>';
                 $btn = $btn.'<a href="incidencies/'.$row->id.'/delete"><button name="del" value="{{$row->id}}"><i class="fa">&#xf1f8;</i></button></a>';
                 return $btn;
             })
@@ -32,7 +33,7 @@ class IncidenciaController extends Controller
             ->make(true);
 
         }
-        return view('incidencies.administrarincidencides');
+        return view('incidencies.administarincidencies');
     }
 
     /**
@@ -71,11 +72,11 @@ class IncidenciaController extends Controller
      */
     public function show(Incidencia $incidencia)
     {
-        $resultU = Users::get()->where('id',$blog->idclient)->first();
+        $resultU = User::get()->where('id',$incidencia->idclient)->first();
 
         return view("incidencies.showincidencies", [
             'row' => $incidencia,
-            'users' => $resultI,
+            'users' => $resultU,
         ]);
     }
 

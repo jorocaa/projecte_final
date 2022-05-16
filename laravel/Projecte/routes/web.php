@@ -67,7 +67,7 @@ Route::get('blogsrandom', [BlogController::class, 'randompage'])->name('randompa
 Route::get('blogsa', [BlogController::class, 'getblogs'])->name('bllistar');
 Route::get('blogsp', [BlogPropiController::class, 'getblogspropis'])->name('bllistarp');
 Route::get('usersa', [UserController::class, 'getusers'])->name('ullistar');
-Route::get('blogsp', [IncidenciaController::class, 'getincidencies'])->name('illistar');
+Route::get('incidenciesa', [IncidenciaController::class, 'getincidencies'])->name('illistar');
 
 Route::get('blogsp/{blog}/delform  ', [BlogPropiController::class, 'beforedestroy'])->name('befdes');
 Route::get('blogsp/{blog}/delete', [BlogPropiController::class, 'destroy'])->name('bdestroyp');

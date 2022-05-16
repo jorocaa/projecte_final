@@ -9,6 +9,8 @@ class Incidencia extends Model
 {
     use HasFactory;
 
+    protected $table='incidencies';
+
     protected $fillable = [
         'idclient',
         'idmoderator',
