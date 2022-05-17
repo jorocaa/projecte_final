@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="Mapa">
-                        <div id="map" style="height: 500px; margin-left: 20%"></div>
+                        <div id="map" style="height: 500px;"></div>
                     </div>
                 </div>
             </div>

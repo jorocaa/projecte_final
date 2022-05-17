@@ -18,7 +18,7 @@
         @include('rightmenu')
         <form method="post" name=form action="{{route('blogs.store')}}" enctype="multipart/form-data">
             @csrf
-            
+
             <div class="container col-12 justify-content-center ">
             <div class="container col-9 justify-content-center eee">
                 <h3>CREAR POST</h3>

@@ -81,10 +81,10 @@
                     @if(isset($row->latitude))
                         <input type="hidden" id="latitude" name="lat" value="{{$row->latitude}}"/>
                         <input type="hidden" id="longitude" name="lon" value="{{$row->longitude}}"/>
-                        <div class="row">
-                            <div class="col-md-11">
+                        <div class="row justify-content-center" >
+                            <div class="col-11 justify-content-center">
                                 <div class="Mapa">
-                                    <div id="map" style="height: 350px; margin-left: 20%"></div>
+                                    <div id="map" style="height: 350px;"></div>
                                 </div>
                             </div>
                         </div>
