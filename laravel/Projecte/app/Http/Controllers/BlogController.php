@@ -200,6 +200,29 @@ class BlogController extends Controller
             $idimg = $blog->idimage;
             $imagen = Image::get()->where('id',$idimg)->first();
         }
+        if(isset($request->img)) {
+            $upload = $request->img;
+            $fileName = $upload->getClientOriginalName();
+            $fileSize = $upload->getSize();
+            $uploadName = time() . '_' . $fileName;
+            $filePath = $upload->storeAs(
+                'uploads',
+                $uploadName,
+                'public'
+            );
+
+            if (\Storage::disk('public')->exists($filePath)) {
+                //Existe la ruta"
+                $fullPath = \Storage::disk('public')->path($filePath);
+
+                Image::create([
+                    'filepath' => $filePath,
+                    'filesize' => $fileSize
+                ]);
+
+                $imagen = Image::latest('id')->first();
+            }
+        }
 
         $idres = $request->idreservation;
 
