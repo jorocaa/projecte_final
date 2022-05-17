@@ -166,7 +166,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        
+
         if($request->deleteimage == 'si' or $request->deleteimage == null){
             if(isset($request->img)){
                 $imatge = Image::get()->where('id',$blog->idimage)->first();
