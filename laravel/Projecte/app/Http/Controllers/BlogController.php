@@ -166,7 +166,8 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        if($request->deleteimage == 'si'){
+        
+        if($request->deleteimage == 'si' or $request->deleteimage == null){
             if(isset($request->img)){
                 $imatge = Image::get()->where('id',$blog->idimage)->first();
                 $upload = $request->img;
@@ -199,29 +200,6 @@ class BlogController extends Controller
         else{
             $idimg = $blog->idimage;
             $imagen = Image::get()->where('id',$idimg)->first();
-        }
-        if(isset($request->img)) {
-            $upload = $request->img;
-            $fileName = $upload->getClientOriginalName();
-            $fileSize = $upload->getSize();
-            $uploadName = time() . '_' . $fileName;
-            $filePath = $upload->storeAs(
-                'uploads',
-                $uploadName,
-                'public'
-            );
-
-            if (\Storage::disk('public')->exists($filePath)) {
-                //Existe la ruta"
-                $fullPath = \Storage::disk('public')->path($filePath);
-
-                Image::create([
-                    'filepath' => $filePath,
-                    'filesize' => $fileSize
-                ]);
-
-                $imagen = Image::latest('id')->first();
-            }
         }
 
         $idres = $request->idreservation;

@@ -123,6 +123,18 @@
                     </div>
                 </div>
             </div>
+            <div class="row justify-content-center" id="triarimatge" hidden>
+                <div class="col-9 col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="intlef" for="img">Afegir imatge:</label>
+                        </div>
+                        <div class="col-md-8 col-lg-6">
+                            <input class="input-group" type="file" id="img" name="img" onchange="readURL(this);"><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @else
             <div class="row justify-content-center">
                 <div class="col-9 col-md-12">
@@ -137,18 +149,6 @@
                 </div>
             </div>
         @endif
-        <div class="row justify-content-center" id="triarimatge" hidden>
-            <div class="col-9 col-md-12">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="intlef" for="img">Afegir imatge:</label>
-                    </div>
-                    <div class="col-md-8 col-lg-6">
-                        <input class="input-group" type="file" id="img" name="img" onchange="readURL(this);"><br>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row justify-content-center">
             <div class="col-9 col-md-12 ">
                 <div class="row">
@@ -196,7 +196,7 @@
             </div>
 
         @endif
-        
+
             <div class="row justify-content-center text-center">
                 <div class="col-9 col-md-12 text-center ">
                     <input type="hidden" name="idreservation" value="{{$blog->idreservation}}"/>
