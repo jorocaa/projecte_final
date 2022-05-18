@@ -50,7 +50,7 @@ class WikiController extends Controller
         $utf8=utf8_decode($leaf);
         $treure=["\"","b"];
         $utf8deverdad = str_replace($treure,"",$utf8);
-        dd($utf8);
+        dd($utf8deverdad);
 
         $leafconvert = str_replace(" ","_",$leaf);
         dd($leafconvert);
