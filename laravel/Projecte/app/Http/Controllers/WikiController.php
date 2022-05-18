@@ -46,12 +46,15 @@ class WikiController extends Controller
      */
     public function show(Blog $blog)
     {
-        $leaf = utf8_decode($blog->wikipedia);
+        $leaf = $blog->wikipedia;
+        $utf8=utf8_decode($leaf);
+        dd($utf8);
+
         $leafconvert = str_replace(" ","_",$leaf);
+        dd($leafconvert);
         $data = file_get_contents("https://ca.wikipedia.org/api/rest_v1/page/summary/$leafconvert");
         dd($data);
         $json = json_decode($data,true);
-        dd($json);
 
         return view("wikipedia.show",[
             'infowiki' => $json,
