@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class WikiController extends Controller
 {
@@ -46,7 +47,13 @@ class WikiController extends Controller
      */
     public function show(Blog $blog)
     {
-        $leaf = $blog->wikipedia;
+
+        if(Str::of($blog->wikipedia)->contains('wikipedia.org')){
+            $leaf = class_basename($blog->wikipedia);
+        }
+        else{
+            $leaf = $blog->wikipedia;
+        }
         $leafconvert = str_replace(" ","_",$leaf);
         $data = file_get_contents("https://ca.wikipedia.org/api/rest_v1/page/summary/$leafconvert");
         $json = json_decode($data,true);
