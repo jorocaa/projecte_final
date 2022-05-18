@@ -48,6 +48,8 @@ class WikiController extends Controller
     {
         $leaf = $blog->wikipedia;
         $utf8=utf8_decode($leaf);
+        $treure=["\"","b"];
+        $utf8deverdad = str_replace($treure,"",$utf8);
         dd($utf8);
 
         $leafconvert = str_replace(" ","_",$leaf);
