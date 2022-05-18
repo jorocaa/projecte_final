@@ -46,7 +46,7 @@ class WikiController extends Controller
      */
     public function show(Blog $blog)
     {
-        $leaf = utf8_encode($blog->wikipedia);
+        $leaf = utf8_decode($blog->wikipedia);
         dd($leaf);
         $leafconvert = str_replace(" ","_",$leaf);
         dd($leafconvert);
