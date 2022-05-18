@@ -47,12 +47,6 @@ class WikiController extends Controller
     public function show(Blog $blog)
     {
         $leaf = $blog->wikipedia;
-        dd($leaf);
-        $utf8=utf8_decode($leaf);
-        $treure=["\"","b"];
-        $utf8deverdad = str_replace($treure,"",$utf8);
-        dd($utf8deverdad);
-
         $leafconvert = str_replace(" ","_",$leaf);
         dd($leafconvert);
         $data = file_get_contents("https://ca.wikipedia.org/api/rest_v1/page/summary/$leafconvert");
