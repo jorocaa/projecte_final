@@ -57,3 +57,14 @@
     </div>
     </body>
 </html>
+<style>
+    @media only screen and (max-width: 768px){
+        .global{
+            @if(isset(Auth::user()->usertype))
+            margin-top: 275px;
+            @else
+            margin-top: 200px;
+        @endif
+}
+    }
+</style>

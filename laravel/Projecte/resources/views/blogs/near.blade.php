@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="Mapa">
-                        <div id="map" style="height: 500px; margin-left: 20%"></div>
+                        <div id="map" style="height: 500px;"></div>
                     </div>
                 </div>
             </div>
@@ -108,3 +108,14 @@
     }
 
 </script>
+<style>
+    @media only screen and (max-width: 768px){
+        .global{
+            @if(isset(Auth::user()->usertype))
+            margin-top: 275px;
+            @else
+            margin-top: 200px;
+        @endif
+}
+    }
+</style>

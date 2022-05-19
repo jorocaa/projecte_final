@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         @include('head')
-        
+
         <title>Crear Post</title>
         <style>
         body{
@@ -18,7 +18,7 @@
         @include('rightmenu')
         <form method="post" name=form action="{{route('blogs.store')}}" enctype="multipart/form-data">
             @csrf
-            
+
             <div class="container col-12 justify-content-center ">
             <div class="container col-9 justify-content-center eee">
                 <h3>CREAR POST</h3>
@@ -120,3 +120,14 @@
         </form>
     </body>
 </html>
+<style>
+    @media only screen and (max-width: 768px){
+        .eee{
+            @if(isset(Auth::user()->usertype))
+            margin-top: 275px;
+            @else
+            margin-top: 200px;
+        @endif
+}
+    }
+</style>

@@ -1,4 +1,4 @@
-<div class="card float-end" style="width: 16rem;">
+<div class="card float-end menulateral" style="width: 16rem;">
     <div class="card-body">
         <form method="GET" action="{{ route('searched') }}">
             <label>Buscar</label><br>
