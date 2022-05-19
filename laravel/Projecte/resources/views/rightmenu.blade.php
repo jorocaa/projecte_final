@@ -7,8 +7,11 @@
                 <i class="fa fa-search"></i>
             </button>
         </form>
-        </br>
-
+        @if(isset(Auth::user()->usertype))
+            </br>
+        @else
+            <p>Inicia sessió per a més funcionlitats</p>
+        @endif
         <a href="{{route('randompage')}}">Post Aleatori</a><br/>
 
         @if(isset(Auth::user()->usertype))

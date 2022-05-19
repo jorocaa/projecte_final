@@ -115,6 +115,8 @@
                                 @if(isset(Auth::user()->usertype))
                                     <label>Afegir:</label><br><textarea class="col-md-12" id="comentari" name="comentari"></textarea>
                                     <br><input type="submit" name="submitcomment" value="Enviar">
+                                @else
+                                <label>Per afegir comentaris fes login</label>
                                 @endif
                             </div>
                         </div>
