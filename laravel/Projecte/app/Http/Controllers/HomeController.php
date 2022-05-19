@@ -4,18 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use Illuminate\Support\Arr;
 
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $result = Blog::get()->where('state','publicat')->sortByDesc('id')->take(10);
-
+        $resultB = Blog::get()->where('state','publicat')->sortByDesc('id')->take(10);
+        $resultU = array();
+        foreach ($resultB as $row){
+            $value = User::get()->where('id',$row->idclient)->first();
+            $resultU = Arr::add($resultU, $row->id, $value->username);
+        }
         return view('home', [
-            'result' => $result,
+            'result' => $resultB,
+            'usuari' => $resultU,
         ]);
     }
 

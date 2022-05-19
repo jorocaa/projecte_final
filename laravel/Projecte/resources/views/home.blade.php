@@ -47,6 +47,20 @@
                                 {{$row->content}}
                             </div>
                         </div>
+                        @foreach ($usuari as $key => $value)
+                            @if($key == $row->id)
+                                <div class="row ">
+                                    <div class="col-md-12 ">
+                                        <span style="font-size: small; color: darkslategrey">Creat per: {{$value}}</span>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        <div class="row ">
+                            <div class="col-md-12 ">
+                                <span style="font-size: small; color: darkslategrey">Data de creació: {{$row->created_at}}</span>
+                            </div>
+                        </div>
                         <div class="row ">
                             <div class="col-md-12 ">
                                 <hr>
