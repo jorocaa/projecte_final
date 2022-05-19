@@ -10,7 +10,7 @@
         @if(isset(Auth::user()->usertype))
             </br>
         @else
-            <p>Inicia sessió per a més funcionlitats</p>
+            <span style="font-size: small">Inicia sessió per a més funcionalitats</span>
         @endif
         <a href="{{route('randompage')}}">Post Aleatori</a><br/>
 

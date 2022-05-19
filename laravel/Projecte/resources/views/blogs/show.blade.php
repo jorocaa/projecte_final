@@ -107,6 +107,12 @@
                             @endif
                         @endforeach
                     @endif
+                    <div class="row justify-content-center" >
+                        <div class="col-11 justify-content-center">
+                            <span style="font-size: small;color: darkslategray">Creat per: {{$usuari->username}}</span><br>
+                            <span style="font-size: small;color: darkslategray">Data de creació: {{$row->created_at}}</span>
+                        </div>
+                    </div>
                     <form method="post" name=form action="{{route('comments.store',$row)}}">
                         @csrf
                         <div class="row justify-content-center ">

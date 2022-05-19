@@ -131,12 +131,14 @@ class BlogController extends Controller
         $resultI = Image::get()->where('id',$blog->idimage)->first();
         $resultR = Reservation::get()->where('id',$blog->idreservation);
         $resultC = Comment::get()->sortByDesc('id')->where('idblog',$blog->id);
+        $resultU = User::get()->where('id',$blog->idclient)->first();
 
         return view("blogs.show", [
             'row' => $blog,
             'image' => $resultI,
             'reserve' => $resultR,
             'comment' => $resultC,
+            'usuari'=>$resultU,
         ]);
     }
 
@@ -148,8 +150,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        $resultI =  Image::get()->where('id',$blog->idimage)->first();
-        $resultR =  Reservation::get()->where('id',$blog->idreservation);
+        $resultI = Image::get()->where('id',$blog->idimage)->first();
+        $resultR = Reservation::get()->where('id',$blog->idreservation);
         return view("blogs.edit",[
             'blog' => $blog,
             'image' => $resultI,
