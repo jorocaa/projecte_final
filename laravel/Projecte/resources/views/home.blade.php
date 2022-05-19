@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         @include('head')
-        <title>{{config('app.name')}}</title>
+        <title>{{config('app.name')}} - {{config('app.subtitle')}}</title>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -34,6 +34,14 @@
         @include('navbarHome')
         @include('rightmenu')
         <div class="container col-12 float-center clearfix global">
+            <div clcenterass="row justify-content-center text-center mt-4">
+                <div class="col-12 text-center justify-content-center">
+                    <br>
+                    <h1>{{config('app.name')}}</h1>
+                    <h6>{{config('app.subtitle')}}</h6>
+                    <br>
+                </div>
+            </div>
         @foreach($result as $row)
                 <div clcenterass="row justify-content-center mt-4">
                     <div class="col-md-11 inin" >
