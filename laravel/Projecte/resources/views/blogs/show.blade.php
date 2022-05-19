@@ -112,8 +112,10 @@
                         <div class="row justify-content-center ">
                             <div class="col-lg-11 mt-5">
                                 <h4>COMENTARIS</h4>
-                                <label>Afegir:</label><br><textarea class="col-md-12" id="comentari" name="comentari"></textarea>
-                                <br><input type="submit" name="submitcomment" value="Enviar">
+                                @if(isset(Auth::user()->usertype))
+                                    <label>Afegir:</label><br><textarea class="col-md-12" id="comentari" name="comentari"></textarea>
+                                    <br><input type="submit" name="submitcomment" value="Enviar">
+                                @endif
                             </div>
                         </div>
 
