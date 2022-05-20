@@ -34,8 +34,8 @@
         @include('navbarHome')
         @include('rightmenu')
         <div class="container col-12 float-center clearfix global">
-            <div clcenterass="row justify-content-center text-center mt-4">
-                <div class="col-12 text-center justify-content-center">
+            <div class="row justify-content-center text-center">
+                <div class="col-12 text-center justify-content-center mt-4">
                     <br>
                     <h1>{{config('app.name')}}</h1>
                     <h6>{{config('app.subtitle')}}</h6>
@@ -43,15 +43,15 @@
                 </div>
             </div>
         @foreach($result as $row)
-                <div clcenterass="row justify-content-center mt-4">
-                    <div class="col-md-11 inin" >
+                <div class="row justify-content-center mt-3">
+                    <div class="col-md-12 justify-content-center inin" >
                         <div class="row">
                             <div class="col-md-12">
                                 <a class="atit" href="{{route('blogs.show',$row)}}"><h3>{{$row->title}}</h3></a>
                             </div>
                         </div>
-                        <div class="row ">
-                            <div class="col-md-12 ">
+                        <div class="row justify-content-center">
+                            <div class="col-md-11 justify-content-center" style="text-align: justify;">
                                 {{$row->content}}
                             </div>
                         </div>

@@ -14,13 +14,11 @@ class MailController extends Controller
     public function sendEmail(Request $request){
 
         $inforeserva = Reservation::get()->where('id',$request->idreservation)->first();
-
         $details =[
             'title' => 'RESERVA REALITZADA',
-            'body' => 'Hola ' . Auth::user()->username . '. Ha realitzat una reserva a' . $inforeserva->namecompany . '. El correu de contacte per a futures referències és '.$inforeserva->reservationlink.'. Gràcies'
+            'body' => 'Hola ' . Auth::user()->username . '. Ha realitzat una reserva a' . $inforeserva->namecompany . '. El correu de contacte per a futures referències és '.$inforeserva->reservationlink.'. En breus es ficaran en contacte amb tú. Gràcies.'
         ];
-
-        Mail::to(Auth::user()->email)->send(new TestMail($details)); // CANVIAR A AUTH:USER()->MAIL QUAN FUNCIONI
+        Mail::to(Auth::user()->email)->cc($inforeserva->reservationlink)->send(new TestMail($details)); // CANVIAR A AUTH:USER()->MAIL QUAN FUNCIONI
         return redirect()->back()->with('success', 'MAIL ENVIAT, REVISI LA SEVA SAFATA D ENTRADA');
     }
 }

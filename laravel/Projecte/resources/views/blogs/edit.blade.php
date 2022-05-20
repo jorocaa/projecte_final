@@ -172,7 +172,9 @@
                             <label class="intlef" for="nomempresa">Nom empresa:</label>
                         </div>
                         <div class="col-md-8 col-lg-6">
-                            <input class="input-group " type="text" id="nomempresa" name="nomempresa"/><br>
+                            @foreach($reserva as $res)
+                                <input class="input-group " type="text" id="nomempresa" name="nomempresa" value="{{$res->namecompany}}"/><br>
+                            @endforeach
                         </div>
                     </div>
                 </div>
