@@ -20,10 +20,10 @@
             img.huechange { filter: hue-rotate(180deg); }
             body{
                 /*background: rgba(89, 125, 248, 0.51);*/
-                background-color: #4949E3;
+                background-color: #513a8b;
             }
             .eee{
-                background: #5D97FA;
+                background: #eee;
             }
             .edits:hover{
                 border: 1px;
@@ -118,8 +118,8 @@
                     </div>
                     <form method="post" name=form action="{{route('comments.store',$row)}}">
                         @csrf
-                        <div class="row justify-content-center ">
-                            <div class="col-lg-11 mt-5">
+                        <div class="row justify-content-center">
+                            <div class="col-11 mt-5">
                                 <h4>COMENTARIS</h4>
                                 @if(isset(Auth::user()->usertype))
                                     <label>Afegir:</label><br><textarea class="col-md-12" id="comentari" name="comentari"></textarea>
