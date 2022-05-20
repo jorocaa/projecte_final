@@ -66,8 +66,8 @@
                         </div>
                     </div>
                     <div class="row p-3">
-                        <div class="col-md-12 mx-5">
-                            <p>{{$row->content}}</p>
+                        <div class="col-md-12">
+                            <p style="text-align: justify;">{{$row->content}}</p>
                         </div>
                     </div>
                     @if($image->id != 1)
