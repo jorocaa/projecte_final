@@ -5,7 +5,7 @@
         </button>
         <div class="navbar-collapse collapse " id="navbartop">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/"><strong>Home</strong></a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('categories')}}">Categories </a></li>
                 @php //$ut = Session::get('usertype')
                 @endphp

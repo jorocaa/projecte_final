@@ -19,10 +19,14 @@
             img.huechange2 { filter: hue-rotate(330deg); }
             img.huechange { filter: hue-rotate(180deg); }
             body{
-                background: #513a8b;
+                /*background: rgba(89, 125, 248, 0.51);*/
+                background-color: #4949E3;
             }
             .eee{
-                background: #eee;
+                background: #5D97FA;
+            }
+            .edits:hover{
+                border: 1px;
             }
         </style>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -52,18 +56,17 @@
                     @endif
                     <div class="row justify-content-center">
                         <div class="col-md-12">
-                            <h2 class="m-1">{{$row->title}}</h2>
+                            <h2 class="m-1 mx-5">{{$row->title}}
+                                @auth
+                                    @if(Auth::user()->usertype != "U" || Auth::user()->id == $row->idclient)
+                                    <a href="{{$row->id}}/edit"><button name="edit" value="{{$row->id}}" class="border-0 edits"><i class="fa">&#xf044;</i></button></a>
+                                @endif
+                                @endauth
+                            </h2>
                         </div>
-                        @auth
-                        @if(Auth::user()->usertype != "U" || Auth::user()->id == $row->idclient)
-                            <div class="col-md-1">
-                                <a href="{{$row->id}}/edit"><button name="edit" value="{{$row->id}}"><i class="fa">&#xf044;</i></button></a>
-                            </div>
-                        @endif
-                        @endauth
                     </div>
                     <div class="row p-3">
-                        <div class="col-md-12">
+                        <div class="col-md-12 mx-5">
                             <p>{{$row->content}}</p>
                         </div>
                     </div>
