@@ -87,4 +87,9 @@ class HomeController extends Controller
     {
         //
     }
+
+    public function termsconditions()
+    {
+        return view('termcondition');
+    }
 }

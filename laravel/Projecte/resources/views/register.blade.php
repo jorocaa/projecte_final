@@ -118,6 +118,7 @@ $usertype = session('usertype')
                 <input class="col3 justify-content-center" type="submit" name="submitpost" value="Enviar Datos">
             </div>
         </div>
+
     </div>
 </form>
 </body>

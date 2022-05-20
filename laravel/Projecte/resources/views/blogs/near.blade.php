@@ -40,6 +40,7 @@
         @include('navbarBase')
         @include('rightmenu')
         <div class="container col-12 float-center clearfix global">
+            <h3>A prop meu </h3>
         @foreach($result as $row)
             <div class="row justify-content-center mt-4">
                 <div class="col-md-11 inin" >

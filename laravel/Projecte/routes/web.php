@@ -76,4 +76,6 @@ Route::get('/send-email', [MailController::class, 'sendEmail']);
 
 Route::post('wikipedias/{blog}',[WikiController::class, 'show'])->name('wikishow');
 
+Route::get('PCT',[HomeController::class,'termsconditions'])->name('termcondition');
+
 require __DIR__.'/auth.php';

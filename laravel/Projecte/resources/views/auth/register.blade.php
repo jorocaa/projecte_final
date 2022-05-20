@@ -77,6 +77,13 @@
                 <x-label>Aquesta informació no es visible per altres usuaris</x-label>
             </div>
 
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="flexCheckDefault" required>
+                    <a href="{{route('termcondition')}}" class="form-check-label" for="flexCheckDefault">
+                        Acceptar Termes i Condicions de {{config('app.name')}}
+                    </a>
+                </div>
+
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Ja estàs registrat?') }}
@@ -86,6 +93,7 @@
                     {{ __('Register') }}
                 </x-button>
             </div>
+
         </form>
     </x-auth-card>
 </x-guest-layout>

@@ -30,6 +30,35 @@
                 color:#505;
                 text-decoration: none;
             }
+            .cookie-consent{
+                position: fixed;
+                bottom: 14px;
+                right: 22px;
+                width: 260px;
+                padding-top: 7px;
+                height: 123px;
+                color: #fff;
+
+                line-height: 20px;
+                padding-left: 10px;
+                padding-right: 10px;
+                font-size: 14px;
+                background: #292929;
+                z-index: 120;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+
+            .allow-button{
+                height: 20px;
+                width: 104px;
+                color: #fff;
+                font-size: 12px;
+                line-height: 10px;
+                border-radius: 3px;
+                border: 1px solid green;
+                background-color: green;
+            }
         </style>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -82,8 +111,14 @@
                         </div>
                     </div>
                 </div>
-
         @endforeach
+    </div>
+    <div class="cookie-consent" id="bis">
+        <span>Aquest lloc utilitza dades de sessií per millorar l'experiència d'usuari. Veure <a href="{{route('termcondition')}}" class="ml-1 text-decoration-none">Política de privacitat X Termes i Condicions</a></span>
+        <div class="mt-2 d-flex align-items-center justify-content-center g-2">
+            <button class="allow-button mr-1" id="cuit1">Allow cookies</button>
+            <button class="allow-button" id="cuit2">cancel</button>
+        </div>
     </div>
     </body>
 </html>
@@ -98,3 +133,15 @@
         }
     }
 </style>
+<script type="text/javascript">
+    let bis = document.getElementById('bis');
+    let cuit1 = document.getElementById('cuit1');
+    let cuit2 = document.getElementById('cuit2');
+
+    cuit1.addEventListener('click',event=>{
+        bis.setAttribute('hidden',true);
+    })
+    cuit2.addEventListener('click',event=>{
+        bis.setAttribute('hidden',true);
+    })
+</script>
