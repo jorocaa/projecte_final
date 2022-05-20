@@ -37,8 +37,8 @@
             <div class="row justify-content-center text-center">
                 <div class="col-12 text-center justify-content-center mt-4">
                     <br>
-                    <h1>{{config('app.name')}}</h1>
-                    <h6>{{config('app.subtitle')}}</h6>
+                    <h1 style="background: linear-gradient(to right,black,darkgoldenrod);-webkit-background-clip: text;color: transparent; font-size: 400%">{{config('app.name')}}</h1>
+                    <h6 style="font-size: 125%">{{config('app.subtitle')}}</h6>
                     <br>
                 </div>
             </div>
