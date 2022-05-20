@@ -10,11 +10,17 @@
         <link  href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <style>
-            body{
-                background: #513a8b;
-            }
             .eee{
-                background: #eee;
+                background-color: #eee;
+                border: #505 1px solid;
+                opacity: 0.92;
+            }
+            body{
+                /*Firts->background: #513a8b;*/
+                /*background: linear-gradient(to bottom right, #513a8b, cadetblue);*/
+                background-image: url({{asset('15.jpg')}});
+                background-repeat: no-repeat;
+                background-size: 115%;
             }
         </style>
     </head>

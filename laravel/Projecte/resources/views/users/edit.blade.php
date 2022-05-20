@@ -11,11 +11,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Editar Perfil</title>
     <style>
-        body{
-            background: #513a8b;
-        }
         .eee{
-            background: #eee;
+            background-color: #eee;
+            border: #505 1px solid;
+            opacity: 0.92;
+        }
+        body{
+            /*Firts->background: #513a8b;*/
+            /*background: linear-gradient(to bottom right, #513a8b, cadetblue);*/
+            background-image: url({{asset('15.jpg')}});
+            background-repeat: no-repeat;
+            background-size: 115%;
         }
     </style>
 </head>

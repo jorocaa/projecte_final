@@ -18,12 +18,17 @@
         <style>
             img.huechange2 { filter: hue-rotate(330deg); }
             img.huechange { filter: hue-rotate(180deg); }
-            body{
-                /*background: rgba(89, 125, 248, 0.51);*/
-                background-color: #513a8b;
-            }
             .eee{
-                background: #eee;
+                background-color: #eee;
+                border: #505 1px solid;
+                opacity: 0.92;
+            }
+            body{
+                /*Firts->background: #513a8b;*/
+                /*background: linear-gradient(to bottom right, #513a8b, cadetblue);*/
+                background-image: url({{asset('15.jpg')}});
+                background-repeat: no-repeat;
+                background-size: 115%;
             }
             .edits:hover{
                 border: 1px;
