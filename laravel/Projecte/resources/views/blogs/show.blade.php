@@ -27,8 +27,8 @@
                 /*Firts->background: #513a8b;*/
                 /*background: linear-gradient(to bottom right, #513a8b, cadetblue);*/
                 background-image: url({{asset('15.jpg')}});
-                background-repeat: repeat;
-                background-size: 100%;
+                background-repeat: no-repeat;
+                background-size: 115%;
             }
             .edits:hover{
                 border: 1px;
@@ -97,24 +97,26 @@
                             </div>
                         </div>
                     @endif
-                    @if(!session()->has('success'))
-                        @foreach($reserve as $res)
-                            @if($row->idreservation == $res->id && $row->idreservation != 1)
-                                <form method="POST" name="reservar" action="{{route('reserves.store')}}">
-                                    @csrf
-                                    <div class="row justify-content-center mt-1">
-                                        <div class="col-2">
-                                            <button type="submit" id="reservar" name="reservar">RESERVAR</button>
+                    @auth
+                        @if(!session()->has('success'))
+                            @foreach($reserve as $res)
+                                @if($row->idreservation == $res->id && $row->idreservation != 1)
+                                    <form method="POST" name="reservar" action="{{route('reserves.store')}}">
+                                        @csrf
+                                        <div class="row justify-content-center mt-1">
+                                            <div class="col-2">
+                                                <button type="submit" id="reservar" name="reservar">RESERVAR</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    @auth
-                                    <input type="hidden" name="idclient" value="{{Auth::user()->id}}"/>
-                                    @endauth
-                                    <input type="hidden" name="idreservation" value="{{$row->idreservation}}"/>
-                                </form>
-                            @endif
-                        @endforeach
-                    @endif
+                                        @auth
+                                        <input type="hidden" name="idclient" value="{{Auth::user()->id}}"/>
+                                        @endauth
+                                        <input type="hidden" name="idreservation" value="{{$row->idreservation}}"/>
+                                    </form>
+                                @endif
+                            @endforeach
+                        @endif
+                    @endauth
                     <div class="row justify-content-center" >
                         <div class="col-11 justify-content-center">
                             <span style="font-size: small;color: darkslategray">Creat per: {{$usuari->username}}</span><br>
