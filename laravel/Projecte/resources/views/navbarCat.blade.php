@@ -5,8 +5,8 @@
         </button>
         <div class="navbar-collapse collapse " id="navbartop">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item"><a class="nav-link active" href="/">Home </a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('categories')}}">Categories </a></li>
+                <li class="nav-item"><a class="nav-link " href="/">Home </a></li>
+                <li class="nav-item"><a class="nav-link active" href="{{route('categories')}}">Categories </a></li>
                 @if (isset(Auth::user()->usertype))
                     @if(Auth::user()->usertype == "A" or Auth::user()->usertype == "M")
                         <li class="nav-item"><a class="nav-link" href="{{route('blogs.index')}}">Administrar Posts </a></li>
