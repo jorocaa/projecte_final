@@ -14,8 +14,8 @@
                 /*Firts->background: #513a8b;*/
                 /*background: linear-gradient(to bottom right, #513a8b, cadetblue);*/
                 background-image: url({{asset('15.jpg')}});
-                background-repeat: no-repeat;
-                background-size: 115%;
+                background-repeat: repeat;
+                background-size: 100%;
             }
         </style>
     </head>
