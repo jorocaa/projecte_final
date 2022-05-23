@@ -36,7 +36,7 @@
 
     </head>
     <body>
-        @include('navbarBase')
+        @include('navbarCat')
         @include('rightmenu')
         <div class="container col-12 float-center clearfix global">
             <h3>Categories</h3>
