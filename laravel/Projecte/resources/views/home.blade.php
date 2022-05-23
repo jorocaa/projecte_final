@@ -26,9 +26,6 @@
                 background-repeat: repeat;
                 background-size: 100%;
             }
-            card{
-                z-index:3;
-            }
             .atit{
                 color:#505;
                 text-decoration: none;
